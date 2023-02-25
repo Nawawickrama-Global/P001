@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,6 @@ Route::view('/login','authentication.login');
 Route::view('/forget-password', 'authentication.forget-password');
 Route::view('/reset-password', 'authentication.reset-password');
 // Route::view('/verify-account', 'authentication.verify-account');
+
+// Dashboard
+Route::view('/dashboard', 'dashboard.main');

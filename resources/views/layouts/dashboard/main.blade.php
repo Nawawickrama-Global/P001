@@ -140,9 +140,9 @@
                 @yield('content')
             </div>
             <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <p class="text-muted text-center text-md-left">Copyright © 2022 <a href="https://www.prodesigner.global" target="_blank">Kelani Higher Education Institute</a> | All rights reserved | V0.1.1</p>
+                <p class="text-muted text-center text-md-left">Copyright © 2022 <a href="#" target="_blank">My Mobile</a> | All rights reserved | V0.0.1</p>
                 </p>
-                <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Solution By <a href="https://prodesigner.global">Prodesigner Global</a></p>
+                <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Solution By <a href="#">Its Me</a></p>
             </footer>
         </div>
     </div>
