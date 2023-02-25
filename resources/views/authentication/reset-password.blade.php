@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-md-8 pl-md-0">
     <div class="auth-form-wrapper px-4 py-5">
-        <a href="#" class="noble-ui-logo d-block mb-2">Kelani<span> Institute</span></a>
+        <a href="#" class="noble-ui-logo d-block mb-2">My<span>Mobile</span></a>
         <h5 class="text-muted font-weight-normal mb-4">Please enter the following details to set a new password.</h5>
         <form method="POST" action="#">
             @csrf
@@ -20,7 +20,15 @@
                 <input id="confirmpassword" type="password" class="form-control" name="email" required autocomplete="email" autofocus>
             </div>
             <div class="mt-3">
-                <button type="submit" class="btn btn-dark mr-2 mb-2 mb-md-0 text-white">Setup Password</button>
+                <button type="submit" class="btn btn-primary mr-2 mb-2 mb-md-0 text-white">Setup Password</button>
+            </div>
+            <div class="mt-3">
+                <hr>
+                <label class="form-check-label text-muted font-weight-normal">
+                    <a href="/login">
+                        Already Remember Password ?
+                    </a>
+                </label>
             </div>
         </form>
     </div>
