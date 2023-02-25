@@ -111,8 +111,8 @@
                                         <img src="https://via.placeholder.com/80x80" alt="">
                                     </div>
                                     <div class="info text-center">
-                                        <p class="name font-weight-bold mb-0">Ayesh Nawawickrama</p>
-                                        <p class="email text-muted mb-3">ayesh@prodesigner.lk</p>
+                                        <p class="name font-weight-bold mb-0">{{ Auth::user()->first_name }}</p>
+                                        <p class="email text-muted mb-3">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
                                 <div class="dropdown-body">
@@ -124,10 +124,14 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                                 <i data-feather="log-out"></i>
                                                 <span>Log Out</span>
                                             </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>

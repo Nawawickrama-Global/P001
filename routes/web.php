@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +14,19 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
-//Authentication
-Route::view('/login','authentication.login');
-// Route::view('/register', 'authentication.register');
-Route::view('/forget-password', 'authentication.forget-password');
-Route::view('/reset-password', 'authentication.reset-password');
-// Route::view('/verify-account', 'authentication.verify-account');
+Route::get('/home', function () {
+    return redirect()->route('home');
+});
 
-// Dashboard
-Route::view('/dashboard', 'dashboard.main');
+// Dashboard Routes
+Route::prefix('/dashboard')->middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+});
+
+
+
