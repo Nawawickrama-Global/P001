@@ -28,3 +28,7 @@ Route::view('/reset-password', 'authentication.reset-password');
 Route::view('/dashboard', 'dashboard.main');
 // -brand
 Route::view('/brand', 'dashboard.brand.main');
+// -category
+Route::view('/category', 'dashboard.category.main');
+// -Coupon
+Route::view('/coupon', 'dashboard.coupon.main');
