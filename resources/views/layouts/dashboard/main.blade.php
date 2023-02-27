@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="main-wrapper">
         @extends('layouts.dashboard.sidebar')
         <div class="page-wrapper">
@@ -111,8 +112,8 @@
                                         <img src="https://via.placeholder.com/80x80" alt="">
                                     </div>
                                     <div class="info text-center">
-                                        <p class="name font-weight-bold mb-0">Ayesh Nawawickrama</p>
-                                        <p class="email text-muted mb-3">ayesh@prodesigner.lk</p>
+                                        <p class="name font-weight-bold mb-0">{{ Auth::user()->first_name }}</p>
+                                        <p class="email text-muted mb-3">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
                                 <div class="dropdown-body">
@@ -124,10 +125,14 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                                 <i data-feather="log-out"></i>
                                                 <span>Log Out</span>
                                             </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>
@@ -140,9 +145,9 @@
                 @yield('content')
             </div>
             <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <p class="text-muted text-center text-md-left">Copyright © 2022 <a href="https://www.prodesigner.global" target="_blank">Kelani Higher Education Institute</a> | All rights reserved | V0.1.1</p>
+                <p class="text-muted text-center text-md-left">Copyright © 2022 <a href="#" target="_blank">My Mobile</a> | All rights reserved | V0.0.1</p>
                 </p>
-                <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Solution By <a href="https://prodesigner.global">Prodesigner Global</a></p>
+                <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Solution By <a href="#">Its Me</a></p>
             </footer>
         </div>
     </div>
@@ -185,6 +190,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+    @stack('scripts')
     <script>
         $(document).ready(function() {
 
@@ -203,6 +209,25 @@
 
             });
         });
+    </script>
+    <script>
+        // Delete Message
+$(".table").on("click", ".delete", function () {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#696969",
+        confirmButtonText: "Yes, delete it!",
+        showCancelButton: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $(this).parent().submit();
+        }
+    });
+    return false;
+});
     </script>
 </body>
 

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
-//Authentication
-Route::view('/login','authentication.login');
-Route::view('/register', 'authentication.register');
-Route::view('/forget-password', 'authentication.forget-password');
-Route::view('/reset-password', 'authentication.reset-password');
-Route::view('/verify-account', 'authentication.verify-account');
+Route::get('/home', function () {
+    return redirect()->route('home');
+});
+
+// Dashboard Routes
+Route::prefix('/dashboard')->middleware('auth')->group(function () {
+    Route::get('/', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('home');
+
+    // Brand
+    Route::get('/brand', [App\Http\Controllers\Dashboard\Brand\BrandController::class, 'index'])->name('brand');
+    Route::post('/create-brand', [App\Http\Controllers\Dashboard\Brand\BrandController::class, 'create'])->name('create-brand');
+    Route::delete('/delete-brand/{id}', [App\Http\Controllers\Dashboard\Brand\BrandController::class, 'delete'])->name('delete-brand');
+
+    Route::get('/category', [App\Http\Controllers\Dashboard\Category\CategoryController::class, 'index'])->name('category');
+    Route::post('/create-category', [App\Http\Controllers\Dashboard\Category\CategoryController::class, 'create'])->name('create-category');
+    Route::delete('/delete-category/{category}/{id}', [App\Http\Controllers\Dashboard\Category\CategoryController::class, 'delete'])->name('delete-category');
+    // -Coupon
+    Route::view('/coupon', 'dashboard.coupon.main');
+});

@@ -5,7 +5,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            Kelani<span> Institute</span>
+            My<span> Mobile</span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
@@ -17,9 +17,27 @@
         <ul class="nav">
             <li class="nav-item nav-category">Main</li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('home') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('brand') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Brand</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('category') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Category</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/coupon" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Coupon</span>
                 </a>
             </li>
             <li class="nav-item">
