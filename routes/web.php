@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 Route::get('/', function () {
     return view('welcome');
@@ -24,9 +25,14 @@ Route::get('/home', function () {
 
 // Dashboard Routes
 Route::prefix('/dashboard')->middleware('auth')->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('home');
 
+    // Brand
+    Route::get('/brand', [App\Http\Controllers\Dashboard\Brand\BrandController::class, 'index'])->name('brand');
+    Route::post('/create-brand', [App\Http\Controllers\Dashboard\Brand\BrandController::class, 'create'])->name('create-brand');
+    Route::delete('/delete-brand/{id}', [App\Http\Controllers\Dashboard\Brand\BrandController::class, 'delete'])->name('delete-brand');
+
+    Route::view('/category', 'dashboard.category.main');
+    // -Coupon
+    Route::view('/coupon', 'dashboard.coupon.main');
 });
-
-
-

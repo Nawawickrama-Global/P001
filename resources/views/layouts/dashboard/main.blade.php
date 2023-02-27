@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="main-wrapper">
         @extends('layouts.dashboard.sidebar')
         <div class="page-wrapper">
@@ -189,6 +190,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+    @stack('scripts')
     <script>
         $(document).ready(function() {
 
@@ -207,6 +209,25 @@
 
             });
         });
+    </script>
+    <script>
+        // Delete Message
+$(".table").on("click", ".delete", function () {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#696969",
+        confirmButtonText: "Yes, delete it!",
+        showCancelButton: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $(this).parent().submit();
+        }
+    });
+    return false;
+});
     </script>
 </body>
 

@@ -23,6 +23,24 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('brand') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Brand</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/category" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Category</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/coupon" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Coupon</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Send Email</span>
