@@ -188,7 +188,7 @@
                                             <form action="{{ route('delete-category', [$cat, $catID]) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="badge badge-danger delete mt-2"
+                                                <button type="submit" class="btn btn-danger btn-icon delete mt-2"
                                                     title="Delete">
                                                     <i data-feather="trash-2"></i>
                                                 </button>

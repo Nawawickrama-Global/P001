@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/coupon" class="nav-link">
+                <a href="{{ route('coupon') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Coupon</span>
                 </a>
