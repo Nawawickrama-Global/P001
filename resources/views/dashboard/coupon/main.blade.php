@@ -155,22 +155,22 @@
                 </td>
                 <td>
                   {{-- report view --}}
-                  <a type="button" class="badge badge-info" title="View" data-toggle="modal"
+                  <button type="button" class="btn btn-info btn-sm btn-icon" title="View" data-toggle="modal"
                     data-target="#exampleModal">
                     <i data-feather="file-text"></i>
-                  </a>
+                  </button>
                   {{-- view --}}
-                  <a type="button" class="badge badge-warning" title="View">
+                  <button type="button" class="btn btn-warning btn-sm btn-icon" title="View">
                     <i data-feather="eye"></i>
-                  </a>
+                  </button>
                   {{-- edit --}}
-                  <a type="button" class="badge badge-success" title="Edit">
+                  <button type="button" class="btn btn-success btn-sm btn-icon" title="Edit">
                     <i data-feather="edit"></i>
-                  </a>
+                  </button>
                   {{-- Delete --}}
-                  <a type="button" class="badge badge-danger" title="Delete">
+                  <button type="button" class="btn btn-danger btn-sm btn-icon" title="Delete">
                     <i data-feather="trash-2"></i>
-                  </a>
+                  </button>
                 </td>
               </tr>
             </tbody>
