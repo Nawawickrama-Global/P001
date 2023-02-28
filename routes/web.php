@@ -32,3 +32,9 @@ Route::view('/brand', 'dashboard.brand.main');
 Route::view('/category', 'dashboard.category.main');
 // -Coupon
 Route::view('/coupon', 'dashboard.coupon.main');
+
+// -Add Product
+Route::view('/add-product', 'dashboard.product.add');
+Route::view('/view-product', 'dashboard.product.view');
+//attribute
+Route::view('/attribute', 'dashboard.attribute.main');
