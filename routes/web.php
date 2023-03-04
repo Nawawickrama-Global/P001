@@ -38,3 +38,7 @@ Route::view('/add-product', 'dashboard.product.add');
 Route::view('/view-product', 'dashboard.product.view');
 //attribute
 Route::view('/attribute', 'dashboard.attribute.main');
+
+// Customers
+Route::view('/customer-view', 'dashboard.customer.view');
+Route::view('/customer-edit', 'dashboard.customer.edit');
