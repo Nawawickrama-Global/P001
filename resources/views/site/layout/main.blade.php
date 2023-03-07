@@ -35,7 +35,7 @@
 
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center" style="background-color: #000">
+    <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
             <nav id="navbar" class="navbar">
                 <ul>
@@ -45,7 +45,7 @@
                             <li><a href="about.html">About</a></li>
                             <li><a href="product.html">product</a></li>
                             <li><a href="testimonials.html">Testimonials</a></li>
-
+    
                             <li class="dropdown">
                                 <a href="#"><span>Deep Drop Down</span>
                                     <i class="bi bi-chevron-right"></i></a>
@@ -65,7 +65,7 @@
                             <li><a href="about.html">About</a></li>
                             <li><a href="product.html">product</a></li>
                             <li><a href="testimonials.html">Testimonials</a></li>
-
+    
                             <li class="dropdown">
                                 <a href="#"><span>Deep Drop Down</span>
                                     <i class="bi bi-chevron-right"></i></a>
@@ -80,7 +80,7 @@
                         </ul>
                     </li>
                 </ul>
-
+    
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <div class="get">
@@ -96,15 +96,8 @@
         </div>
     </header>
     <!-- End Header -->
-
-    <main id="main">
-        <!-- ======= Login Section ======= -->
-        <section class="form-section">
-            @yield('content')
-
-        </section>
-        <!-- End Login -->
-    </main>
+    
+    @yield('content')
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
@@ -133,7 +126,7 @@
                             </div>
                         </div>
                     </div>
-
+    
                     <div class="col footer-links">
                         <h4>Products</h4>
                         <ul>
@@ -146,7 +139,7 @@
                             <li>
                                 <a href="#">Furniture</a>
                             </li>
-
+    
                             <li>
                                 <a href="#">Lighting</a>
                             </li>
@@ -155,7 +148,7 @@
                             </li>
                         </ul>
                     </div>
-
+    
                     <div class="col footer-links">
                         <h4>Desire</h4>
                         <ul>
@@ -168,13 +161,13 @@
                             <li>
                                 <a href="#">Your Account</a>
                             </li>
-
+    
                             <li>
                                 <a href="#">Quote Request</a>
                             </li>
                         </ul>
                     </div>
-
+    
                     <div class="col-2 footer-links">
                         <h4>Quick Links</h4>
                         <ul>
@@ -187,7 +180,7 @@
                             <li>
                                 <a href="#">Contact Us</a>
                             </li>
-
+    
                             <li>
                                 <a href="#">Terms and Conditions</a>
                             </li>
@@ -196,7 +189,7 @@
                             </li>
                         </ul>
                     </div>
-
+    
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Newsletter</h4>
                         <p>
@@ -204,14 +197,14 @@
                             offers and promotions.
                         </p>
                         <form action="" method="post">
-                            <input id="mail" type="email" name="email" placeholder="Enter your email" /><input
-                                type="submit" value="Subscribe" />
+                            <input id="mail" type="email" name="email" placeholder="Enter your email" /><input type="submit"
+                                value="Subscribe" />
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
+    
         <div class="container">
             <div class="copyright">&copy; 2022, All Rights Reserved</div>
         </div>
