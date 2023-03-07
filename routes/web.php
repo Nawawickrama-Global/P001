@@ -43,3 +43,6 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
     Route::delete('/delete-coupon/{id}', [App\Http\Controllers\Dashboard\Coupon\CouponController::class, 'delete'])->name('delete-coupon');
 
 });
+
+Route::view('/customer-login', 'site.auth.login');
+Route::view('/customer-registration', 'site.auth.registration');
