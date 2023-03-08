@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return view('site.home.home');
 });
 Route::get('/home', function () {
     return redirect()->route('home');
 });
 
 // Dashboard Routes
-Route::prefix('/dashboard')->middleware('auth')->group(function () {
+Route::prefix('/dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('home');
 
     // Brand
@@ -58,13 +58,14 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
     Route::get('/edit-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'edit'])->name('edit-customer');
 });
 
+//site login
+Route::get('/customer-registration', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'index'])->name('customer-registration');
+Route::post('/register-customer', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'register'])->name('register-customer');
 
-//site
-Route::view('/customer-login', 'site.auth.login');
-Route::view('/customer-registration', 'site.auth.registration');
+
+Route::view('/customer-login', 'site.auth.login')->name('customer-login');
 
 //home
-Route::view('/home', 'site.home.home');
 Route::view('/cart', 'site.cart.cart');
 Route::view('/product-add-cart', 'site.cart.product-add-cart');
 Route::view('/product-list', 'site.cart.product-list');

@@ -34,6 +34,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- ======= Header ======= -->
     <header id="header" class="d-flex align-items-center" style="background-color: #000">
         <div class="container d-flex align-items-center justify-content-between">
