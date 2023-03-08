@@ -34,14 +34,14 @@
                     <span class="link-title">Category</span>
                 </a>
             </li>
+
+            <li class="nav-item nav-category">Inventory</li>
             <li class="nav-item">
                 <a href="{{ route('coupon') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Coupon</span>
                 </a>
             </li>
-
-            <li class="nav-item nav-category">Inventory</li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#products" role="button" aria-expanded="false" aria-controls="emails" id="req-ex">
                     <i class="link-icon" data-feather="mail"></i>
@@ -69,6 +69,13 @@
                         </li>
                     </ul>
                 </div>
+            </li>
+            <li class="nav-item nav-category">Customer</li>
+            <li class="nav-item">
+                <a href="{{ route('customer') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Customer</span>
+                </a>
             </li>
         </ul>
     </div>
