@@ -62,7 +62,7 @@
                             <div class="col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Product Type</label>
-                                    <select name="type" id="product_type"
+                                    <select name="product_type" id="product_type"
                                         class="form-control @error('type') is-invalid @enderror">
                                         <option value="single">Single</option>
                                         <option value="variant">Varient</option>
@@ -133,7 +133,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Category</label>
-                                    <input name="tags" id="tags" value="Mobile" />
+                                    <select name="category_id" id="multiple"
+                                        class="@error('category_id') is-invalid @enderror">
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->category_id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('category_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -193,7 +203,8 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
                                     @foreach ($attributes as $attribute)
-                                        <button type="button" data-id="{{ $attribute->attribute_id }}" data-attributes="{{ $attribute->values }}"
+                                        <button type="button" data-id="{{ $attribute->attribute_id }}"
+                                            data-attributes="{{ $attribute->values }}"
                                             class="btn btn-outline-primary attribute"
                                             onclick="toggleButtonStyle(this)">{{ $attribute->name }}</button>
                                     @endforeach
@@ -279,41 +290,48 @@
             // Select boxes
             $.each(att, function(key, item) {
                 op = item[1].split(',');
-                select += '<div class="col-md-' + col + '"><select name="attribute'+ index +'_' + ( key + 1) + '">';
+                select += '<div class="col-md-' + col + '"><select name="attribute' + index + '_' + (key +
+                    1) + '">';
                 $.each(op, function(key, value) {
                     select += '<option value="' + value + '">' + value + '</option>';
                 });
-                select += '</select></div><input type="hidden" name="attribute_id'+ index +'_' + ( key + 1) + '" value="' + item[0] + '">';
+                select += '</select></div><input type="hidden" name="attribute_id' + index + '_' + (key +
+                    1) + '" value="' + item[0] + '">';
                 attribute_count++;
             });
-            select += '<input type="hidden" name="attribute'+ index +'-count" value="'+ attribute_count +'">';
+            select += '<input type="hidden" name="attribute' + index + '-count" value="' + attribute_count + '">';
             // Regular price
             let regularPrice =
-                '<div class="col-md-1"><input type="text" placeholder="Regular Price" class="form-control" name="regular_price'+ index +'"></div>';
+                '<div class="col-md-1"><input type="text" placeholder="Regular Price" class="form-control" name="regular_price' +
+                index + '"></div>';
             // Sales price
             let salesPrice =
-                '<div class="col-md-1"><input type="text" placeholder="Sales Price" class="form-control" name="sales_price'+ index +'"></div>';
+                '<div class="col-md-1"><input type="text" placeholder="Sales Price" class="form-control" name="sales_price' +
+                index + '"></div>';
             // Stock price
             let stock =
-                '<div class="col-md-1"><input type="text" placeholder="Stock" class="form-control" name="stock'+ index +'"></div>';
+                '<div class="col-md-1"><input type="text" placeholder="Stock" class="form-control" name="stock' +
+                index + '"></div>';
             // Color
             let color =
-                '<div class="col-md-1"><input type="color" class="form-control" name="color'+ index +'"></div>';
+                '<div class="col-md-1"><input type="color" class="form-control" name="color' + index + '"></div>';
             // Image
             let image =
-                '<div class="col-md-1"><input type="file" class="form-control" name="img'+ index +'"></div>';
+                '<div class="col-md-1"><input type="file" class="form-control" name="img' + index + '"></div>';
             // remove
             let remove =
-                '<div class="col-md-1"><input type="button" data-id="row'+ index +'" class="form-control btn btn-danger rem" value="REM"></div>';
-   
-            $('#form-rows-container').append('<div id="row'+ index +'" class="row mb-2">' + select + regularPrice + salesPrice + stock + color + image + remove + '</div>');
+                '<div class="col-md-1"><input type="button" data-id="row' + index +
+                '" class="form-control btn btn-danger rem" value="REM"></div>';
+
+            $('#form-rows-container').append('<div id="row' + index + '" class="row mb-2">' + select +
+                regularPrice + salesPrice + stock + color + image + remove + '</div>');
             $('#item-count').val(index);
-            index ++;
+            index++;
         });
 
-        $('#form-rows-container').on('click', '.rem', function(){
+        $('#form-rows-container').on('click', '.rem', function() {
             $('#' + $(this).data('id')).remove();
-            index --;
+            index--;
         });
     </script>
 @endpush

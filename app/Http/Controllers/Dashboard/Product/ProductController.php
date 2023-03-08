@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use App\Models\ProductVariation;
@@ -15,12 +16,14 @@ class ProductController extends Controller
     public function addProduct()
     {
         $attributes = Attribute::where('deleted_at', null)->get();
-        return view('dashboard.product.add', ['attributes' => $attributes]);
+        $categories = Category::where('deleted_at', null)->get();
+        return view('dashboard.product.add', ['attributes' => $attributes, 'categories' => $categories]);
     }
 
     public function viewProduct()
     {
-        return view('dashboard.product.view');
+        $products = Product::where('deleted_at', null)->get();
+        return view('dashboard.product.view', ['products' => $products]);
     }
 
     public function addNewProduct(Request $request)
@@ -28,15 +31,19 @@ class ProductController extends Controller
         $this->validate($request,[
             'title' => 'required|max:255',
             'sku' => 'required|max:255',
-            'type' => 'required',
+            'product_type' => 'required',
+            'category_id' => 'required',
             'feature_img' => 'required|image|mimes:jpeg,png,jpg',
             'product_img' => 'required|image|mimes:jpeg,png,jpg',
             'short_description' => 'required',
             'long_description' => 'required',
-            'regular_price1' => 'required_if:type,!=,single',
-            'sales_price1' => 'required_if:type,!=,single',
-            'stock1' => 'required_if:type,!=,single',
-            'img1' => 'required_if:type,!=,single',
+            'regular_price' => 'required_if:product_type,==,single',
+            'sale_price' => 'required_if:product_type,==,single',
+            'stock' => 'required_if:product_type,==,single',
+            'regular_price1' => 'required_if:product_type,==,variant',
+            'sales_price1' => 'required_if:product_type,==,variant',
+            'stock1' => 'required_if:product_type,==,variant',
+            'img1' => 'required_if:product_type,==,variant',
         ]);
 
         if($request->hasFile('feature_img')){
@@ -107,5 +114,17 @@ class ProductController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function deleteProduct($id)
+    {
+        try {
+            Product::find($id)->delete();
+            toast('Product Deleted', 'success');
+        } catch (\Throwable $th) {
+            toast($th->getMessage(), 'warning');
+        }
+
+        return back();
     }
 }

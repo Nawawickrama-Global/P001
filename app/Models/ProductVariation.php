@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductVariation extends Model
 {
@@ -17,4 +18,7 @@ class ProductVariation extends Model
         'color',
         'image',
     ];
+    public function product(): BelongsTo{
+        return $this->BelongsTo(Product::class,);
+    }
 }
