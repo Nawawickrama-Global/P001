@@ -69,6 +69,7 @@ class ProductController extends Controller
                         $img = 'img'.$i;
     
                         $attrCount = 'attribute'.$i.'-count';
+                        $attrCount = $request->$attrCount;
     
                         if($request->hasFile($img)){
                             $image = date('Y-m-d-H-i-s') . $request->file($img)->getClientOriginalName();
