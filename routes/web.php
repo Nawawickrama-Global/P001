@@ -69,7 +69,11 @@ Route::view('/customer-login', 'site.auth.login')->name('customer-login');
 //home
 Route::view('/cart', 'site.cart.cart');
 Route::view('/product-add-cart', 'site.cart.product-add-cart');
-Route::view('/product-list', 'site.cart.product-list');
+
+Route::get('/products', [App\Http\Controllers\Site\Product\ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{id}', [App\Http\Controllers\Site\Product\ProductController::class, 'viewProduct'])->name('view-item');
+
+
 Route::view('/single-product', 'site.cart.single-product');
 Route::view('/contact', 'site.contact.main');
 Route::view('/wishlist', 'site.cart.wishlist');
