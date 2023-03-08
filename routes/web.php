@@ -59,3 +59,15 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 });
 
 
+//site
+Route::view('/customer-login', 'site.auth.login');
+Route::view('/customer-registration', 'site.auth.registration');
+
+//home
+Route::view('/home', 'site.home.home');
+Route::view('/cart', 'site.cart.cart');
+Route::view('/product-add-cart', 'site.cart.product-add-cart');
+Route::view('/product-list', 'site.cart.product-list');
+Route::view('/single-product', 'site.cart.single-product');
+Route::view('/contact', 'site.contact.main');
+Route::view('/wishlist', 'site.cart.wishlist');
