@@ -13,32 +13,27 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src="assets/img/products/product-5.png"
+                      src="{{ asset('storage/images/'. $product->feature_image) }}"
                       class="d-block w-100"
                       alt="Image 1"
                     />
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="assets/img/products/product-6.png"
+                      src="{{ asset('storage/images/'. $product->feature_image) }}"
                       class="d-block w-100"
-                      alt="Image 2"
+                      alt="variant"
                     />
                   </div>
+                  @foreach ($product->variant as $variant)
                   <div class="carousel-item">
                     <img
-                      src="assets/img/products/product-7.png"
+                      src="{{ asset('storage/images/'. $variant->image) }}"
                       class="d-block w-100"
-                      alt="Image 3"
+                      alt="variant"
                     />
                   </div>
-                  <div class="carousel-item">
-                    <img
-                      src="assets/img/products/product-8.png"
-                      class="d-block w-100"
-                      alt="Image 3"
-                    />
-                  </div>
+                  @endforeach
                 </div>
                 <a
                   class="carousel-control-prev"
@@ -67,49 +62,17 @@
             <div class="col-lg-1">
               <div id="thumbnailCarousel">
                 <div class="overflow-auto thumbnailClass">
+                  @foreach ($product->variant as $variant)
                   <div
-                    class="thumbnail"
-                    data-target="#productCarousel"
-                    data-slide-to="0"
-                  >
-                    <img
-                      src="assets/img/products/product-5.png"
-                      class="d-block w-100"
-                    />
-                  </div>
-  
-                  <div
-                    class="thumbnail"
-                    data-target="#productCarousel"
-                    data-slide-to="1"
-                  >
-                    <img
-                      src="assets/img/products/product-6.png"
-                      class="d-block w-100"
-                    />
-                  </div>
-  
-                  <div
-                    class="thumbnail"
-                    data-target="#productCarousel"
-                    data-slide-to="2"
-                  >
-                    <img
-                      src="assets/img/products/product-7.png"
-                      class="d-block w-100"
-                    />
-                  </div>
-  
-                  <div
-                    class="thumbnail"
-                    data-target="#productCarousel"
-                    data-slide-to="3"
-                  >
-                    <img
-                      src="assets/img/products/product-8.png"
-                      class="d-block w-100"
-                    />
-                  </div>
+                  class="thumbnail"
+                  data-target="#productCarousel"
+                  data-slide-to="0" >
+                  <img
+                    src="{{ asset('storage/images/'. $variant->image) }}"
+                    class="d-block w-100"
+                  />
+                </div>
+                  @endforeach
                 </div>
               </div>
             </div>
@@ -121,127 +84,33 @@
                 <a><span>Liberty Door Lever</span></a>
   
                 <br /><br />
-                <h3>Liberty Door Lever</h3>
+                <h3>{{ $product->title }}</h3>
                 <div class="_p-price-box">
                   <div class="p-list mb-4 pb-2">
                     <strong>
                       <span> Price: </span>
-                      <span class="price"> $699 </span>
+                      <span class="price"> ${{ number_format($product->sale_price, 2) }} </span>
                     </strong>
                   </div>
   
                   <div class="_p-features">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.
+                    {{ $product->long_description }}
                   </div>
   
                   <div class="color bb pb-3 mt-5">
                     <p><strong>Finishes : </strong> Aged brass</p>
                     <div class="row">
+                      @foreach ($product->variant as $variant)
                       <div class="col-lg-2 mt-2">
                         <button>
                           <img
-                            src="assets/img/products/color-1.png"
+                            src="{{ asset('storage/images/'. $variant->image) }}"
                             alt="Color"
                             class="img-fluid"
                           />
                         </button>
                       </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-2.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-3.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-5.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-7.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-8.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-2.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-3.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-4.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
-  
-                      <div class="col-lg-2 mt-2">
-                        <button>
-                          <img
-                            src="assets/img/products/color-5.png"
-                            alt="Color"
-                            class="img-fluid"
-                          />
-                        </button>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                   <div class="_p-qty-and-cart mt-4 d-flex">
