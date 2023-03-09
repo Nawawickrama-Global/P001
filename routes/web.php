@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes();
-Route::get('/', function () {
-    return view('site.home.home');
-});
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+
 Route::get('/home', function () {
     return redirect()->route('home');
 });
@@ -71,7 +71,7 @@ Route::view('/cart', 'site.cart.cart');
 Route::view('/product-add-cart', 'site.cart.product-add-cart');
 
 Route::get('/products', [App\Http\Controllers\Site\Product\ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{id}', [App\Http\Controllers\Site\Product\ProductController::class, 'viewProduct'])->name('view-item');
+Route::get('/product/{id}', [App\Http\Controllers\Site\Product\ProductController::class, 'viewProduct'])->name('view-item');
 
 
 Route::view('/single-product', 'site.cart.single-product');

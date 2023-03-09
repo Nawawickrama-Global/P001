@@ -138,8 +138,9 @@
                         <!--Product sort-->
                         <div class="sort mb-1 mb-0">
                             <div class="row justify-content-between">
-                                <div class="col-md-3 col-sm-6"> 
-                                    <p>Showing {{ $products->firstItem() }} – {{ $products->lastItem() }} of {{ $products->total() }} results</p>
+                                <div class="col-md-3 col-sm-6">
+                                    <p>Showing {{ $products->firstItem() }} – {{ $products->lastItem() }} of
+                                        {{ $products->total() }} results</p>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <form>
@@ -158,29 +159,32 @@
                     </div>
                     @foreach ($products as $product)
                         <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-                            <div class="member" data-aos="fade-up" data-aos-delay="100">
-                                <div class="member-img">
-                                    <img src="{{ asset('storage/images/' . $product->feature_image) }}" class="img-fluid" alt="" />
-                                    <div class="wishlist">
-                                        <button class="wish-list-button">
-                                            <i class="bi bi-heart"></i>
-                                            <i class="bi bi-heart-fill"></i>
-                                        </button>
+                            <a href="{{ route('view-item', $product->product_id) }}">
+                                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="member-img">
+                                        <img src="{{ asset('storage/images/' . $product->feature_image) }}"
+                                            class="img-fluid" alt="" />
+                                        <div class="wishlist">
+                                            <button class="wish-list-button">
+                                                <i class="bi bi-heart"></i>
+                                                <i class="bi bi-heart-fill"></i>
+                                            </button>
+                                        </div>
+                                        <div class="social">
+                                            <a href="{{ route('view-item', $product->product_id) }}">QUICK VIEW</a>
+                                        </div>
                                     </div>
-                                    <div class="social">
-                                        <a href="{{ route('view-item', $product->product_id) }}">QUICK VIEW</a>
+                                    <div class="member-info">
+                                        <h4>{{ $product->title }}</h4>
+                                        <span>{{ $product->product_type == 'single' ? Config::get('app.currency_code').$product->sale_price : Config::get('app.currency_code').$product->variant->min('sales_price').' - '.Config::get('app.currency_code').$product->variant->max('sales_price') }}</span>
                                     </div>
                                 </div>
-                                <div class="member-info">
-                                    <h4>{{ $product->title }}</h4>
-                                    <span>{{ $product->product_type == 'single' ? $product->sale_price : $product->variant->first()->sale_price }}</span>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
 
                     <div class="col-lg-12 d-flex justify-content-center mt-4">
-                      {{ $products->onEachSide(1)->links() }}
+                        {{ $products->onEachSide(1)->links() }}
                     </div>
                 </div>
             </div>
