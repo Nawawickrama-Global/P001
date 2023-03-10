@@ -15,7 +15,7 @@ class CreateProductAttributesTable extends Migration
     {
         Schema::create('product_attributes', function (Blueprint $table) {
             $table->id('product_attribute_id');
-            $table->bigInteger('product_id');
+            $table->bigInteger('variant_id');
             $table->bigInteger('attribute_id');
             $table->string('value');
             $table->softDeletes();
