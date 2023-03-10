@@ -32,4 +32,9 @@ class Product extends Model
     public function category(): HasOne{
         return $this->hasOne(Category::class, 'category_id');
     }
+
+    public function wishList(): HasMany{
+        return $this->hasMany(WishList::class, 'product_id');
+    }
+
 }
