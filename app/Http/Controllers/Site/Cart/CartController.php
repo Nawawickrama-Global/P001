@@ -17,12 +17,14 @@ class CartController extends Controller
             'qty' => 'required|integer',
         ]);
 
-        $productId = $request->productId;
-        $variantId = $request->variantId;
-        $qty = $request->qty;
-
         try {
-            if($qty > 0){
+            if(!Auth::check()) {
+                return response()->json(['icon' => 'warning', 'title' => 'Please login']);
+            }elseif($request->qty > 0){
+                $productId = $request->productId;
+                $variantId = $request->variantId;
+                $qty = $request->qty;
+
                 Cart::create(['product_id' => $productId, 'variant_id' => $variantId, 'qty' => $qty, 'user_id' => Auth::user()->id]);
             }else{
                 return response()->json(['icon' => 'warning', 'title' => 'Please fill the correct quantity']);
