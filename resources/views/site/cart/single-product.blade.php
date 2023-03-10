@@ -78,10 +78,8 @@
             </div>
             <div class="col-md-6">
               <div class="_product-detail-content">
-                <a href="#">Aura / </a>
-                <a href="#">Door Hardware / </a>
-                <a href="#">Door levers / </a>
-                <a><span>Liberty Door Lever</span></a>
+                <span>{{ $product->category->parent->name }} /</span>
+                <a href="{{ route('products.index') }}?category={{ $product->category->name }}">{{ $product->category->name }}</a>
   
                 <br /><br />
                 <h3>{{ $product->title }}</h3>

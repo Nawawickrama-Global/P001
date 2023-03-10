@@ -133,13 +133,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Category</label>
-                                    <select name="category_id" id="multiple"
+                                    <select name="sub_category_id" id="multiple"
                                         class="@error('category_id') is-invalid @enderror">
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->category_id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->sub_category_id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('category_id')
+                                    @error('sub_category_id')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>

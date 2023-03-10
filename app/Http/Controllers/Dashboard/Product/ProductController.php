@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use App\Models\ProductVariation;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,7 @@ class ProductController extends Controller
     public function addProduct()
     {
         $attributes = Attribute::where('deleted_at', null)->get();
-        $categories = Category::where('deleted_at', null)->get();
+        $categories = SubCategory::where('deleted_at', null)->get();
         return view('dashboard.product.add', ['attributes' => $attributes, 'categories' => $categories]);
     }
 
@@ -32,7 +33,7 @@ class ProductController extends Controller
             'title' => 'required|max:255',
             'sku' => 'required|max:255',
             'product_type' => 'required',
-            'category_id' => 'required',
+            'sub_category_id' => 'required',
             'feature_img' => 'required|image|mimes:jpeg,png,jpg',
             'product_img' => 'required|image|mimes:jpeg,png,jpg',
             'short_description' => 'required',
