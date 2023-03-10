@@ -199,13 +199,15 @@
                                 <div class="card">
                                     <div class="card-img">
                                         <div class="wishlist">
-                                            <button>
-                                                <i class="bi bi-heart"></i>
-                                                <i class="bi bi-heart-fill d-none"></i>
+                                            <button class="wish-list-button" data-id="{{ $product->product_id }}">
+                                                {!! $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? '<i class="bi bi-heart-fill"></i>' : '<i class="bi bi-heart"></i>' !!}
                                             </button>
                                         </div>
-                                        <img src="{{ asset('storage/images/' . $product->feature_image) }}" alt=""
+                                        <a href="{{ route('view-item', $product->product_id) }}">
+                                            <img src="{{ asset('storage/images/' . $product->feature_image) }}" alt=""
                                             class="img-fluid" />
+                                        </a>
+                                        
                                     </div>
                                     <div class="content">
                                         <a href="{{ route('view-item', $product->product_id) }}">
@@ -215,7 +217,7 @@
                                             </p>
                                         </a>
                                     </div>
-                                    <a href="{{ route('view-item', $product->product_id) }}" class="stretched-link"></a>
+                                    
                                 </div>
                             </div>
                         @endforeach
@@ -492,3 +494,27 @@
     </main>
     <!-- End #main -->
 @endsection
+@push('scripts')
+    <script>
+        $('.wish-list-button').click(function(){
+            let product_id = $(this).data('id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                url: "{{ route('add-to-wish') }}",
+                method: "POST",
+                data: {
+                    id: product_id
+                },
+                success: function(data) {
+                    if(data.wishlist){
+                        $(this).html('<i class="bi bi-heart-fill"></i>');
+                    }else{
+                        $(this).html('<i class="bi bi-heart"></i>');
+                    }
+                }
+            })
+        });
+    </script>
+@endpush

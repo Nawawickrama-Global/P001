@@ -159,27 +159,27 @@
                     </div>
                     @foreach ($products as $product)
                         <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-                            <a href="{{ route('view-item', $product->product_id) }}">
-                                <div class="member" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="member-img">
-                                        <img src="{{ asset('storage/images/' . $product->feature_image) }}"
-                                            class="img-fluid" alt="" />
-                                        <div class="wishlist">
-                                            <button class="wish-list-button">
-                                                <i class="bi bi-heart"></i>
-                                                <i class="bi bi-heart-fill"></i>
-                                            </button>
-                                        </div>
-                                        <div class="social">
-                                            <a href="{{ route('view-item', $product->product_id) }}">QUICK VIEW</a>
-                                        </div>
+                            <div class="member" data-aos="fade-up" data-aos-delay="100">
+                                <div class="member-img">
+                                    <a href="{{ route('view-item', $product->product_id) }}">
+                                    <img src="{{ asset('storage/images/' . $product->feature_image) }}"
+                                        class="img-fluid" alt="" />
+                                    </a>
+                                    <div class="wishlist">
+                                        <button class="wish-list-button {{ $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? 'active' : '' }}" data-id="{{ $product->product_id }}">
+                                            <i class="bi bi-heart"></i>
+                                            <i class="bi bi-heart-fill"></i>
+                                        </button>
                                     </div>
-                                    <div class="member-info">
-                                        <h4>{{ $product->title }}</h4>
-                                        <span>{{ $product->product_type == 'single' ? Config::get('app.currency_code').$product->sale_price : Config::get('app.currency_code').$product->variant->min('sales_price').' - '.Config::get('app.currency_code').$product->variant->max('sales_price') }}</span>
+                                    <div class="social">
+                                        <a href="{{ route('view-item', $product->product_id) }}">QUICK VIEW</a>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="member-info">
+                                    <h4>{{ $product->title }}</h4>
+                                    <span>{{ $product->product_type == 'single' ? Config::get('app.currency_code').$product->sale_price : Config::get('app.currency_code').$product->variant->min('sales_price').' - '.Config::get('app.currency_code').$product->variant->max('sales_price') }}</span>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
 
@@ -192,3 +192,28 @@
         <!-- End product Section -->
     </main>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.wish-list-button').click(function(){
+            let product_id = $(this).data('id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                url: "{{ route('add-to-wish') }}",
+                method: "POST",
+                data: {
+                    id: product_id
+                },
+                success: function(data) {
+                    if(data.wishlist){
+                        $(this).addClass('active');
+                    }else{
+                        $(this).removeClass('active');
+                    }
+                }
+            })
+        });
+    </script>
+@endpush

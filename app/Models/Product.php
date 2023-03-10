@@ -33,4 +33,9 @@ class Product extends Model
     public function category(): HasOne{
         return $this->hasOne(SubCategory::class, 'sub_category_id', 'sub_category_id');
     }
+
+    public function wishList(): HasMany{
+        return $this->hasMany(WishList::class, 'product_id');
+    }
+
 }

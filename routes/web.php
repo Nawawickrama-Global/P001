@@ -73,7 +73,8 @@ Route::view('/product-add-cart', 'site.cart.product-add-cart');
 Route::get('/products', [App\Http\Controllers\Site\Product\ProductController::class, 'index'])->name('products.index');
 Route::get('/product/{id}', [App\Http\Controllers\Site\Product\ProductController::class, 'viewProduct'])->name('view-item');
 
+// Wish List
+Route::post('/add-to-wish', [App\Http\Controllers\Site\Wish\WishListController::class, 'addWishList'])->name('add-to-wish');
 
-Route::view('/single-product', 'site.cart.single-product');
 Route::view('/contact', 'site.contact.main');
 Route::view('/wishlist', 'site.cart.wishlist');
