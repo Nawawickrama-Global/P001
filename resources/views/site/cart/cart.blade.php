@@ -5,17 +5,25 @@
     <div class="container" data-aos="fade-up">
       <div class="row">
         <div class="col-lg-6 col-sm-12">
+          @foreach ($items as $item)
+          @php
+            if ($item->product->product_type == 'single'){
+              $image = $item->product->product_image;
+              $price = $item->product->sale_price;
+            }else{
+              $image = $item->variant->image;
+              $price = $item->variant->sales_price;
+            }
+          @endphp
+     
           <div class="card mt-3">
             <div class="row justify-content-center align-items-center">
               <div class="col-5 img-content">
                 <img
-                  src="assets/img/products/product-10.png"
+                  src="{{ asset('storage/images/' . $image) }}"
                   alt="Product img"
                   class="img-fluid"
                 />
-                <button>
-                  <i class="bi bi-heart"></i>
-                </button>
               </div>
               <div class="col-7 text-contet">
                 <div class="cross">
@@ -23,163 +31,21 @@
                     <i class="bi bi-x"></i>
                   </button>
                 </div>
-                <h4>NEEDLE TABLE LAMP</h4>
+                <h4>{{ $item->product->title }}</h4>
                 <p>
-                  METALS: BLACK NICKEL PLATED
+                  {{ $item->product->short_description }}
                   <br />
-                  WOOD: EBONY GEOMETRIC MOSAIC
-                  <br />
-                  FABRIC VELVET: Ambar
                 </p>
-                <p><strong>$4567</strong></p>
+                <p><strong>{{ Config::get('app.currency_code').$price }}</strong></p>
                 <p class="buttonChange">
                   <button><i class="bi bi-dash-square"></i></button>
-                  <span>1</span>
+                  <span>{{ $item->qty }}</span>
                   <button><i class="bi bi-plus-square"></i></button>
                 </p>
               </div>
             </div>
           </div>
-          <div class="card mt-3">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-5 img-content">
-                <img
-                  src="assets/img/products/product-10.png"
-                  alt="Product img"
-                  class="img-fluid"
-                />
-                <button>
-                  <i class="bi bi-heart"></i>
-                </button>
-              </div>
-              <div class="col-7 text-contet">
-                <div class="cross">
-                  <button>
-                    <i class="bi bi-x"></i>
-                  </button>
-                </div>
-                <h4>NEEDLE TABLE LAMP</h4>
-                <p>
-                  METALS: BLACK NICKEL PLATED
-                  <br />
-                  WOOD: EBONY GEOMETRIC MOSAIC
-                  <br />
-                  FABRIC VELVET: Ambar
-                </p>
-                <p><strong>$4567</strong></p>
-                <p class="buttonChange">
-                  <button><i class="bi bi-dash-square"></i></button>
-                  <span>1</span>
-                  <button><i class="bi bi-plus-square"></i></button>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="card mt-3">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-5 img-content">
-                <img
-                  src="assets/img/products/product-10.png"
-                  alt="Product img"
-                  class="img-fluid"
-                />
-                <button>
-                  <i class="bi bi-heart"></i>
-                </button>
-              </div>
-              <div class="col-7 text-contet">
-                <div class="cross">
-                  <button>
-                    <i class="bi bi-x"></i>
-                  </button>
-                </div>
-                <h4>NEEDLE TABLE LAMP</h4>
-                <p>
-                  METALS: BLACK NICKEL PLATED
-                  <br />
-                  WOOD: EBONY GEOMETRIC MOSAIC
-                  <br />
-                  FABRIC VELVET: Ambar
-                </p>
-                <p><strong>$4567</strong></p>
-                <p class="buttonChange">
-                  <button><i class="bi bi-dash-square"></i></button>
-                  <span>1</span>
-                  <button><i class="bi bi-plus-square"></i></button>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="card mt-3">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-5 img-content">
-                <img
-                  src="assets/img/products/product-10.png"
-                  alt="Product img"
-                  class="img-fluid"
-                />
-                <button>
-                  <i class="bi bi-heart"></i>
-                </button>
-              </div>
-              <div class="col-7 text-contet">
-                <div class="cross">
-                  <button>
-                    <i class="bi bi-x"></i>
-                  </button>
-                </div>
-                <h4>NEEDLE TABLE LAMP</h4>
-                <p>
-                  METALS: BLACK NICKEL PLATED
-                  <br />
-                  WOOD: EBONY GEOMETRIC MOSAIC
-                  <br />
-                  FABRIC VELVET: Ambar
-                </p>
-                <p><strong>$4567</strong></p>
-                <p class="buttonChange">
-                  <button><i class="bi bi-dash-square"></i></button>
-                  <span>1</span>
-                  <button><i class="bi bi-plus-square"></i></button>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="card mt-3">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-5 img-content">
-                <img
-                  src="assets/img/products/product-10.png"
-                  alt="Product img"
-                  class="img-fluid"
-                />
-                <button>
-                  <i class="bi bi-heart"></i>
-                </button>
-              </div>
-              <div class="col-7 text-contet">
-                <div class="cross">
-                  <button>
-                    <i class="bi bi-x"></i>
-                  </button>
-                </div>
-                <h4>NEEDLE TABLE LAMP</h4>
-                <p>
-                  METALS: BLACK NICKEL PLATED
-                  <br />
-                  WOOD: EBONY GEOMETRIC MOSAIC
-                  <br />
-                  FABRIC VELVET: Ambar
-                </p>
-                <p><strong>$4567</strong></p>
-                <p class="buttonChange">
-                  <button><i class="bi bi-dash-square"></i></button>
-                  <span>1</span>
-                  <button><i class="bi bi-plus-square"></i></button>
-                </p>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
         <div class="col-lg-6">
           <div class="form-section mt-3">

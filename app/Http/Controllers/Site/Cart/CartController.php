@@ -9,11 +9,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function index()
+    {
+        $items = Cart::where('deleted_at', '=', null)->where('user_id', Auth::user()->id)->get();
+        return view('site.cart.cart', ['items' => $items]);
+    }
+
     public function addToCart(Request $request)
     {
         $this->validate($request, [
             'productId' => 'required|integer',
-            'variantId' => 'required|integer',
+            'variantId' => 'nullable|integer',
             'qty' => 'required|integer',
         ]);
 

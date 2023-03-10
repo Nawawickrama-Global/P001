@@ -59,27 +59,27 @@ Route::prefix('/dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/edit-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'edit'])->name('edit-customer');
 });
 
+Route::middleware(['auth'])->group(function () {
+    // Wish List
+    Route::post('/add-to-wish', [App\Http\Controllers\Site\Wish\WishListController::class, 'addWishList'])->name('add-to-wish');
+
+    // Cart
+    Route::post('/add-to-cart', [App\Http\Controllers\Site\Cart\CartController::class, 'addToCart'])->name('add-to-cart');
+    Route::get('/cart', [App\Http\Controllers\Site\Cart\CartController::class, 'index'])->name('cart');
+});
+
 //site login
 Route::get('/customer-registration', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'index'])->name('customer-registration');
 Route::post('/register-customer', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'register'])->name('register-customer');
-
-
 Route::view('/customer-login', 'site.auth.login')->name('customer-login');
 
 //home
-Route::view('/cart', 'site.cart.cart');
 Route::view('/product-add-cart', 'site.cart.product-add-cart');
 
 Route::get('/products', [App\Http\Controllers\Site\Product\ProductController::class, 'index'])->name('products.index');
 Route::get('/product/{id}', [App\Http\Controllers\Site\Product\ProductController::class, 'viewProduct'])->name('view-item');
 
-// Wish List
-Route::post('/add-to-wish', [App\Http\Controllers\Site\Wish\WishListController::class, 'addWishList'])->name('add-to-wish');
-
-// Cart
-Route::post('/add-to-cart', [App\Http\Controllers\Site\Cart\CartController::class, 'addToCart'])->name('add-to-cart');
 
 Route::view('/contact', 'site.contact.main');
 Route::view('/wishlist', 'site.cart.wishlist');
-Route::view('/cart', 'site.cart.cart');
 Route::view('/add-cart', 'site.cart.product-add-cart');
