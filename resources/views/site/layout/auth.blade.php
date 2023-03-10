@@ -8,7 +8,7 @@
     <title>Luxury Furniture</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
-
+    
     <!-- Favicons -->
     <link href="{{url('assets/img/favicon.png')}}" rel="icon" />
     <link href="{{url('assets/img/apple-touch-icon.png" rel="apple-touch-icon')}}" />
@@ -31,6 +31,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -231,7 +232,7 @@
     <script src="{{url('https://code.jquery.com/jquery-3.5.1.min.js')}}"></script>
     <script src="{{url('https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js')}}"></script>
     <script src="{{url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js')}}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <!-- Template Main JS File -->
     <script src="{{url('assets/js/main.js')}}"></script>
     <script>
