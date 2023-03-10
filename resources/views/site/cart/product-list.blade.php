@@ -166,7 +166,7 @@
                                         class="img-fluid" alt="" />
                                     </a>
                                     <div class="wishlist">
-                                        <button class="wish-list-button {{ $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? 'active' : '' }}" data-id="{{ $product->product_id }}">
+                                        <button class="wish-list-button {{ Auth::check() && $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? 'active' : '' }}" data-id="{{ $product->product_id }}">
                                             <i class="bi bi-heart"></i>
                                             <i class="bi bi-heart-fill"></i>
                                         </button>

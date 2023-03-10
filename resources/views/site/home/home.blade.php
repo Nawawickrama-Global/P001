@@ -200,7 +200,7 @@
                                     <div class="card-img">
                                         <div class="wishlist">
                                             <button class="wish-list-button" data-id="{{ $product->product_id }}">
-                                                {!! $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? '<i class="bi bi-heart-fill"></i>' : '<i class="bi bi-heart"></i>' !!}
+                                                {!! Auth::check() && $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? '<i class="bi bi-heart-fill"></i>' : '<i class="bi bi-heart"></i>' !!}
                                             </button>
                                         </div>
                                         <a href="{{ route('view-item', $product->product_id) }}">
