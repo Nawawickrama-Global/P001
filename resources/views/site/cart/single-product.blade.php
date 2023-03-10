@@ -87,7 +87,7 @@
                   <div class="p-list mb-4 pb-2">
                     <strong>
                       <span> Price: </span>
-                      <span class="price"> {{ $product->product_type == 'single' ? Config::get('app.currency_code').$product->sale_price : Config::get('app.currency_code').$product->variant->min('sales_price').' - '.Config::get('app.currency_code').$product->variant->max('sales_price') }} </span>
+                      <span class="price" id="price"> {{ $product->product_type == 'single' ? Config::get('app.currency_code').$product->sale_price : Config::get('app.currency_code').$product->variant->min('sales_price').' - '.Config::get('app.currency_code').$product->variant->max('sales_price') }} </span>
                     </strong>
                   </div>
   
@@ -96,11 +96,19 @@
                   </div>
   
                   <div class="color bb pb-3 mt-5">
-                    <p><strong>Finishes : </strong> Aged brass</p>
+                    <p><strong>Finishes : </strong> <span id="variations"></span></p>
                     <div class="row">
                       @foreach ($product->variant as $variant)
                       <div class="col-lg-2 mt-2">
-                        <button >
+                        <button class="variation" data-price="{{ Config::get('app.currency_code').$variant->sales_price }}"
+                          data-variant="
+                         @foreach ($variant->productAttr as $key => $attribute)
+                           {{ $attribute->attribute->name.' '.$attribute->value }}
+                           @if(count($variant->productAttr) != $key + 1)
+                              {{ ', '}}
+                           @endif
+                         @endforeach 
+                          ">
                           <img
                             src="{{ asset('storage/images/'. $variant->image) }}"
                             alt="Color"
@@ -311,6 +319,12 @@
 
 @push('scripts')
   <script>
-
+    $('.variation').click(function (e) {
+      let price = $(this).data('price');
+      let variant = $(this).data('variant');
+      $(this).addClass('active');
+      $('#price').html(price);
+      $('#variations').html(variant);
+    });
   </script>
 @endpush
