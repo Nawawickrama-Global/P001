@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Mockery\Matcher\Subset;
 
 class Product extends Model
 {
@@ -17,7 +18,7 @@ class Product extends Model
         'product_type',
         'feature_image',
         'product_image',
-        'category_id',
+        'sub_category_id',
         'short_description',
         'long_description',
         'status',
@@ -30,6 +31,6 @@ class Product extends Model
     }
 
     public function category(): HasOne{
-        return $this->hasOne(Category::class, 'category_id');
+        return $this->hasOne(SubCategory::class, 'sub_category_id', 'sub_category_id');
     }
 }
