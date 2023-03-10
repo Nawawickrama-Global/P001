@@ -25,6 +25,7 @@ class ProductController extends Controller
     public function viewProduct($id)
     {
         $Product = Product::where('deleted_at', '=', null)->where('product_id', $id)->first();
-        return view('site.cart.single-product', ['product' => $Product]);
+        $suggestions = Product::where('deleted_at', '=', null)->where('category_id', $Product->category_id)->get();
+        return view('site.cart.single-product', ['product' => $Product, 'suggestions' => $suggestions]);
     }
 }

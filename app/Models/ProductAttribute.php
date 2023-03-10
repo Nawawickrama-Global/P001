@@ -10,7 +10,7 @@ class ProductAttribute extends Model
     use HasFactory;
     protected $primaryKey = 'product_attribute_id';
     protected $fillable = [
-        'product_id',
+        'variant_id',
         'attribute_id',
         'value'
     ];

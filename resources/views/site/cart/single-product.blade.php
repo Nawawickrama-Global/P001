@@ -272,6 +272,7 @@
               data-aos-delay="200"
             >
               <div class="swiper-wrapper">
+                @foreach ($suggestions as $suggestion)
                 <div class="swiper-slide col-lg-3">
                   <div class="card">
                     <div class="card-img">
@@ -282,119 +283,21 @@
                         </button>
                       </div>
                       <img
-                        src="/assets/img/products/product-1.png"
+                        src="{{ asset('storage/images/'. $suggestion->feature_image) }}"
                         alt=""
-                        class="img-fluid"
-                      />
+                        class="img-fluid">
                     </div>
                     <div class="content">
                       <a href="#">
-                        <p>Empire Mirror</p>
-                        <p><span>$ 15,630</span></p>
+                        <p>{{ $suggestion->title }}</p>
+                        <p><span>{{ $suggestion->product_type == 'single' ? Config::get('app.currency_code').$suggestion->sale_price : Config::get('app.currency_code').$suggestion->variant->min('sales_price').' - '.Config::get('app.currency_code').$suggestion->variant->max('sales_price') }}</span></p>
                       </a>
                     </div>
+                    <a href="{{ route('view-item', $suggestion->product_id) }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <!-- End product item -->
+                @endforeach
   
-                <div class="swiper-slide col-lg-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <div class="wishlist">
-                        <button>
-                          <i class="bi bi-heart"></i>
-                          <i class="bi bi-heart-fill d-none"></i>
-                        </button>
-                      </div>
-                      <img
-                        src="/assets/img/products/product-2.png"
-                        alt=""
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="content">
-                      <a href="#">
-                        <p>Empire Mirror</p>
-                        <p><span>$ 15,630</span></p>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- End product item -->
-  
-                <div class="swiper-slide col-lg-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <div class="wishlist">
-                        <button>
-                          <i class="bi bi-heart"></i>
-                          <i class="bi bi-heart-fill d-none"></i>
-                        </button>
-                      </div>
-                      <img
-                        src="/assets/img/products/product-3.png"
-                        alt=""
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="content">
-                      <a href="#">
-                        <p>Empire Mirror</p>
-                        <p><span>$ 15,630</span></p>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- End product item -->
-  
-                <div class="swiper-slide col-lg-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <div class="wishlist">
-                        <button>
-                          <i class="bi bi-heart"></i>
-                          <i class="bi bi-heart-fill d-none"></i>
-                        </button>
-                      </div>
-                      <img
-                        src="/assets/img/products/product-4.png"
-                        alt=""
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="content">
-                      <a href="#">
-                        <p>Empire Mirror</p>
-                        <p><span>$ 15,630</span></p>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- End product item -->
-  
-                <div class="swiper-slide col-lg-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <div class="wishlist">
-                        <button>
-                          <i class="bi bi-heart"></i>
-                          <i class="bi bi-heart-fill d-none"></i>
-                        </button>
-                      </div>
-                      <img
-                        src="/assets/img/products/product-4.png"
-                        alt=""
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="content">
-                      <a href="#">
-                        <p>Empire Mirror</p>
-                        <p><span>$ 15,630</span></p>
-                      </a>
-                    </div>
-                  </div>
-                </div>
                 <!-- End product item -->
               </div>
               <div class="swiper-pagination"></div>

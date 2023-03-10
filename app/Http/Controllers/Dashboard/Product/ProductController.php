@@ -60,10 +60,10 @@ class ProductController extends Controller
             if($request->type == 'single'){
                 Product::create(['feature_image' => $feature_img, 'product_image' => $product_img] + $request->all());
             }else{
-                $count = $request->item_count;
-                $product = Product::create(['feature_image' => $feature_img, 'product_image' => $product_img] + $request->all());
+                DB::transaction(function() use ($feature_img, $product_img, $request) {
+                    $count = $request->item_count;
+                    $product = Product::create(['feature_image' => $feature_img, 'product_image' => $product_img] + $request->all());
 
-                DB::transaction(function() use ($product, $count, $request) {
                     for ($i=1; $i <= $count; $i++) { 
                         $regular_price = 'regular_price'.$i;
                         $regular_price = $request->$regular_price;
@@ -82,21 +82,8 @@ class ProductController extends Controller
                             $image = date('Y-m-d-H-i-s') . $request->file($img)->getClientOriginalName();
                             $request->file($img)->storeAs('images', $image, 'public');
                         }
-    
-                        for ($j=1;  $j <= $attrCount; $j++) {
-                            $attribute = 'attribute'.$i.'_'.$j;
-                            $attribute = $request->$attribute;
-                            $attribute_id = 'attribute_id'.$i.'_'.$j;
-                            $attribute_id = $request->$attribute_id;
-    
-                            ProductAttribute::create([
-                                'product_id' => $product->product_id,
-                                'attribute_id' => $attribute_id,
-                                'value' => $attribute,
-                            ]);
-                        }
                         
-                        ProductVariation::create([ 
+                        $variation = ProductVariation::create([ 
                             'regular_price' => $regular_price,
                             'product_id' => $product->product_id,
                             'sales_price' => $sales_price,
@@ -104,6 +91,20 @@ class ProductController extends Controller
                             'color' => $color,
                             'image' => $image
                         ]);
+
+                            
+                        for ($j=1;  $j <= $attrCount; $j++) {
+                            $attribute = 'attribute'.$i.'_'.$j;
+                            $attribute = $request->$attribute;
+                            $attribute_id = 'attribute_id'.$i.'_'.$j;
+                            $attribute_id = $request->$attribute_id;
+    
+                            ProductAttribute::create([
+                                'variant_id' => $variation->variant_id,
+                                'attribute_id' => $attribute_id,
+                                'value' => $attribute,
+                            ]);
+                        }
                     }
                 });
             }
