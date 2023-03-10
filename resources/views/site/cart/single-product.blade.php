@@ -87,7 +87,7 @@
                   <div class="p-list mb-4 pb-2">
                     <strong>
                       <span> Price: </span>
-                      <span class="price"> ${{ number_format($product->sale_price, 2) }} </span>
+                      <span class="price"> {{ $product->product_type == 'single' ? Config::get('app.currency_code').$product->sale_price : Config::get('app.currency_code').$product->variant->min('sales_price').' - '.Config::get('app.currency_code').$product->variant->max('sales_price') }} </span>
                     </strong>
                   </div>
   
@@ -100,7 +100,7 @@
                     <div class="row">
                       @foreach ($product->variant as $variant)
                       <div class="col-lg-2 mt-2">
-                        <button>
+                        <button >
                           <img
                             src="{{ asset('storage/images/'. $variant->image) }}"
                             alt="Color"
@@ -308,3 +308,9 @@
       <!-- End #main -->
 
 @endsection
+
+@push('scripts')
+  <script>
+
+  </script>
+@endpush
