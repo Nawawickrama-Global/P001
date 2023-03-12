@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="_product-detail-content">
-                        <span>{{ $product->category->parent->name }} /</span>
+                        {{-- <span>{{ $product->category->parent->name }} /</span> --}}
                         <a
                             href="{{ route('products.index') }}?category={{ $product->category->name }}">{{ $product->category->name }}</a>
 
