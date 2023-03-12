@@ -84,3 +84,5 @@ Route::get('/product/{id}', [App\Http\Controllers\Site\Product\ProductController
 Route::view('/contact', 'site.contact.main');
 Route::view('/wishlist', 'site.cart.wishlist');
 Route::view('/add-cart', 'site.cart.product-add-cart');
+Route::view('/why-us', 'site.why-us.main');
+Route::view('/about-us', 'site.contact.about');
