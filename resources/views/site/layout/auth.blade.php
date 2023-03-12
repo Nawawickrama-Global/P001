@@ -51,60 +51,25 @@ z-index: 99;
     <!-- ======= Header ======= -->
     <header id="header" class="d-flex align-items-center" style="background-color: #000">
         <div class="container d-flex align-items-center justify-content-between">
+        <div class="">
+                <a href="{{ url('/') }}" class="getstarted">AURA OF INT</a>
+            </div>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li class="dropdown">
-                        <a href="#"><span>Shop Now</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="product.html">product</a></li>
-                            <li><a href="testimonials.html">Testimonials</a></li>
-
-                            <li class="dropdown">
-                                <a href="#"><span>Deep Drop Down</span>
-                                    <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#"><span>Explore</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="product.html">product</a></li>
-                            <li><a href="testimonials.html">Testimonials</a></li>
-
-                            <li class="dropdown">
-                                <a href="#"><span>Deep Drop Down</span>
-                                    <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    <li class="nav-link"><a href="{{ url('/contact') }}">Shop All</a></li>
+                    <li class="nav-link"><a href="{{ url('/contact') }}">About Us</a></li>
+                    <li class="nav-link"><a href="{{ url('/contact') }}">Why Us?</a></li>
+                    <li class="nav-link"><a href="{{ url('/contact') }}">Partners</a></li>
+                    <li class="nav-link"><a href="{{ url('/contact') }}">Contact Us</a></li>
                 </ul>
 
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
-            <div class="get">
-                <a href="index.html" class="getstarted">AURA OF INT</a>
-            </div>
             <div class="icons">
-                <button><i class="bi bi-search"></i></button>
-                <button><i class="bi bi-heart"></i></button>
-                <button><i class="bi bi-person-circle"></i></button>
-                <button><i class="bi bi-bag"></i><span class="count-indicator">22</span></button>
+                <button data-toggle="tooltip" title="Search"><i class="bi bi-search"></i></button>
+                <button data-toggle="tooltip" title="Wishlist"><i class="bi bi-heart"></i></button>
+                <button data-toggle="tooltip" title="Login / Register" onclick="window.location='{{ url('/login') }}';"><i class="bi bi-person-circle"></i></button>
+                <button data-toggle="tooltip" title="Cart"><i class="bi bi-bag"></i><span class="count-indicator">22</span></button>
             </div>
             <!-- .navbar -->
         </div>

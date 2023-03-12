@@ -16,9 +16,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="{{url('https://fonts.googleapis.com')}}" />
     <link rel="preconnect" href="{{url('https://fonts.gstatic.com')}}" crossorigin />
-    <link
-        href="{{url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap')}}"
-        rel="stylesheet" />
+    <link href="{{url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap')}}" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
     <link href="{{url('assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet" />
@@ -46,7 +44,7 @@
                             <li><a href="about.html">About</a></li>
                             <li><a href="product.html">product</a></li>
                             <li><a href="testimonials.html">Testimonials</a></li>
-    
+
                             <li class="dropdown">
                                 <a href="#"><span>Deep Drop Down</span>
                                     <i class="bi bi-chevron-right"></i></a>
@@ -66,7 +64,7 @@
                             <li><a href="about.html">About</a></li>
                             <li><a href="product.html">product</a></li>
                             <li><a href="testimonials.html">Testimonials</a></li>
-    
+
                             <li class="dropdown">
                                 <a href="#"><span>Deep Drop Down</span>
                                     <i class="bi bi-chevron-right"></i></a>
@@ -81,7 +79,6 @@
                         </ul>
                     </li>
                 </ul>
-    
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <div class="get">
@@ -97,7 +94,7 @@
         </div>
     </header>
     <!-- End Header -->
-    
+
     @yield('content')
     <!-- End #main -->
 
@@ -127,7 +124,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="col footer-links">
                         <h4>Products</h4>
                         <ul>
@@ -140,7 +137,7 @@
                             <li>
                                 <a href="#">Furniture</a>
                             </li>
-    
+
                             <li>
                                 <a href="#">Lighting</a>
                             </li>
@@ -149,7 +146,7 @@
                             </li>
                         </ul>
                     </div>
-    
+
                     <div class="col footer-links">
                         <h4>Desire</h4>
                         <ul>
@@ -162,13 +159,13 @@
                             <li>
                                 <a href="#">Your Account</a>
                             </li>
-    
+
                             <li>
                                 <a href="#">Quote Request</a>
                             </li>
                         </ul>
                     </div>
-    
+
                     <div class="col-2 footer-links">
                         <h4>Quick Links</h4>
                         <ul>
@@ -181,7 +178,7 @@
                             <li>
                                 <a href="#">Contact Us</a>
                             </li>
-    
+
                             <li>
                                 <a href="#">Terms and Conditions</a>
                             </li>
@@ -190,7 +187,7 @@
                             </li>
                         </ul>
                     </div>
-    
+
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Newsletter</h4>
                         <p>
@@ -198,22 +195,20 @@
                             offers and promotions.
                         </p>
                         <form action="" method="post">
-                            <input id="mail" type="email" name="email" placeholder="Enter your email" /><input type="submit"
-                                value="Subscribe" />
+                            <input id="mail" type="email" name="email" placeholder="Enter your email" /><input type="submit" value="Subscribe" />
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    
+
         <div class="container">
             <div class="copyright">&copy; 2022, All Rights Reserved</div>
         </div>
     </footer>
     <!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -229,11 +224,11 @@
     <script src="{{url('assets/js/main.js')}}"></script>
     <script>
         const wishListButtons = document.querySelectorAll(".wish-list-button");
-      wishListButtons.forEach(function (wishListButton) {
-        wishListButton.addEventListener("click", function () {
-          this.classList.toggle("active");
+        wishListButtons.forEach(function(wishListButton) {
+            wishListButton.addEventListener("click", function() {
+                this.classList.toggle("active");
+            });
         });
-      });
     </script>
 
     @stack('scripts')
