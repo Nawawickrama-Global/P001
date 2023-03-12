@@ -56,10 +56,10 @@ z-index: 99;
             </div>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li class="nav-link"><a href="{{ url('/contact') }}">Shop All</a></li>
-                    <li class="nav-link"><a href="{{ url('/contact') }}">About Us</a></li>
-                    <li class="nav-link"><a href="{{ url('/contact') }}">Why Us?</a></li>
-                    <li class="nav-link"><a href="{{ url('/contact') }}">Partners</a></li>
+                    <li class="nav-link"><a href="{{ url('/shop') }}">Shop All</a></li>
+                    <li class="nav-link"><a href="{{ url('/about-us') }}">About Us</a></li>
+                    <li class="nav-link"><a href="{{ url('/why-us') }}">Why Us?</a></li>
+                    <li class="nav-link"><a href="{{ url('/partners') }}">Partners</a></li>
                     <li class="nav-link"><a href="{{ url('/contact') }}">Contact Us</a></li>
                 </ul>
 
