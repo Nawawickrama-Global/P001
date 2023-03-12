@@ -66,11 +66,11 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                 <label for="exampleInputEmail1">Select Parent Category</label>
                                 <select id="parent" name="category_id"
                                     class="form-control @error('category_id') is-invalid @enderror">
-                                    <option value="none" default>None</option>
+                                    <option value="0" default>None</option>
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->category_id }}">{{ $category->name }}</option>
                                     @endforeach
