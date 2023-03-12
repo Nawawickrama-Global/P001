@@ -15,17 +15,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Auth::routes();
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-
-Route::get('/home', function () {
-    return redirect()->route('home');
+// Admin Login Routes
+Route::group(['prefix' => 'admin'], function () {
+    Auth::routes();
 });
 
 // Dashboard Routes
-Route::prefix('/dashboard')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('home');
+Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('home');
 
     // Brand
     Route::get('/brand', [App\Http\Controllers\Dashboard\Brand\BrandController::class, 'index'])->name('brand');
@@ -68,10 +65,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [App\Http\Controllers\Site\Cart\CartController::class, 'index'])->name('cart');
 });
 
+
+// Home routes
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+
 //site login
-Route::get('/customer-registration', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'index'])->name('customer-registration');
+Route::get('/register', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'index'])->name('customer-registration');
 Route::post('/register-customer', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'register'])->name('register-customer');
-Route::view('/customer-login', 'site.auth.login')->name('customer-login');
+Route::view('/login', 'site.auth.login')->name('customer-login');
 
 //home
 Route::view('/product-add-cart', 'site.cart.product-add-cart');
