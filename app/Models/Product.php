@@ -23,7 +23,8 @@ class Product extends Model
         'long_description',
         'status',
         'sale_price',
-        'stock'
+        'stock',
+        'brand_id',
     ];
 
     public function variant(): HasMany{

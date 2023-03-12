@@ -77,7 +77,7 @@ Route::view('/login', 'site.auth.login')->name('customer-login');
 //home
 Route::view('/product-add-cart', 'site.cart.product-add-cart');
 
-Route::get('/products', [App\Http\Controllers\Site\Product\ProductController::class, 'index'])->name('products.index');
+Route::get('/shop', [App\Http\Controllers\Site\Product\ProductController::class, 'index'])->name('products.index');
 Route::get('/product/{id}', [App\Http\Controllers\Site\Product\ProductController::class, 'viewProduct'])->name('view-item');
 
 

@@ -36,7 +36,7 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
-                                    <input id="phone" type="text"
+                                    <input value="{{ old('title')}} " value="{{ old('title')}} " id="phone" type="text"
                                         class="form-control @error('title') is-invalid @enderror" name="title"
                                         autocomplete="email" autofocus>
                                     @error('title')
@@ -49,7 +49,7 @@
                             <div class="col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">SKU</label>
-                                    <input id="phone" type="text"
+                                    <input value="{{ old('sku')}} " id="phone" type="text"
                                         class="form-control @error('sku') is-invalid @enderror" name="sku"
                                         autocomplete="email" autofocus>
                                     @error('')
@@ -79,7 +79,7 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Feature Image</label>
-                                    <input type="file" name="feature_img" id="myDropify"
+                                    <input value="{{ old('feature_img')}} " type="file" name="feature_img" id="myDropify"
                                         class="border @error('feature_img') is-invalid @enderror" style="height: 300px" />
                                     @error('feature_img')
                                         <div class="invalid-feedback">
@@ -90,7 +90,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Short Description</label>
                                     <textarea name="short_description" class="form-control @error('short_description') is-invalid @enderror"
-                                        id="exampleFormControlTextarea1" rows="5"></textarea>
+                                        id="exampleFormControlTextarea1" rows="5">{{ old('short_description') }}</textarea>
                                     @error('short_description')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -112,9 +112,9 @@
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Product Image</label>
-                                    <input type="file" name="product_img"
-                                        class="border @error('product_img') is-invalid @enderror" style="height: 300px" />
+                                    <label for="">Product Image</label>
+                                    <input value="{{ old('title')}} " type="file" name="product_img" 
+                                        class="dropify border @error('product_img') is-invalid @enderror" style="height: 300px" />
                                     @error('product_img')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -124,26 +124,46 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Long Description</label>
                                     <textarea name="long_description" class="form-control @error('title') is-invalid @enderror"
-                                        id="exampleFormControlTextarea1" rows="5"></textarea>
+                                        id="exampleFormControlTextarea1" rows="5">{{ old('long_description') }}</textarea>
                                     @error('long_description')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Category</label>
-                                    <select name="sub_category_id" id="multiple"
-                                        class="@error('category_id') is-invalid @enderror">
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->sub_category_id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('sub_category_id')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Brand</label>
+                                            <select name="brand_id" id="multiple"
+                                                class="@error('brand_id') is-invalid @enderror">
+                                                @foreach ($brands as $brand)
+                                                    <option value="{{ $brand->brand_id }}">{{ $brand->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('brand_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
-                                    @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Category</label>
+                                            <select name="sub_category_id" id="multiple"
+                                                class="@error('category_id') is-invalid @enderror">
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->sub_category_id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('sub_category_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -152,7 +172,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Reguler Price</label>
-                                    <input id="phone" type="text"
+                                    <input value="{{ old('regular_price')}} " id="phone" type="text"
                                         class="form-control @error('regular_price') is-invalid @enderror"
                                         name="regular_price" autocomplete="email" autofocus>
                                     @error('regular_price')
@@ -165,7 +185,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Sale Price</label>
-                                    <input id="phone" type="text"
+                                    <input value="{{ old('sale_price')}} " id="phone" type="text"
                                         class="form-control @error('sale_price') is-invalid @enderror" name="sale_price"
                                         autocomplete="email" autofocus>
                                     @error('sale_price')
@@ -178,7 +198,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Stock</label>
-                                    <input id="phone" type="text"
+                                    <input value="{{ old('stock')}} " id="phone" type="text"
                                         class="form-control @error('stock') is-invalid @enderror" name="stock"
                                         autocomplete="email" autofocus>
                                     @error('stock')

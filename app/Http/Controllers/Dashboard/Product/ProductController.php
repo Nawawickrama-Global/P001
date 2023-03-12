@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductAttribute;
@@ -18,7 +19,8 @@ class ProductController extends Controller
     {
         $attributes = Attribute::where('deleted_at', null)->get();
         $categories = SubCategory::where('deleted_at', null)->get();
-        return view('dashboard.product.add', ['attributes' => $attributes, 'categories' => $categories]);
+        $brands = Brand::where('deleted_at', null)->get();
+        return view('dashboard.product.add', ['attributes' => $attributes, 'brands' => $brands, 'categories' => $categories]);
     }
 
     public function viewProduct()
