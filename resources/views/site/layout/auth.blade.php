@@ -32,6 +32,18 @@
     <!-- Template Main CSS File -->
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <style>
+        .count-indicator{
+            position: relative;
+            background-color: #004c45;
+            color: #ffffff;
+            padding: 0 10px;
+border-radius: 10px;
+bottom: 8px;
+left: -5px;
+z-index: 99;
+        }
+    </style>
 </head>
 
 <body>
@@ -90,9 +102,9 @@
             </div>
             <div class="icons">
                 <button><i class="bi bi-search"></i></button>
-                <button><i class="bi bi-bag"></i></button>
                 <button><i class="bi bi-heart"></i></button>
                 <button><i class="bi bi-person-circle"></i></button>
+                <button><i class="bi bi-bag"></i><span class="count-indicator">22</span></button>
             </div>
             <!-- .navbar -->
         </div>
