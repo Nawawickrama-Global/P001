@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -24,5 +25,20 @@ class DatabaseSeeder extends Seeder
             'user_type' => 'admin',
             'password' => Hash::make('password'),
         ]);
+
+        // Create Customer
+        $customer = User::create([
+            'first_name' => 'Customer',
+            'last_name' => 'Account',
+            'contact_number' => '0711234567',
+            'email' => 'customer@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+        Customer::create([
+            'user_id' => $customer->id,
+            'address' => 'address'
+        ]);
+
+
     }
 }

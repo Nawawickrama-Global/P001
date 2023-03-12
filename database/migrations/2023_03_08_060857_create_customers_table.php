@@ -21,6 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('postal_code')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

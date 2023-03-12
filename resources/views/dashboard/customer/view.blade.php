@@ -55,24 +55,23 @@
               @foreach ($customers as $key => $customer)
               <tr>
                 <td>{{ $key + 1 }}</td>
-                <td>{{ $customer->name }}</td>
-                <td>{{ $customer->contact }}</td>
+                <td>{{ $customer->user->first_name }}</td>
+                <td>{{ $customer->user->contact_number }}</td>
                 <td>{{ $customer->address }}</td>
                 <td>
                   50,000LKR
                 </td>
                 <td>
+                  @if ( $customer->user->status == 'active' )
                   <span class="badge badge-primary">Active</span>
-                  {{-- <span class="badge badge-danger">deative</span> --}}
+                  @else
+                  <span class="badge badge-danger">Deative</span>
+                  @endif
                 </td>
                 <td>
                   {{-- report view --}}
                   <button type="button" class="btn btn-info btn-sm btn-icon" title="Info" >
                     <i data-feather="file-text"></i>
-                  </button>
-                  {{-- view --}}
-                  <button type="button" class="btn btn-warning btn-sm btn-icon" title="View">
-                    <i data-feather="eye"></i>
                   </button>
                   {{-- edit --}}
                   <a type="button" class="btn btn-success btn-sm btn-icon" title="Edit" href="{{ route('edit-customer', $customer->customer_id) }}">
