@@ -102,7 +102,7 @@
                                                         <form action="{{ route('delete-product', $product->product_id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
-                                                            <button type="submit" class="btn btn-danger btn-icon delete mt-2"
+                                                            <button type="submit" class="btn btn-danger btn-icon delete"
                                                                 title="Delete">
                                                                 <i data-feather="trash-2"></i>
                                                             </button>
