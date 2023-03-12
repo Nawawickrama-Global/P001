@@ -19,10 +19,10 @@
             <h4 class="mb-3 mb-md-0">Product</h4>
         </div>
         <div class="d-flex align-items-center flex-wrap text-nowrap">
-            <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+            <a type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0 text-light" href="./view-product">
                 <i class="btn-icon-prepend" data-feather="list"></i>
-                View Product
-            </button>
+                View Products
+            </a>
         </div>
     </div>
     <form action="{{ route('add-new-product') }}" method="post" enctype="multipart/form-data">
@@ -113,7 +113,7 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Product Image</label>
-                                    <input type="file" name="product_img" id="myDropify"
+                                    <input type="file" name="product_img"
                                         class="border @error('product_img') is-invalid @enderror" style="height: 300px" />
                                     @error('product_img')
                                         <div class="invalid-feedback">

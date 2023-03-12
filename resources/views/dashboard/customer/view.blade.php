@@ -69,22 +69,32 @@
                   @endif
                 </td>
                 <td>
-                  {{-- report view --}}
-                  <button type="button" class="btn btn-info btn-sm btn-icon" title="Info" >
-                    <i data-feather="file-text"></i>
-                  </button>
-                  {{-- edit --}}
-                  <a type="button" class="btn btn-success btn-sm btn-icon" title="Edit" href="{{ route('edit-customer', $customer->customer_id) }}">
-                    <i data-feather="edit"></i>
-                  </a>
-                  {{-- Delete --}}
-                  <form action="{{ route('delete-customer', $customer->customer_id) }}" method="post">
-                    @csrf
-                    @method('delete')
-                      <button type="submit" class="btn btn-danger btn-icon delete mt-2" title="Delete">
-                          <i data-feather="trash-2"></i>
-                      </button>
-                  </form>
+                  <table>
+                    <tr style="border: 0">
+                        <td style="padding:0 2px ; border: 0">
+                          {{-- report view --}}
+                          <button type="button" class="btn btn-info btn-sm btn-icon" title="Info" >
+                            <i data-feather="file-text"></i>
+                          </button>
+                        </td>
+                        <td style="padding:0 2px ; border: 0">
+                          {{-- edit --}}
+                          <button type="button" class="btn btn-success btn-sm btn-icon" title="Edit" href="{{ route('edit-customer', $customer->customer_id) }}">
+                            <i data-feather="edit"></i>
+                          </button>
+                        </td>
+                        <td style="padding:0 2px ; border: 0">
+                          {{-- Delete --}}
+                          <form action="{{ route('delete-customer', $customer->customer_id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                              <button type="submit" class="btn btn-danger btn-icon delete" title="Delete">
+                                  <i data-feather="trash-2"></i>
+                              </button>
+                          </form>
+                        </td>
+                    </tr>
+                  </table>
                 </td>
               </tr>
               @endforeach

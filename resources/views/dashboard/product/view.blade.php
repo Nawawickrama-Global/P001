@@ -83,23 +83,33 @@
                                             @endif
                                         </td>
                                         <td>
-                                            {{-- view --}}
-                                            <button type="button" class="btn btn-warning btn-sm btn-icon" title="View">
-                                                <i data-feather="eye"></i>
-                                            </button>
-                                            {{-- edit --}}
-                                            <button type="button" class="btn btn-success btn-sm btn-icon" title="Edit">
-                                                <i data-feather="edit"></i>
-                                            </button>
-                                            {{-- Delete --}}
-                                            <form action="{{ route('delete-product', $product->product_id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-danger btn-icon delete mt-2"
-                                                    title="Delete">
-                                                    <i data-feather="trash-2"></i>
-                                                </button>
-                                            </form>
+                                            <table>
+                                                <tr style="border: 0">
+                                                    <td style="padding:0 2px ; border: 0">
+                                                        {{-- view --}}
+                                                        <button type="button" class="btn btn-warning btn-sm btn-icon" title="View">
+                                                            <i data-feather="eye"></i>
+                                                        </button>
+                                                    </td>
+                                                    <td style="padding:0 2px ; border: 0">
+                                                        {{-- edit --}}
+                                                        <button type="button" class="btn btn-success btn-sm btn-icon" title="Edit">
+                                                            <i data-feather="edit"></i>
+                                                        </button>
+                                                    </td>
+                                                    <td style="padding:0 2px ; border: 0">
+                                                        {{-- Delete --}}
+                                                        <form action="{{ route('delete-product', $product->product_id) }}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-danger btn-icon delete mt-2"
+                                                                title="Delete">
+                                                                <i data-feather="trash-2"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                 @endforeach

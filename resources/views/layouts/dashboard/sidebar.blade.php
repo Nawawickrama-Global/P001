@@ -5,7 +5,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            My<span> Mobile</span>
+            AURA OF<span> INT</span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
