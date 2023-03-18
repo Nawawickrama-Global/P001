@@ -29,7 +29,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="">Name :</label>
-                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
+                        <input type="text" name="name" id="name"
+                            class="form-control @error('name') is-invalid @enderror">
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -40,8 +41,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="">Description :</label>
-                        <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror" cols="30"
-                            rows="10"></textarea>
+                        <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+                            cols="30" rows="10"></textarea>
                         @error('description')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -75,32 +76,35 @@
                     <tbody>
                         @foreach ($attributes as $index => $attribute)
                             <tr>
-                                <td>{{ $index +  1 }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ $attribute->name }}</td>
                                 <td>{{ $attribute->description }}</td>
                                 <td>
                                     <div class="row">
                                         <div class="col-4">
-                                            <button type="button" data-id="{{ $attribute->attribute_id }}" data-name="{{ $attribute->name }}" data-description="{{ $attribute->description }}" class="btn btn-success btn-sm btn-icon edit" title="Edit">
+                                            <button type="button" data-id="{{ $attribute->attribute_id }}"
+                                                data-name="{{ $attribute->name }}"
+                                                data-description="{{ $attribute->description }}"
+                                                class="btn btn-success btn-sm btn-icon edit" title="Edit">
                                                 <i data-feather="edit"></i>
                                             </button>
                                         </div>
                                         <div class="col-4">
                                             <form action="{{ route('delete-attribute', $attribute->attribute_id) }}"
-                                            method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="button"
-                                                class="btn btn-danger btn-sm btn-icon delete"
-                                                title="Delete">
-                                                <i data-feather="trash-2"></i>
-                                            </button>
-                                        </form>
+                                                method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="button" class="btn btn-danger btn-sm btn-icon delete"
+                                                    title="Delete">
+                                                    <i data-feather="trash-2"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                         <div class="col-4">
-                                            <button type="button" class="btn btn-primary btn-sm btn-icon" title="Add Variations">
+                                            <a href="{{ route('variations', $attribute->attribute_id) }}"
+                                                class="btn btn-primary btn-sm btn-icon" title="Add Variations">
                                                 <i data-feather="cloud"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
@@ -115,7 +119,7 @@
 
 @push('scripts')
     <script>
-        $('.edit').click(function(){
+        $('.edit').click(function() {
             $('#id').val($(this).data('id'));
             $('#name').val($(this).data('name'));
             $('#description').val($(this).data('description'));
