@@ -54,6 +54,9 @@
                 <div class="collapse" id="products">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
+                            <a href="{{ route('attribute') }}" class="nav-link">Attributes</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('add-product') }}" class="nav-link">Add Products
                                 &nbsp;
                                 <div class="text-white invisible pending-sub-req" role="status">
@@ -63,9 +66,6 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('view-product') }}" class="nav-link">View Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('attribute') }}" class="nav-link">Attributes</a>
                         </li>
                     </ul>
                 </div>
