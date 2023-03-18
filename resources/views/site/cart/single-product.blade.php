@@ -285,17 +285,7 @@
 
         $('#add-to-cart').click(function() {
             if (variantId == null && productType == 'variant') {
-                Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'warning',
-                    title: 'Please select a variant',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    customClass: {
-                        popup: 'colored-toast'
-                    },
-                });
+                message('warning', 'Please select a variant');
             } else {
                 let qty = $('.qty').val();
                 $.ajax({
@@ -307,22 +297,33 @@
                     data: {
                         productId: productId,
                         variantId: variantId,
-                        qty:qty
+                        qty: qty
                     },
                     success: function(data) {
-                        Swal.fire({
-                            toast: true,
-                            position: 'top-end',
-                            icon: data.icon,
-                            title: data.title,
-                            showConfirmButton: false,
-                            timer: 1500,
-                            customClass: {
-                                popup: 'colored-toast'
-                            },
-                        });
+                        message(data.icon, data.title);
+                    },
+                    error: function(response) {
+                        if(response.status == 401){
+                            window.location.replace("{{ route('customer-login') }}");
+                        }else{
+                            message('warning', 'Something went wrong');
+                        }
                     }
-                })
+                });
+            }
+
+            function message(icon, message) {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: icon,
+                    title: message,
+                    showConfirmButton: false,
+                    timer: 1500,
+                    customClass: {
+                        popup: 'colored-toast'
+                    },
+                });
             }
         });
     </script>
