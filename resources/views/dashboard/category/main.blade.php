@@ -122,6 +122,11 @@
                                 <th>
                                     Description
                                 </th>
+
+                                {{-- <th>
+                                    Parent
+                                </th> --}}
+
                                 <th>
                                     Status
                                 </th>
@@ -136,6 +141,13 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->description }}</td>
+
+                                {{-- <td>
+                                    @if (isset($category->sub_category_id))
+                                    {{ $category->parent->name }}
+                                    @endif
+                                </td> --}}
+
                                 <td>
                                     @if ($category->status == 'active')
                                     <span class="badge badge-primary">Active</span>

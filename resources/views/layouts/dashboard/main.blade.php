@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{ url('assets/vendors/bootstrap-colorpicker/bootstrap-colorpicker.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendors/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ url('assets/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ url('assets/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/demo_1/style.css') }}">
@@ -39,7 +40,8 @@
                 <div class="navbar-content">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown nav-notifications">
-                            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i data-feather="bell"></i>
                                 <div class="indicator">
                                     <div class="circle"></div>
@@ -103,7 +105,8 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown nav-profile">
-                            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="https://via.placeholder.com/30x30" alt="profile">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
@@ -125,12 +128,14 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+                                            <a href="{{ route('logout') }}" class="nav-link"
+                                                onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                                 <i data-feather="log-out"></i>
                                                 <span>Log Out</span>
                                             </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
                                                 @csrf
                                             </form>
                                         </li>
@@ -145,9 +150,11 @@
                 @yield('content')
             </div>
             <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <p class="text-muted text-center text-md-left">Copyright © 2022 <a href="#" target="_blank">My Mobile</a> | All rights reserved | V0.0.1</p>
+                <p class="text-muted text-center text-md-left">Copyright © 2022 <a href="#" target="_blank">My
+                        Mobile</a> | All rights reserved | V0.0.1</p>
                 </p>
-                <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Solution By <a href="#">Its Me</a></p>
+                <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Solution By <a
+                        href="#">Its Me</a></p>
             </footer>
         </div>
     </div>
@@ -208,26 +215,35 @@
                 ],
 
             });
+
+            $('.dropify').dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove': 'Remove',
+                    'error': 'Ooops, something wrong happended.'
+                }
+            });
         });
     </script>
     <script>
         // Delete Message
-$(".table").on("click", ".delete", function () {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        confirmButtonColor: "#d33",
-        cancelButtonColor: "#696969",
-        confirmButtonText: "Yes, delete it!",
-        showCancelButton: true,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $(this).parent().submit();
-        }
-    });
-    return false;
-});
+        $(".table").on("click", ".delete", function() {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#696969",
+                confirmButtonText: "Yes, delete it!",
+                showCancelButton: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent().submit();
+                }
+            });
+            return false;
+        });
     </script>
 </body>
 

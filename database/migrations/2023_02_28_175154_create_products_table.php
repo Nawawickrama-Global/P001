@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('sku');
             $table->enum('product_type', ['single','variant'])->default('single');
             $table->bigInteger('sub_category_id');
+            $table->bigInteger('brand_id');
             $table->string('feature_image');
             $table->string('product_image');
             $table->string('short_description');
