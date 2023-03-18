@@ -16,7 +16,7 @@ class CreateAttributesTable extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->id('attribute_id');
             $table->string('name');
-            $table->text('values');
+            $table->text('description');
             $table->enum('status', ['active','inactive'])->default('active');
             $table->softDeletes();
             $table->timestamps();

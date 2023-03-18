@@ -46,10 +46,10 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/delete-product/{id}', [App\Http\Controllers\Dashboard\Product\ProductController::class, 'deleteProduct'])->name('delete-product');
 
     // Attribute
-    //Route::get('/attribute', [App\Http\Controllers\Dashboard\Attribute\AttributeController::class, 'index'])->name('attribute');
-    //Route::post('/create-attribute', [App\Http\Controllers\Dashboard\Attribute\AttributeController::class, 'create'])->name('create-attribute');
-    //Route::delete('/delete-attribute/{id}', [App\Http\Controllers\Dashboard\Attribute\AttributeController::class, 'delete'])->name('delete-attribute');
-    Route::view('/attribute','dashboard.attribute.main')->name('attribute');
+    Route::get('/attribute', [App\Http\Controllers\Dashboard\Attribute\AttributeController::class, 'index'])->name('attribute');
+    Route::post('/create-attribute', [App\Http\Controllers\Dashboard\Attribute\AttributeController::class, 'create'])->name('create-attribute');
+    Route::delete('/delete-attribute/{id}', [App\Http\Controllers\Dashboard\Attribute\AttributeController::class, 'delete'])->name('delete-attribute');
+    // Route::view('/attribute','dashboard.attribute.main')->name('attribute');
     Route::view('/variations','dashboard.variations.main')->name('variations');
 
     // Customer

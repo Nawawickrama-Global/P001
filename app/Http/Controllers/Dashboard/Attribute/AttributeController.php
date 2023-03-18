@@ -18,13 +18,17 @@ class AttributeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'values' => 'required',
-            'status' => 'required',
+            'description' => 'required'
         ]);
 
         try {
-            Attribute::create($request->all());
-            toast('Attribute Added', 'success');
+            if($request->has('id')){
+                Attribute::find($request->id)->update($request->all());
+                toast('Attribute Updated', 'success');
+            }else{
+                Attribute::create($request->all());
+                toast('Attribute Added', 'success');
+            }
         } catch (\Throwable $th) {
             toast($th->getMessage(), 'warning');
         }
