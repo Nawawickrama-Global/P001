@@ -21,6 +21,8 @@ class Product extends Model
         'sub_category_id',
         'short_description',
         'long_description',
+        'clean_and_care',
+        'product_sheet',
         'status',
         'sale_price',
         'stock',

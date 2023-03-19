@@ -79,7 +79,12 @@
                             <!-- NEWLY ADDED -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Product Sheet</label>
-                                <textarea name="short_description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                <textarea name="product_sheet" class="form-control @error('product_sheet') is-invalid @enderror" id="" rows="5"></textarea>
+                                @error('product_sheet')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="ActivityStatus">Status</label>
@@ -129,7 +134,12 @@
                             <!-- NEWLY ADDED -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Clean & Care</label>
-                                <textarea name="long_description" class="form-control @error('title') is-invalid @enderror" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                <textarea name="long_description" class="form-control @error('clean_and_care') is-invalid @enderror" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                @error('clean_and_care')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <div class="row">
                                 <div class="col-md-6">

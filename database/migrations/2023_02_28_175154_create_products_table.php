@@ -24,6 +24,8 @@ class CreateProductsTable extends Migration
             $table->string('product_image');
             $table->string('short_description');
             $table->text('long_description');
+            $table->text('clean_and_care');
+            $table->text('product_sheet');
             $table->enum('status', ['active','inactive'])->default('active');
             $table->float('regular_price')->nullable();
             $table->float('sale_price')->nullable();
