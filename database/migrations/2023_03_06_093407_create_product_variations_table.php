@@ -16,11 +16,10 @@ class CreateProductVariationsTable extends Migration
         Schema::create('product_variations', function (Blueprint $table) {
             $table->id('variant_id');
             $table->bigInteger('product_id');
+            $table->string('size');
             $table->float('regular_price');
             $table->float('sales_price');
             $table->float('stock');
-            $table->string('color');
-            $table->string('image');
             $table->softDeletes();
             $table->timestamps();
         });

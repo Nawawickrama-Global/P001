@@ -17,10 +17,10 @@ class ProductController extends Controller
 {
     public function addProduct()
     {
-        $attributes = Attribute::where('deleted_at', null)->get();
         $categories = SubCategory::where('deleted_at', null)->get();
         $brands = Brand::where('deleted_at', null)->get();
-        return view('dashboard.product.add', ['attributes' => $attributes, 'brands' => $brands, 'categories' => $categories]);
+        $attributes = Attribute::where('deleted_at', null)->get();
+        return view('dashboard.product.add', ['brands' => $brands, 'categories' => $categories, 'attributes' => $attributes]);
     }
 
     public function viewProduct()
@@ -34,19 +34,14 @@ class ProductController extends Controller
         $this->validate($request,[
             'title' => 'required|max:255',
             'sku' => 'required|max:255',
-            'product_type' => 'required',
             'sub_category_id' => 'required',
             'feature_img' => 'required|image|mimes:jpeg,png,jpg',
             'product_img' => 'required|image|mimes:jpeg,png,jpg',
             'short_description' => 'required',
             'long_description' => 'required',
-            'regular_price' => 'required_if:product_type,==,single',
-            'sale_price' => 'required_if:product_type,==,single',
-            'stock' => 'required_if:product_type,==,single',
-            'regular_price1' => 'required_if:product_type,==,variant',
-            'sales_price1' => 'required_if:product_type,==,variant',
-            'stock1' => 'required_if:product_type,==,variant',
-            'img1' => 'required_if:product_type,==,variant',
+            'regular_price1' => 'required',
+            'sales_price1' => 'required',
+            'stock1' => 'required',
         ]);
 
         if($request->hasFile('feature_img')){
@@ -60,58 +55,41 @@ class ProductController extends Controller
         }
 
         try {
-            if($request->type == 'single'){
-                Product::create(['feature_image' => $feature_img, 'product_image' => $product_img] + $request->all());
-            }else{
-                DB::transaction(function() use ($feature_img, $product_img, $request) {
-                    $count = $request->item_count;
-                    $product = Product::create(['feature_image' => $feature_img, 'product_image' => $product_img] + $request->all());
 
-                    for ($i=1; $i <= $count; $i++) { 
-                        $regular_price = 'regular_price'.$i;
-                        $regular_price = $request->$regular_price;
-                        $sales_price = 'sales_price'.$i;
-                        $sales_price = $request->$sales_price;
-                        $stock = 'stock'.$i;
-                        $stock = $request->$stock;
-                        $color = 'color'.$i;
-                        $color = $request->$color;
-                        $img = 'img'.$i;
-    
-                        $attrCount = 'attribute'.$i.'-count';
-                        $attrCount = $request->$attrCount;
-    
-                        if($request->hasFile($img)){
-                            $image = date('Y-m-d-H-i-s') . $request->file($img)->getClientOriginalName();
-                            $request->file($img)->storeAs('images', $image, 'public');
-                        }
-                        
-                        $variation = ProductVariation::create([ 
-                            'regular_price' => $regular_price,
+            DB::transaction(function() use ($feature_img, $product_img, $request) {
+                $product = Product::create(['feature_image' => $feature_img, 'product_image' => $product_img] + $request->all());
+
+                for ($i=1; $i <= $request->item_count; $i++) { 
+                    $size = 'size'.$i;
+                    $size = $request->$size;
+                    $regular_price = 'regular_price'.$i;
+                    $regular_price = $request->$regular_price;
+                    $sales_price = 'sales_price'.$i;
+                    $sales_price = $request->$sales_price;
+                    $stock = 'stock'.$i;
+                    $stock = $request->$stock;
+
+                    ProductVariation::create([
+                        'product_id' => $product->product_id,
+                        'size' => $size,
+                        'regular_price' => $regular_price,
+                        'sales_price' => $sales_price,
+                        'stock' => $stock,
+                    ]);
+                }
+
+                $attributes = Attribute::where('deleted_at', null)->get();
+                foreach ($attributes as $key => $attribute) {
+                    $attr = 'attr'.$attribute->attribute_id;
+                    if($request->has($attr)){
+                        ProductAttribute::create([
                             'product_id' => $product->product_id,
-                            'sales_price' => $sales_price,
-                            'stock' => $stock,
-                            'color' => $color,
-                            'image' => $image
+                            'attribute_id' => $attribute->attribute_id,
                         ]);
-
-                            
-                        for ($j=1;  $j <= $attrCount; $j++) {
-                            $attribute = 'attribute'.$i.'_'.$j;
-                            $attribute = $request->$attribute;
-                            $attribute_id = 'attribute_id'.$i.'_'.$j;
-                            $attribute_id = $request->$attribute_id;
-    
-                            ProductAttribute::create([
-                                'variant_id' => $variation->variant_id,
-                                'attribute_id' => $attribute_id,
-                                'value' => $attribute,
-                            ]);
-                        }
                     }
-                });
-            }
-            
+                }
+            });
+
             toast('Product Added', 'success');
         } catch (\Throwable $th) {
             toast($th->getMessage(), 'warning');

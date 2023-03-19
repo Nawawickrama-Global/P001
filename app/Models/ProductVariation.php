@@ -13,11 +13,10 @@ class ProductVariation extends Model
     protected $primaryKey = 'variant_id';
     protected $fillable = [
         'product_id',
+        'size',
         'regular_price',
         'sales_price',
         'stock',
-        'color',
-        'image',
     ];
 
     public function product(): BelongsTo{

@@ -36,9 +36,9 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
-                                    <input value="{{ old('title')}} " value="{{ old('title')}} " id="phone" type="text"
-                                        class="form-control @error('title') is-invalid @enderror" name="title"
-                                        autocomplete="email" autofocus>
+                                    <input value="{{ old('title') }} " value="{{ old('title') }} " id="phone"
+                                        type="text" class="form-control @error('title') is-invalid @enderror"
+                                        name="title" autocomplete="email" autofocus>
                                     @error('title')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -46,10 +46,10 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-12">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">SKU</label>
-                                    <input value="{{ old('sku')}} " id="phone" type="text"
+                                    <input value="{{ old('sku') }} " id="phone" type="text"
                                         class="form-control @error('sku') is-invalid @enderror" name="sku"
                                         autocomplete="email" autofocus>
                                     @error('')
@@ -59,28 +59,15 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-12">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Product Type</label>
-                                    <select name="product_type" id="product_type"
-                                        class="form-control @error('type') is-invalid @enderror">
-                                        <option value="single">Single</option>
-                                        <option value="variant">Varient</option>
-                                    </select>
-                                    @error('type')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Feature Image</label>
-                                    <input value="{{ old('feature_img')}} " type="file" name="feature_img" id="myDropify"
-                                        class="border @error('feature_img') is-invalid @enderror" style="height: 300px" />
+                                    <input value="{{ old('feature_img') }} " type="file" name="feature_img"
+                                        id="myDropify" class="border @error('feature_img') is-invalid @enderror"
+                                        style="height: 300px" />
                                     @error('feature_img')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -109,12 +96,20 @@
                                         </div>
                                     @enderror
                                 </div>
+                                <div class="form-group" style="text-align: left">
+                                    <label for="">Select Attributes</label><br>
+                                    @foreach ($attributes as $index => $attribute)
+                                        <input type="checkbox" name="attr{{ $attribute->attribute_id }}" value="{{ $attribute->attribute_id}}" id="check{{ $index }}">
+                                        <label for="check{{ $index }}">{{ $attribute->name }}</label>
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Product Image</label>
-                                    <input value="{{ old('title')}} " type="file" name="product_img" 
-                                        class="dropify border @error('product_img') is-invalid @enderror" style="height: 300px" />
+                                    <input value="{{ old('title') }} " type="file" name="product_img"
+                                        class="dropify border @error('product_img') is-invalid @enderror"
+                                        style="height: 300px" />
                                     @error('product_img')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -154,7 +149,8 @@
                                             <select name="sub_category_id" id="multiple"
                                                 class="@error('category_id') is-invalid @enderror">
                                                 @foreach ($categories as $category)
-                                                    <option value="{{ $category->sub_category_id }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->sub_category_id }}">
+                                                        {{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                             @error('sub_category_id')
@@ -168,86 +164,24 @@
 
                             </div>
                         </div>
-                        <div class="row" id="single-row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Reguler Price</label>
-                                    <input value="{{ old('regular_price')}} " id="phone" type="text"
-                                        class="form-control @error('regular_price') is-invalid @enderror"
-                                        name="regular_price" autocomplete="email" autofocus>
-                                    @error('regular_price')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Sale Price</label>
-                                    <input value="{{ old('sale_price')}} " id="phone" type="text"
-                                        class="form-control @error('sale_price') is-invalid @enderror" name="sale_price"
-                                        autocomplete="email" autofocus>
-                                    @error('sale_price')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Stock</label>
-                                    <input value="{{ old('stock')}} " id="phone" type="text"
-                                        class="form-control @error('stock') is-invalid @enderror" name="stock"
-                                        autocomplete="email" autofocus>
-                                    @error('stock')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div> <!-- row -->
 
-        <div class="row d-none" id="attribute-area">
-            <div class="col-12 col-xl-12 grid-margin stretch-card">
-                <div class="card overflow-hidden">
-                    <div class="card-body">
-                        <h6 class="card-title">Select Attributes</h6>
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    @foreach ($attributes as $attribute)
-                                        <button type="button" data-id="{{ $attribute->attribute_id }}"
-                                            data-attributes="{{ $attribute->values }}"
-                                            class="btn btn-outline-primary attribute"
-                                            onclick="toggleButtonStyle(this)">{{ $attribute->name }}</button>
-                                    @endforeach
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row d-none" id="varriant-area">
+        <div class="row" id="varriant-area">
             <div class="col-12 col-xl-12 grid-margin stretch-card">
                 <div class="card overflow-hidden">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
                             <div>
-                                <h6 class="card-title">Product Variations</h6>
+                                <h6 class="card-title">Product Prices</h6>
                             </div>
                             <div class="d-flex align-items-center flex-wrap text-nowrap">
                                 <button type="button" class="btn btn-primary btn-icon-text mb-md-0 add-variant">
                                     <i class="btn-icon-prepend" data-feather="plus"></i>
-                                    Add Varient
+                                    Add Prices
                                 </button>
                             </div>
                         </div>
@@ -303,55 +237,38 @@
         });
 
         $('.add-variant').click(function() {
-            let len = att.length;
-            let col = 6 / len;
-            let select = '';
-            let attribute_count = 0;
-            // Select boxes
-            $.each(att, function(key, item) {
-                op = item[1].split(',');
-                select += '<div class="col-md-' + col + '"><select name="attribute' + index + '_' + (key +
-                    1) + '">';
-                $.each(op, function(key, value) {
-                    select += '<option value="' + value + '">' + value + '</option>';
-                });
-                select += '</select></div><input type="hidden" name="attribute_id' + index + '_' + (key +
-                    1) + '" value="' + item[0] + '">';
-                attribute_count++;
-            });
-            select += '<input type="hidden" name="attribute' + index + '-count" value="' + attribute_count + '">';
+            // Size
+            let size =
+                '<div class="col-md-2"><input type="text" required placeholder="Size" class="form-control" name="size' +
+                index + '"></div>';
             // Regular price
             let regularPrice =
-                '<div class="col-md-1"><input type="text" placeholder="Regular Price" class="form-control" name="regular_price' +
+                '<div class="col-md-3"><input type="number" required placeholder="Regular Price" class="form-control" name="regular_price' +
                 index + '"></div>';
             // Sales price
             let salesPrice =
-                '<div class="col-md-1"><input type="text" placeholder="Sales Price" class="form-control" name="sales_price' +
+                '<div class="col-md-3"><input type="number" required placeholder="Sales Price" class="form-control" name="sales_price' +
                 index + '"></div>';
             // Stock price
             let stock =
-                '<div class="col-md-1"><input type="text" placeholder="Stock" class="form-control" name="stock' +
+                '<div class="col-md-3"><input type="number" required placeholder="Stock" class="form-control" name="stock' +
                 index + '"></div>';
-            // Color
-            let color =
-                '<div class="col-md-1"><input type="color" class="form-control" name="color' + index + '"></div>';
-            // Image
-            let image =
-                '<div class="col-md-1"><input type="file" class="form-control" name="img' + index + '"></div>';
             // remove
             let remove =
                 '<div class="col-md-1"><input type="button" data-id="row' + index +
-                '" class="form-control btn btn-danger rem" value="REM"></div>';
+                '" class="form-control btn btn-danger rem" id="rem' + index + '" value="del"></div>';
 
-            $('#form-rows-container').append('<div id="row' + index + '" class="row mb-2">' + select +
-                regularPrice + salesPrice + stock + color + image + remove + '</div>');
+            $('#form-rows-container').append('<div id="row' + index + '" class="row mb-2">' + size +
+                regularPrice + salesPrice + stock + remove + '</div>');
             $('#item-count').val(index);
+            $('#rem' + (index - 1)).attr('disabled', true);
             index++;
         });
 
         $('#form-rows-container').on('click', '.rem', function() {
             $('#' + $(this).data('id')).remove();
             index--;
+            $('#rem' + (index - 1)).attr('disabled', false);
         });
     </script>
 @endpush
