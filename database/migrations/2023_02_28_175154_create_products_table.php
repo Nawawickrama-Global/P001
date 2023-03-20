@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->text('clean_and_care');
             $table->text('product_sheet');
             $table->enum('status', ['active','inactive'])->default('active');
-            $table->float('regular_price')->nullable();
+            $table->float('price')->nullable();
             $table->float('sale_price')->nullable();
             $table->integer('stock')->nullable();
             $table->softDeletes();

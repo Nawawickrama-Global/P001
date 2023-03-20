@@ -134,7 +134,7 @@
                             <!-- NEWLY ADDED -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Clean & Care</label>
-                                <textarea name="long_description" class="form-control @error('clean_and_care') is-invalid @enderror" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                <textarea name="clean_and_care" class="form-control @error('clean_and_care') is-invalid @enderror" id="exampleFormControlTextarea1" rows="5"></textarea>
                                 @error('clean_and_care')
                                 <div class="invalid-feedback">
                                     {{ $message }}

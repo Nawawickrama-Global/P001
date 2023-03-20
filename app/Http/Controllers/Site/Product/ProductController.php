@@ -18,6 +18,9 @@ class ProductController extends Controller
             $category_id = SubCategory::where('name', '=', $request->category)->first()->sub_category_id;
             $products = $products->where('sub_category_id', '=', $category_id );
         }
+        if($request->has('search')){
+            $products = $products->where('title', 'like', "%{$request->get('search')}%");
+        }
 
         $products = $products->paginate(20);
         return view('site.cart.product-list', ['products' => $products]);

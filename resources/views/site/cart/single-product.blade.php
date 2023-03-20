@@ -54,7 +54,7 @@
                                 <strong>
                                     <span> Price: </span>
                                     <span class="price" id="price">
-                                        {{ $product->product_type == 'single' ? Config::get('app.currency_code') . $product->sale_price : Config::get('app.currency_code') . $product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $product->variant->max('sales_price') }}
+                                        {{ $product->variant->count() > 1 ? Config::get('app.currency_code') . $product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $product->variant->max('sales_price') : Config::get('app.currency_code') . $product->variant->min('sales_price') }}
                                     </span>
                                 </strong>
                             </div>
@@ -66,7 +66,7 @@
                             <div class="color bb pb-3 mt-5">
                                 <p><strong>Finishes : </strong> <span id="variations"></span></p>
                                 <div class="row">
-                                    @foreach ($product->variant as $variant)
+                                    {{-- @foreach ($product->variant as $variant)
                                         <div class="col-lg-2 mt-2">
                                             <button class="variation" data-variant_id="{{ $variant->variant_id }}"
                                                 data-price="{{ Config::get('app.currency_code') . $variant->sales_price }}"
@@ -81,7 +81,7 @@
                                                     class="img-fluid" />
                                             </button>
                                         </div>
-                                    @endforeach
+                                    @endforeach --}}
                                 </div>
                             </div>
                             <div class="_p-qty-and-cart mt-4 d-flex">
@@ -303,9 +303,9 @@
                         message(data.icon, data.title);
                     },
                     error: function(response) {
-                        if(response.status == 401){
+                        if (response.status == 401) {
                             window.location.replace("{{ route('customer-login') }}");
-                        }else{
+                        } else {
                             message('warning', 'Something went wrong');
                         }
                     }
