@@ -66,22 +66,12 @@
                             <div class="color bb pb-3 mt-5">
                                 <p><strong>Finishes : </strong> <span id="variations"></span></p>
                                 <div class="row">
-                                    {{-- @foreach ($product->variant as $variant)
                                         <div class="col-lg-2 mt-2">
-                                            <button class="variation" data-variant_id="{{ $variant->variant_id }}"
-                                                data-price="{{ Config::get('app.currency_code') . $variant->sales_price }}"
-                                                data-variant="
-                         @foreach ($variant->productAttr as $key => $attribute)
-                           {{ $attribute->attribute->name . ' ' . $attribute->value }}
-                           @if (count($variant->productAttr) != $key + 1)
-                              {{ ', ' }}
-                           @endif @endforeach 
-                          ">
-                                                <img src="{{ asset('storage/images/' . $variant->image) }}" alt="Color"
-                                                    class="img-fluid" />
+                                            <button class="variation" >
+                                                <img src="https://picsum.photos/200/300" alt="Color"
+                                                    class="img-fluid variation-image" />
                                             </button>
                                         </div>
-                                    @endforeach --}}
                                 </div>
                             </div>
                             <div class="_p-qty-and-cart mt-4 d-flex">
