@@ -99,7 +99,7 @@
                                 <button class="btn btn-buy" tabindex="0">
                                     <i class="fa fa-shopping-cart"></i> Buy Now
                                 </button>
-                                <button class="btn btn-cart" id="add-to-cart" tabindex="0">
+                                <button class="btn btn-cart" id="add-to-cart" tabindex="0" style="border: 2px solid #ba9739">
                                     <i class="fa fa-shopping-cart"></i> Add to Cart
                                 </button>
                             </div>
