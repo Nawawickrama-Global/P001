@@ -62,6 +62,20 @@
                             <div class="_p-features">
                                 {{ $product->long_description }}
                             </div>
+                            <div class="color bb pb-3 mt-5">
+                                <p><strong>Size : </strong> <span id="selector"></span></p>
+                                <div class="row">
+                                        <div class="col-lg-2 mt-2">
+                                            <select class="form-control" id="exampleFormControlSelect1" style="width: unset !important">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>adooooo</option>
+                                              </select>                                          
+                                        </div>
+                                </div>
+                            </div>
 
                             <div class="color bb pb-3 mt-5">
                                 <p><strong>Finishes : </strong> <span id="variations"></span></p>
@@ -166,32 +180,31 @@
                             <!-- End Tab 2 Content -->
 
                             <div class="tab-pane fade show" id="tab3">
-                                <p>
-                                    Consequuntur inventore voluptates consequatur aut vel et.
-                                    Eos doloribus expedita. Sapiente atque consequatur minima
-                                    nihil quae aspernatur quo suscipit voluptatem.
-                                </p>
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="bi bi-check2"></i>
-                                    <h4>
-                                        Repudiandae rerum velit modi et officia quasi facilis
-                                    </h4>
+                                <div class="mx-5">
+                                    <div class="form-group mt-2">
+                                        <label for="exampleFormControlInput1">Name</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="exampleFormControlInput1">Phone</label>
+                                        <input type="contact" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="exampleFormControlInput1">Email</label>
+                                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="exampleFormControlInput1">Message</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <button class="btn btn-contact" style="width: unset" >
+                                            Contact
+                                        </button>
+                
+                                    </div>
                                 </div>
-                                <p>
-                                    Laborum omnis voluptates voluptas qui sit aliquam
-                                    blanditiis. Sapiente minima commodi dolorum non eveniet
-                                    magni quaerat nemo et.
-                                </p>
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="bi bi-check2"></i>
-                                    <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                                </div>
-                                <p>
-                                    Non quod totam minus repellendus autem sint velit. Rerum
-                                    debitis facere soluta tenetur. Iure molestiae assumenda sunt
-                                    qui inventore eligendi voluptates nisi at. Dolorem quo
-                                    tempora. Quia et perferendis.
-                                </p>
+                                
                             </div>
                             <!-- End Tab 3 Content -->
                         </div>
