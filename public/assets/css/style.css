@@ -1090,7 +1090,9 @@ section {
 }
 
 ._p-price-box img {
-  width: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
 }
 
 ._p-price-box .color button {
@@ -1103,9 +1105,18 @@ section {
 ._p-price-box .color button:hover,
 ._p-price-box .color button:active {
   border: var(--secondary-color) 1px solid;
-  border-radius: 60%;
+  border-radius: 50%;
   opacity: 1;
+  height: 50px;
+  width: 50px;
 }
+.variation-image{
+  height: 50px;
+  width: 50px;
+  border: 25px;
+}
+
+
 ._p-price-box .bb {
   border-bottom: var(--primary-color) 1px solid;
 }
@@ -1648,12 +1659,20 @@ section {
   font-size: 16px;
 }
 .form-section input[type="text"],
-input[type="password"] {
+input[type="password"], input[type="email"], input[type="textarea"], input[type="contact"]    {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
   border-radius: 5px;
   border: 1px solid var(--primary-color);
+}
+textarea.form-control{
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+
 }
 .form-section button {
   width: 100%;
@@ -2281,4 +2300,24 @@ input[type="password"] {
 }
 #footer .credits a:hover {
   color: white;
+}
+
+
+.btn-contact {
+  margin-bottom: 15px;
+  color: #fff;
+  background-color: var(--secondary-color);
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+}
+.btn-contact:hover {
+  background-color: var(--secondary-color-less);
+  color: #fff;
+}
+
+.sheet-link{
+  color: #004c45;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 900;
 }
