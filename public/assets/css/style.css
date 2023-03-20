@@ -2314,3 +2314,10 @@ textarea.form-control{
   background-color: var(--secondary-color-less);
   color: #fff;
 }
+
+.sheet-link{
+  color: #004c45;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 900;
+}
