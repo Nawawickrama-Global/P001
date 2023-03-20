@@ -99,10 +99,6 @@
                                 @enderror
                             </div>
                             <!-- NEWLY ADDED -->
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Price</label>
-                                <input type="number" name="" id="" class="form-control">
-                            </div>
                             <div class="form-group" style="text-align: left">
                                 <label for="">Select Attributes</label><br>
                                 @foreach ($attributes as $index => $attribute)
@@ -220,6 +216,7 @@
 <script>
     let att = [];
     let index = 1;
+    addRow();
     $('#product_type').on('change', function() {
         if ($(this).val() == 'single') {
             $('#attribute-area').addClass('d-none');
@@ -250,17 +247,17 @@
     });
 
     $('.add-variant').click(function() {
+        addRow();
+    });
+
+    function addRow(){
         // Size
         let size =
-            '<div class="col-md-2"><input type="text" required placeholder="Size" class="form-control" name="size' +
-            index + '"></div>';
-        // Regular price
-        let regularPrice =
-            '<div class="col-md-3"><input type="number" required placeholder="Regular Price" class="form-control" name="regular_price' +
+            '<div class="col-md-4"><input type="text" required placeholder="Size" class="form-control" name="size' +
             index + '"></div>';
         // Sales price
         let salesPrice =
-            '<div class="col-md-3"><input type="number" required placeholder="Sales Price" class="form-control" name="sales_price' +
+            '<div class="col-md-4"><input type="number" required placeholder="Price" class="form-control" name="sales_price' +
             index + '"></div>';
         // Stock price
         let stock =
@@ -271,12 +268,11 @@
             '<div class="col-md-1"><input type="button" data-id="row' + index +
             '" class="btn btn-danger rem" id="rem' + index + '" value="DELETE"></div>';
 
-        $('#form-rows-container').append('<div id="row' + index + '" class="row mb-2">' + size +
-            regularPrice + salesPrice + stock + remove + '</div>');
+        $('#form-rows-container').append('<div id="row' + index + '" class="row mb-2">' + size + salesPrice + stock + remove + '</div>');
         $('#item-count').val(index);
         $('#rem' + (index - 1)).attr('disabled', true);
         index++;
-    });
+    }
 
     $('#form-rows-container').on('click', '.rem', function() {
         $('#' + $(this).data('id')).remove();

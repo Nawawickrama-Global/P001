@@ -39,7 +39,6 @@ class ProductController extends Controller
             'product_img' => 'required|image|mimes:jpeg,png,jpg',
             'short_description' => 'required',
             'long_description' => 'required',
-            'regular_price1' => 'required',
             'sales_price1' => 'required',
             'stock1' => 'required',
         ]);
@@ -62,8 +61,6 @@ class ProductController extends Controller
                 for ($i=1; $i <= $request->item_count; $i++) { 
                     $size = 'size'.$i;
                     $size = $request->$size;
-                    $regular_price = 'regular_price'.$i;
-                    $regular_price = $request->$regular_price;
                     $sales_price = 'sales_price'.$i;
                     $sales_price = $request->$sales_price;
                     $stock = 'stock'.$i;
@@ -72,7 +69,6 @@ class ProductController extends Controller
                     ProductVariation::create([
                         'product_id' => $product->product_id,
                         'size' => $size,
-                        'regular_price' => $regular_price,
                         'sales_price' => $sales_price,
                         'stock' => $stock,
                     ]);
