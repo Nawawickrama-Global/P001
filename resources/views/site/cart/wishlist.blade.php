@@ -10,7 +10,7 @@
             <div class="sort mb-1 mb-0">
               <div class="row justify-content-between mb-0 pb-0">
                 <div class="col-md-3 col-sm-6">
-                  <h3>Wishlist <span id="productCount">(8)</span></h3>
+                  <h3>Wishlist <span id="productCount">({{ $wishes->count() }})</span></h3>
                 </div>
                 <div class="col-md-3 col-sm-6">
                   <a href="#" class="greenBtn" style="color: #fff !important">ADD ALL TO CART</a>
