@@ -93,3 +93,4 @@ Route::view('/add-cart', 'site.cart.product-add-cart');
 Route::view('/why-us', 'site.why-us.main');
 Route::view('/about-us', 'site.contact.about');
 Route::view('/partners', 'site.partner.main');
+Route::view('/checkout', 'site.cart.checkout');

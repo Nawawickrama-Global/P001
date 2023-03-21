@@ -2357,3 +2357,41 @@ textarea.form-control{
 .radio-btn input[type="radio"]:checked + label img {
 	box-shadow: 0 0 0 2px green;
 }
+
+
+/* ________________ */
+.payment-btn {
+	display: inline-block;
+	position: relative;
+	margin-right: 20px;
+}
+
+.payment-btn input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.payment-btn label {
+	display: inline-block;
+	width: 101px;
+	height: 51px;
+	border-radius: 5px;
+	border: 1px solid #dcdcdc;
+}
+
+.payment-btn input[type="radio"]:checked + label {
+	border-color: green;
+}
+
+.payment-btn img {
+	display: block;
+	margin: 0 auto;
+	width: 100px;
+	height: 50px;
+	border-radius: 5px;
+}
+
+.payment-btn input[type="radio"]:checked + label img {
+	box-shadow: 0 0 0 2px green;
+}
