@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $categories = SubCategory::where('deleted_at', null)->get();
         $brands = Brand::where('deleted_at', null)->get();
-        $attributes = Attribute::where('deleted_at', null)->get();
+        $attributes = Attribute::where('deleted_at', null)->where('attribute_id', '>', 2)->get();
         return view('dashboard.product.add', ['brands' => $brands, 'categories' => $categories, 'attributes' => $attributes]);
     }
 
@@ -83,6 +83,17 @@ class ProductController extends Controller
                             'attribute_id' => $attribute->attribute_id,
                         ]);
                     }
+                }
+
+                if($request->has('faux_and_synthetic')){
+                    ProductAttribute::create([
+                        'product_id' => $product->product_id,
+                        'attribute_id' => 1,
+                    ]);
+                    ProductAttribute::create([
+                        'product_id' => $product->product_id,
+                        'attribute_id' => 2,
+                    ]);
                 }
             });
 

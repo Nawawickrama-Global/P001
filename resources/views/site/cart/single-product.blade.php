@@ -73,18 +73,20 @@
 
                             <div class="color bb pb-3 mt-5 d-none" id="finishes">
                                 @foreach ($product->productAttr as $productAttr)
-                                    <p><strong>Finishes : </strong> <span
-                                            id="variations">{{ $productAttr->attribute->name }}</span></p>
+                                    <div>
+                                        <p><strong>{{ $productAttr->attribute->name }} : </strong> <span
+                                            class="variations"></span></p>
                                     <div class="row">
                                         @foreach ($productAttr->attribute->variation as $variation)
                                             <div class="col-lg-2 mt-2">
-                                                <input type="radio" class="variation" data-percentage="{{ $variation->percentage }}"
+                                                <input type="radio" class="variation" data-name="{{ $variation->name }}" data-percentage="{{ $variation->percentage }}"
                                                     value="{{ $variation->variation_id }}"
-                                                    name="{{ $productAttr->attribute->name }}">
+                                                    name="{{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'faux_synthetic' : $productAttr->attribute->name }}">
                                                 <img src="{{ asset('storage/images/' . $variation->image) }}"
                                                     alt="Color" class="img-fluid variation-image" />
                                             </div>
                                         @endforeach
+                                    </div>
                                     </div>
                                 @endforeach
 
@@ -230,7 +232,7 @@
                                     <div class="content">
                                         <a href="#">
                                             <p>{{ $suggestion->title }}</p>
-                                            <p><span>{{ $suggestion->product_type == 'single' ? Config::get('app.currency_code') . $suggestion->sale_price : Config::get('app.currency_code') . $suggestion->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $suggestion->variant->max('sales_price') }}</span>
+                                            <p><span>{{ $product->variant->count() > 1 ? Config::get('app.currency_code') . $product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $product->variant->max('sales_price') : Config::get('app.currency_code') . $product->variant->min('sales_price') }}</span>
                                             </p>
                                         </a>
                                     </div>
@@ -265,6 +267,7 @@
         });
 
         $('.variation').on('change', function() {
+            $(this).parent().parent().parent().find('.variations').html($(this).data('name'));
             updatePrice();
         });
 
@@ -274,7 +277,7 @@
                 let percentage = $(this).data("percentage");
                 price = price + percentage * price / 100;
             });
-            $('#price').html('{{ Config::get('app.currency_code') }}' + price);
+            $('#price').html('{{ Config::get('app.currency_code') }}' + price.toFixed(2));
         }
 
         $('.variation').click(function(e) {

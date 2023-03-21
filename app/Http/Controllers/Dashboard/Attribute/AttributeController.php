@@ -40,7 +40,7 @@ class AttributeController extends Controller
     public function variations($id)
     {
         $attributeName = Attribute::findOrFail($id)->name;
-        $variations = Variation::where('deleted_at', null)->get();
+        $variations = Variation::where('deleted_at', null)->where('attribute_id', $id)->get();
         return view('dashboard.variations.main', ['attribute_id' => $id, 'attributeName' => $attributeName, 'variations' => $variations]);
     }
 

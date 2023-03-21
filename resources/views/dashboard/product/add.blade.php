@@ -105,6 +105,8 @@
                                 <input type="checkbox" name="attr{{ $attribute->attribute_id }}" value="{{ $attribute->attribute_id}}" id="check{{ $index }}">
                                 <label for="check{{ $index }}">{{ $attribute->name }}</label>
                                 @endforeach
+                                <input type="checkbox" name="faux_and_synthetic" value="1" id="f_and_s">
+                                <label for="f_and_s">Faux & Synthetic Leather</label>
                             </div>
 
                         </div>

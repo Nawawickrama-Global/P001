@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Attribute;
 use App\Models\Customer;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -38,7 +39,16 @@ class DatabaseSeeder extends Seeder
             'user_id' => $customer->id,
             'address' => 'address'
         ]);
-
-
+        
+        // Create default attributes
+        Attribute::create([
+            'name' => 'FAUX LEATHER',
+            'description' => 'FAUX LEATHER'
+        ]);
+        
+        Attribute::create([
+            'name' => 'SYNTHETIC LEATHER',
+            'description' => 'SYNTHETIC LEATHER'
+        ]);
     }
 }
