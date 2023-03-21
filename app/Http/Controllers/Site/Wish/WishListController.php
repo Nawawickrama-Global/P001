@@ -20,4 +20,10 @@ class WishListController extends Controller
             return response()->json(['wishlist' => false]);
         }
     }
+
+    public function wishList()
+    {
+        $wishes = WishList::where('user_id', Auth::user()->id)->get();
+        return view('site.cart.wishlist', ['wishes' => $wishes]);
+    }
 }
