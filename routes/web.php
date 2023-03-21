@@ -94,3 +94,6 @@ Route::view('/why-us', 'site.why-us.main');
 Route::view('/about-us', 'site.contact.about');
 Route::view('/partners', 'site.partner.main');
 Route::view('/checkout', 'site.cart.checkout');
+
+//order
+Route::view('/order-history', 'dashboard.order.view');

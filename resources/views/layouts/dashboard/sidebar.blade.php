@@ -77,6 +77,13 @@
                     <span class="link-title">Customer</span>
                 </a>
             </li>
+            <li class="nav-item nav-category">Order</li>
+            <li class="nav-item">
+                <a href="/order-history" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">View All</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
