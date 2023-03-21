@@ -19,7 +19,6 @@
               <hr />
               <div class="row justify-content-between mt-5">
                 <div class="col-md-3 col-sm-6">
-                  <p>Showing 1 – 48 of 430 results</p>
                 </div>
                 <div class="col-md-3 col-sm-6">
                   <form>
@@ -36,44 +35,19 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img
-                  src="/assets/img/products/product-1.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="wishlist">
-                  <button class="wish-list-button">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
-                </div>
-                <div class="social">
-                  <a href="">QUICK VIEW</a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Empire Mirror</h4>
-                <span>$ 15,630</span>
-              </div>
-            </div>
-          </div>
 
+          @foreach ($wishes as $wish)
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img
-                  src="/assets/img/products/product-2.png"
-                  class="img-fluid"
-                  alt=""
-                />
+                <a href="{{ route('view-item', $wish->product->product_id) }}">
+                  <img src="{{ asset('storage/images/' . $wish->product->feature_image) }}" alt=""
+                  class="img-fluid" />
+              </a>
                 <div class="wishlist">
-                  <button class="wish-list-button">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
+                  <button class="wish-list-button" data-id="{{ $wish->product->product_id }}">
+                    {!! Auth::check() && $wish->product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? '<i style="display: block" class="bi bi-heart-fill"></i>' : '<i class="bi bi-heart"></i>' !!}
+                </button>
                 </div>
                 <div class="social">
                   <a href="">QUICK VIEW</a>
@@ -85,163 +59,18 @@
               </div>
             </div>
           </div>
+          @endforeach
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img
-                  src="/assets/img/products/product-3.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="wishlist">
-                  <button class="wish-list-button">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
-                </div>
-                <div class="social">
-                  <a href="">QUICK VIEW</a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Empire Mirror</h4>
-                <span>$ 15,630</span>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img
-                  src="/assets/img/products/product-4.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="wishlist">
-                  <button class="wish-list-button">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
-                </div>
-                <div class="social">
-                  <a href="">QUICK VIEW</a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Empire Mirror</h4>
-                <span>$ 15,630</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img
-                  src="/assets/img/products/product-1.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="wishlist">
-                  <button class="wish-list-button">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
-                </div>
-                <div class="social">
-                  <a href="">QUICK VIEW</a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Empire Mirror</h4>
-                <span>$ 15,630</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img
-                  src="/assets/img/products/product-2.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="wishlist">
-                  <button class="wish-list-button">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
-                </div>
-                <div class="social">
-                  <a href="">QUICK VIEW</a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Empire Mirror</h4>
-                <span>$ 15,630</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img
-                  src="/assets/img/products/product-3.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="wishlist">
-                  <button class="wish-list-button">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
-                </div>
-                <div class="social">
-                  <a href="">QUICK VIEW</a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Empire Mirror</h4>
-                <span>$ 15,630</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img
-                  src="/assets/img/products/product-4.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="wishlist">
-                  <button class="wish-list-button">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
-                </div>
-                <div class="social">
-                  <a href="">QUICK VIEW</a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Empire Mirror</h4>
-                <span>$ 15,630</span>
-              </div>
-            </div>
-          </div>
+      
+     
         </div>
       </div>
     </section>
     <!-- End product Section -->
 
     <!-- ======= Popular Section ======= -->
-    <section class="popular pt-5">
+    {{-- <section class="popular pt-5">
       <div class="container" data-aos="fade-up">
         <dv class="row justify-content-center">
           <div class="col-md-9">
@@ -262,6 +91,8 @@
           data-aos-delay="200"
         >
           <div class="swiper-wrapper">
+
+
             <div class="swiper-slide col-lg-3">
               <div class="card">
                 <div class="card-img">
@@ -287,111 +118,38 @@
             </div>
             <!-- End product item -->
 
-            <div class="swiper-slide col-lg-3">
-              <div class="card">
-                <div class="card-img">
-                  <div class="wishlist">
-                    <button>
-                      <i class="bi bi-heart"></i>
-                      <i class="bi bi-heart-fill d-none"></i>
-                    </button>
-                  </div>
-                  <img
-                    src="/assets/img/products/product-2.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="content">
-                  <a href="#">
-                    <p>Empire Mirror</p>
-                    <p><span>$ 15,630</span></p>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- End product item -->
-
-            <div class="swiper-slide col-lg-3">
-              <div class="card">
-                <div class="card-img">
-                  <div class="wishlist">
-                    <button>
-                      <i class="bi bi-heart"></i>
-                      <i class="bi bi-heart-fill d-none"></i>
-                    </button>
-                  </div>
-                  <img
-                    src="/assets/img/products/product-3.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="content">
-                  <a href="#">
-                    <p>Empire Mirror</p>
-                    <p><span>$ 15,630</span></p>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- End product item -->
-
-            <div class="swiper-slide col-lg-3">
-              <div class="card">
-                <div class="card-img">
-                  <div class="wishlist">
-                    <button>
-                      <i class="bi bi-heart"></i>
-                      <i class="bi bi-heart-fill d-none"></i>
-                    </button>
-                  </div>
-                  <img
-                    src="/assets/img/products/product-4.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="content">
-                  <a href="#">
-                    <p>Empire Mirror</p>
-                    <p><span>$ 15,630</span></p>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- End product item -->
-
-            <div class="swiper-slide col-lg-3">
-              <div class="card">
-                <div class="card-img">
-                  <div class="wishlist">
-                    <button>
-                      <i class="bi bi-heart"></i>
-                      <i class="bi bi-heart-fill d-none"></i>
-                    </button>
-                  </div>
-                  <img
-                    src="/assets/img/products/product-4.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="content">
-                  <a href="#">
-                    <p>Empire Mirror</p>
-                    <p><span>$ 15,630</span></p>
-                  </a>
-                </div>
-              </div>
-            </div>
             <!-- End product item -->
           </div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
-    </section>
+    </section> --}}
     <!-- End popuar Section -->
 
 
 @endsection
+
+@push('scripts')
+    <script>
+        $('.wish-list-button').click(function(){
+            let product_id = $(this).data('id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                url: "{{ route('add-to-wish') }}",
+                method: "POST",
+                data: {
+                    id: product_id
+                },
+                success: function(data) {
+                    if(data.wishlist){
+                        $(this).html('<i class="bi bi-heart-fill"></i>');
+                    }else{
+                        $(this).html('<i class="bi bi-heart"></i>');
+                    }
+                }
+            })
+        });
+    </script>
+@endpush

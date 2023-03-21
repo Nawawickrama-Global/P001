@@ -65,7 +65,7 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Wish List
     Route::post('/add-to-wish', [App\Http\Controllers\Site\Wish\WishListController::class, 'addWishList'])->name('add-to-wish');
-
+    Route::get('/wishlist', [App\Http\Controllers\Site\Wish\WishListController::class, 'wishList'])->name('wishlist');
     // Cart
     Route::post('/add-to-cart', [App\Http\Controllers\Site\Cart\CartController::class, 'addToCart'])->name('add-to-cart');
     Route::get('/cart', [App\Http\Controllers\Site\Cart\CartController::class, 'index'])->name('cart');
@@ -88,7 +88,7 @@ Route::get('/product/{id}', [App\Http\Controllers\Site\Product\ProductController
 
 
 Route::view('/contact', 'site.contact.main');
-Route::view('/wishlist', 'site.cart.wishlist');
+// Route::view('/wishlist', 'site.cart.wishlist');
 Route::view('/add-cart', 'site.cart.product-add-cart');
 Route::view('/why-us', 'site.why-us.main');
 Route::view('/about-us', 'site.contact.about');
