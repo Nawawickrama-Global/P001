@@ -78,12 +78,22 @@
                                             class="variations"></span></p>
                                     <div class="row">
                                         @foreach ($productAttr->attribute->variation as $variation)
-                                            <div class="col-lg-2 mt-2">
+                                            <div class="col-lg-12 mt-2">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="radio1" name="radio-group">
+                                                    <label for="radio1"><img src="https://picsum.photos/200"></label>
+                                                </div>
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="radio2" name="radio-group">
+                                                    <label for="radio2"><img src="https://picsum.photos/200"></label>
+                                                </div>
+                                            
+{{--                                                   
                                                 <input type="radio" class="variation" data-name="{{ $variation->name }}" data-percentage="{{ $variation->percentage }}"
                                                     value="{{ $variation->variation_id }}"
                                                     name="{{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'faux_synthetic' : $productAttr->attribute->name }}">
                                                 <img src="{{ asset('storage/images/' . $variation->image) }}"
-                                                    alt="Color" class="img-fluid variation-image" />
+                                                    alt="Color" class="img-fluid variation-image" /> --}}
                                             </div>
                                         @endforeach
                                     </div>

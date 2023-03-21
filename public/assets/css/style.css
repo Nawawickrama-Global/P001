@@ -1089,7 +1089,7 @@ section {
   border-bottom: var(--primary-color) 1px solid;
 }
 
-._p-price-box img {
+/* ._p-price-box img {
   width: 50px;
   height: 50px;
   border-radius: 25px;
@@ -1114,7 +1114,7 @@ section {
   height: 50px;
   width: 50px;
   border: 25px;
-}
+} */
 
 
 ._p-price-box .bb {
@@ -2320,4 +2320,40 @@ textarea.form-control{
   text-decoration: underline;
   margin: 0 5px;
   font-weight: 900;
+}
+
+.radio-btn {
+	display: inline-block;
+	position: relative;
+	margin-right: 20px;
+}
+
+.radio-btn input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.radio-btn label {
+	display: inline-block;
+	width: 51px;
+	height: 51px;
+	border-radius: 50%;
+	border: 1px solid #dcdcdc;
+}
+
+.radio-btn input[type="radio"]:checked + label {
+	border-color: green;
+}
+
+.radio-btn img {
+	display: block;
+	margin: 0 auto;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+}
+
+.radio-btn input[type="radio"]:checked + label img {
+	box-shadow: 0 0 0 2px green;
 }
