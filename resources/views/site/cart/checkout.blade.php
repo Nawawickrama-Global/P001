@@ -50,15 +50,23 @@
       </div>
       <div class="col-lg-6">
         <div class="form-section mt-3">
-          <p>Payment Method</p>
+          <p>Shiping Method</p>
           <form action="">
-            <div class="payment-btn">
-              <input type="radio" id="radio1" name="radio-group1">
-              <label for="radio1"><img src="/assets/images/payments/paypal.png"></label>
-            </div>
-            <div class="payment-btn">
-              <input type="radio" id="radio2" name="radio-group2">
-              <label for="radio2"><img src="/assets/images/payments/paypal.png"></label>
+            <div class="shiping-btn">
+              <center>
+                <input type="radio" id="radio1" name="radio-group1">
+                <label for="radio1">
+                  <span class="shiping-text">Uber</span>
+                </label>
+                <input type="radio" id="radio2" name="radio-group1">
+                <label for="radio1">
+                  <span class="shiping-text">Uber</span>
+                </label>
+                <input type="radio" id="radio3" name="radio-group1">
+                <label for="radio1">
+                  <span class="shiping-text">Uber</span>
+                </label>
+              </center>
             </div>
           </form>
 
