@@ -75,28 +75,24 @@
                                 @foreach ($product->productAttr as $productAttr)
                                     <div>
                                         <p><strong>{{ $productAttr->attribute->name }} : </strong> <span
-                                            class="variations"></span></p>
-                                    <div class="row">
-                                        @foreach ($productAttr->attribute->variation as $variation)
+                                                class="variations"></span></p>
+                                        <div class="row">
                                             <div class="col-lg-12 mt-2">
-                                                <div class="radio-btn">
-                                                    <input type="radio" id="radio1" name="radio-group">
-                                                    <label for="radio1"><img src="https://picsum.photos/200"></label>
-                                                </div>
-                                                <div class="radio-btn">
-                                                    <input type="radio" id="radio2" name="radio-group">
-                                                    <label for="radio2"><img src="https://picsum.photos/200"></label>
-                                                </div>
-                                            
-{{--                                                   
-                                                <input type="radio" class="variation" data-name="{{ $variation->name }}" data-percentage="{{ $variation->percentage }}"
-                                                    value="{{ $variation->variation_id }}"
-                                                    name="{{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'faux_synthetic' : $productAttr->attribute->name }}">
-                                                <img src="{{ asset('storage/images/' . $variation->image) }}"
-                                                    alt="Color" class="img-fluid variation-image" /> --}}
+                                                @foreach ($productAttr->attribute->variation as $variation)
+                                                    <div class="radio-btn">
+                                                        <input type="radio" class="variation"
+                                                            id="{{ $variation->variation_id }}"
+                                                            data-name="{{ $variation->name }}"
+                                                            data-percentage="{{ $variation->percentage }}"
+                                                            value="{{ $variation->variation_id }}"
+                                                            name="{{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'faux_synthetic' : $productAttr->attribute->name }}">
+                                                        <label for="{{ $variation->variation_id }}"><img
+                                                                src="{{ asset('storage/images/' . $variation->image) }}"
+                                                                alt="Color" /> </label>
+                                                    </div>
+                                                @endforeach
                                             </div>
-                                        @endforeach
-                                    </div>
+                                        </div>
                                     </div>
                                 @endforeach
 
@@ -277,7 +273,7 @@
         });
 
         $('.variation').on('change', function() {
-            $(this).parent().parent().parent().find('.variations').html($(this).data('name'));
+            $(this).parent().parent().parent().parent().find('.variations').html($(this).data('name'));
             updatePrice();
         });
 
