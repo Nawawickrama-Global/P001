@@ -213,7 +213,7 @@
                                         <a href="{{ route('view-item', $product->product_id) }}">
                                             <p>{{ $product->title }}</p>
                                             <p>
-                                                <span>{{ $product->product_type == 'single' ? Config::get('app.currency_code') . $product->sale_price : Config::get('app.currency_code') . $product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $product->variant->max('sales_price') }}</span>
+                                                <span>{{ $product->variant->count() > 1 ? Config::get('app.currency_code') . $product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $product->variant->max('sales_price') : Config::get('app.currency_code') . $product->variant->min('sales_price') }}</span>
                                             </p>
                                         </a>
                                     </div>

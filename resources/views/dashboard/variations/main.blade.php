@@ -25,6 +25,7 @@
         <form action="{{ route('create-variation') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" id="id">
+            <input type="hidden" name="attribute_id" value="{{ $attribute_id }}">
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="">Attribute :</label>

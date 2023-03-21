@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="member-info">
                                     <h4>{{ $product->title }}</h4>
-                                    <span>{{ $product->product_type == 'single' ? Config::get('app.currency_code').$product->sale_price : Config::get('app.currency_code').$product->variant->min('sales_price').' - '.Config::get('app.currency_code').$product->variant->max('sales_price') }}</span>
+                                    <span>{{ $product->variant->count() > 1 ? Config::get('app.currency_code') . $product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $product->variant->max('sales_price') : Config::get('app.currency_code') . $product->variant->min('sales_price') }}</span>
                                 </div>
                             </div>
                         </div>

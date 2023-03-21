@@ -10,6 +10,7 @@ class Variation extends Model
     use HasFactory;
     protected $primaryKey = 'variation_id';
     protected $fillable = [
+        'attribute_id',
         'name',
         'percentage',
         'image'

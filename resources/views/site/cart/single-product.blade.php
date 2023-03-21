@@ -12,15 +12,9 @@
                                     alt="Image 1" />
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('storage/images/' . $product->feature_image) }}" class="d-block w-100"
+                                <img src="{{ asset('storage/images/' . $product->product_image) }}" class="d-block w-100"
                                     alt="variant" />
                             </div>
-                            @foreach ($product->variant as $variant)
-                                <div class="carousel-item">
-                                    <img src="{{ asset('storage/images/' . $variant->image) }}" class="d-block w-100"
-                                        alt="variant" />
-                                </div>
-                            @endforeach
                         </div>
                         <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -33,11 +27,11 @@
                 <div class="col-lg-1">
                     <div id="thumbnailCarousel">
                         <div class="overflow-auto thumbnailClass">
-                            @foreach ($product->variant as $variant)
+                            {{-- @foreach ($product->variant as $variant)
                                 <div class="thumbnail" data-target="#productCarousel" data-slide-to="0">
                                     <img src="{{ asset('storage/images/' . $variant->image) }}" class="d-block w-100" />
                                 </div>
-                            @endforeach
+                            @endforeach --}}
                         </div>
                     </div>
                 </div>
@@ -66,27 +60,32 @@
                                 <p><strong>Size : </strong> <span id="selector"></span></p>
                                 <div class="row">
                                         <div class="col-lg-2 mt-2">
-                                            <select class="form-control" id="exampleFormControlSelect1" style="width: unset !important">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>adooooo</option>
+                                            <select class="form-control" id="size" style="width: unset !important">
+                                                <option value="" selected disabled>Select Size</option>
+                                                @foreach ($product->variant as $variant)
+                                                <option data-price="{{ $variant->sales_price }}" value="{{ $product->variant_id }}">{{ $variant->size }}</option>
+                                                @endforeach
                                               </select>                                          
                                         </div>
                                 </div>
                             </div>
 
                             <div class="color bb pb-3 mt-5">
-                                <p><strong>Finishes : </strong> <span id="variations"></span></p>
+                                @foreach ($product->productAttr as $productAttr)
+                                <p><strong>Finishes : </strong> <span id="variations">{{ $productAttr->attribute->name }}</span></p>
                                 <div class="row">
-                                        <div class="col-lg-2 mt-2">
-                                            <button class="variation" >
-                                                <img src="https://picsum.photos/200/300" alt="Color"
-                                                    class="img-fluid variation-image" />
-                                            </button>
-                                        </div>
+                                    @foreach ($productAttr->attribute->variation as $variation)
+                                    <div class="col-lg-2 mt-2">
+                                        <button class="variation" >
+                                            <img src="{{ asset('storage/images/' . $variation->image) }}" alt="Color"
+                                                class="img-fluid variation-image" />
+                                        </button>
+                                    </div>
+                                    @endforeach
+                    
                                 </div>
+                                @endforeach
+ 
                             </div>
                             <div class="_p-qty-and-cart mt-4 d-flex">
                                 <div class="_p-add-cart">
@@ -141,28 +140,12 @@
                         <!-- Tab Content -->
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="tab1">
-                                <ul>
-                                    <li>MATERIAL:</li>
-                                    <li>Brass FINISHES:</li>
-                                    <li>
-                                        Gold Plated ( Also available in Aged & Brushed Brass)
-                                    </li>
-                                    <li>DIMENSIONS: Height: 50 mm | 1,97 in</li>
-                                    <li>Length: 150 mm | 59,06 in</li>
-                                    <li>Depth: 60 mm | 23,62 in</li>
-                                    <li>WEIGHT: 392 g / 0,86 Lbs</li>
-                                </ul>
+                                {{ $product->short_description }}
                             </div>
                             <!-- End Tab 1 Content -->
 
                             <div class="tab-pane fade show" id="tab2">
-                                <div class="mx-5">
-                                    <p>
-                                        Click 
-                                        <span class="sheet-link">here</span> to Download product
-
-                                    </p>
-                                </div>
+                                {{ $product->product_sheet }}
                             </div>
                             <!-- End Tab 2 Content -->
 
@@ -191,7 +174,12 @@
                 
                                     </div>
                                 </div>
-                                
+                            </div>
+                            <div class="tab-pane fade show" id="tab4">
+                                {{ $product->long_description }}
+                            </div>
+                            <div class="tab-pane fade show" id="tab5">
+                                {{ $product->clean_and_care }}
                             </div>
                             <!-- End Tab 3 Content -->
                         </div>
@@ -263,6 +251,16 @@
         let productId = "{{ $product->product_id }}";
         let productType = "{{ $product->product_type }}";
         let variantId = null;
+        let price = null;
+
+        $('#size').on('change', function(){    
+            updatePrice();
+        });
+
+        function updatePrice(){
+            price = $('#size').find(':selected').data('price');
+            $('#price').html('{{ Config::get('app.currency_code') }}' + price);
+        }
 
         $('.variation').click(function(e) {
             let price = $(this).data('price');

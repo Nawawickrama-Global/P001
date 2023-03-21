@@ -15,6 +15,7 @@ class CreateVariationsTable extends Migration
     {
         Schema::create('variations', function (Blueprint $table) {
             $table->id('variation_id');
+            $table->bigInteger('attribute_id');
             $table->string('name');
             $table->float('percentage');
             $table->string('image');

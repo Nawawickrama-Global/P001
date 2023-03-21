@@ -33,6 +33,10 @@ class Product extends Model
         return $this->hasMany(ProductVariation::class, 'product_id');
     }
 
+    public function productAttr(): HasMany{
+        return $this->hasMany(ProductAttribute::class, 'product_id');
+    }
+
     public function category(): HasOne{
         return $this->hasOne(SubCategory::class, 'sub_category_id', 'sub_category_id');
     }
