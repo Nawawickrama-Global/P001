@@ -42,4 +42,14 @@ class CartController extends Controller
         }
         return response()->json(['icon' => 'success', 'title' => 'Added to the Cart']);
     }
+
+    public function removeFromCart(Request $request)
+    {
+        try {
+            Cart::where('cart_id', $request->id)->where('user_id', Auth::user()->id)->first()->delete();
+        } catch (\Throwable $th) {
+            return response()->json(['status' => false]);
+        }
+        return response()->json(['status' => true]);
+    }
 }

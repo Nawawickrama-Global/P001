@@ -69,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
     // Cart
     Route::post('/add-to-cart', [App\Http\Controllers\Site\Cart\CartController::class, 'addToCart'])->name('add-to-cart');
     Route::get('/cart', [App\Http\Controllers\Site\Cart\CartController::class, 'index'])->name('cart');
+    Route::post('/remove-cart', [App\Http\Controllers\Site\Cart\CartController::class, 'removeFromCart'])->name('remove-cart');
 });
 
 
