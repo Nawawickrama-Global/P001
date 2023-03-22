@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site\Cart;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,8 @@ class CartController extends Controller
     public function index()
     {
         $items = Cart::where('deleted_at', '=', null)->where('user_id', Auth::user()->id)->get();
-        return view('site.cart.cart', ['items' => $items]);
+        $products = Product::where('deleted_at', null)->orderBy('product_id', 'DESC')->take(50)->get();
+        return view('site.cart.cart', ['items' => $items, 'products' => $products]);
     }
 
     public function addToCart(Request $request)
