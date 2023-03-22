@@ -70,8 +70,12 @@
                 <button data-toggle="tooltip" title="Wishlist"><i class="bi bi-heart"></i></button>
                 <button data-toggle="tooltip" title="Login / Register"
                     onclick="window.location='{{ url('/login') }}';"><i class="bi bi-person-circle"></i></button>
-                <button data-toggle="tooltip" title="Cart"><i class="bi bi-bag"></i><span
-                        class="count-indicator">22</span></button>
+                    @if (Auth::check())
+                <button onclick="window.location.href='{{ route('cart') }}';" data-toggle="tooltip" title="Cart"><i class="bi bi-bag"></i><span
+                        class="count-indicator">
+                            {{ Auth::user()->wishlist->count() }}
+                    </span></button>
+                    @endif
             </div>
             <!-- .navbar -->
         </div>
