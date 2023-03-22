@@ -54,8 +54,12 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Empire Mirror</h4>
-                <span>$ 15,630</span>
+                <a href="{{ route('view-item', $wish->product->product_id) }}">
+                  <p>{{ $wish->product->title }}</p>
+                  <p>
+                      <span>{{ $wish->product->variant->count() > 1 ? Config::get('app.currency_code') . $wish->product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $wish->product->variant->max('sales_price') : Config::get('app.currency_code') . $wish->product->variant->min('sales_price') }}</span>
+                  </p>
+              </a>
               </div>
             </div>
           </div>
