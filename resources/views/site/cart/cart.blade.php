@@ -7,13 +7,8 @@
         <div class="col-lg-6 col-sm-12">
           @foreach ($items as $item)
           @php
-            if ($item->product->product_type == 'single'){
               $image = $item->product->product_image;
-              $price = $item->product->sale_price;
-            }else{
-              $image = $item->variant->image;
-              $price = $item->variant->sales_price;
-            }
+              $price = $item->product->variant->min('sales_price');
           @endphp
      
           <div class="card mt-3">
@@ -31,7 +26,7 @@
                     <i class="bi bi-x"></i>
                   </button>
                 </div>
-                <h4>{{ $item->product->title }}</h4>
+                <h4><a href="{{ route('view-item', $item->product->product_id) }}">{{ $item->product->title }}</a></h4>
                 <p>
                   {{ $item->product->short_description }}
                   <br />
@@ -127,132 +122,39 @@
         data-aos="fade-up"
         data-aos-delay="200"
       >
+      <div class="row product-slider swiper" data-aos="fade-up" data-aos-delay="200">
         <div class="swiper-wrapper">
-          <div class="swiper-slide col-lg-3">
-            <div class="card">
-              <div class="card-img">
-                <div class="wishlist">
-                  <button>
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill d-none"></i>
-                  </button>
+            @foreach ($products as $product)
+                <div class="swiper-slide col-lg-3">
+                    <div class="card">
+                        <div class="card-img">
+                            <div class="wishlist">
+                                <button class="wish-list-button" data-id="{{ $product->product_id }}">
+                                    {!! Auth::check() && $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? '<i class="bi bi-heart-fill"></i>' : '<i class="bi bi-heart"></i>' !!}
+                                </button>
+                            </div>
+                            <a href="{{ route('view-item', $product->product_id) }}">
+                                <img src="{{ asset('storage/images/' . $product->feature_image) }}" alt=""
+                                class="img-fluid" />
+                            </a>
+                            
+                        </div>
+                        <div class="content">
+                            <a href="{{ route('view-item', $product->product_id) }}">
+                                <p>{{ $product->title }}</p>
+                                <p>
+                                    <span>{{ $product->variant->count() > 1 ? Config::get('app.currency_code') . $product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $product->variant->max('sales_price') : Config::get('app.currency_code') . $product->variant->min('sales_price') }}</span>
+                                </p>
+                            </a>
+                        </div>
+                        
+                    </div>
                 </div>
-                <img
-                  src="/assets/img/products/product-1.png"
-                  alt=""
-                  class="img-fluid"
-                />
-              </div>
-              <div class="content">
-                <a href="#">
-                  <p>Empire Mirror</p>
-                  <p><span>$ 15,630</span></p>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- End product item -->
-
-          <div class="swiper-slide col-lg-3">
-            <div class="card">
-              <div class="card-img">
-                <div class="wishlist">
-                  <button>
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill d-none"></i>
-                  </button>
-                </div>
-                <img
-                  src="/assets/img/products/product-2.png"
-                  alt=""
-                  class="img-fluid"
-                />
-              </div>
-              <div class="content">
-                <a href="#">
-                  <p>Empire Mirror</p>
-                  <p><span>$ 15,630</span></p>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- End product item -->
-
-          <div class="swiper-slide col-lg-3">
-            <div class="card">
-              <div class="card-img">
-                <div class="wishlist">
-                  <button>
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill d-none"></i>
-                  </button>
-                </div>
-                <img
-                  src="/assets/img/products/product-3.png"
-                  alt=""
-                  class="img-fluid"
-                />
-              </div>
-              <div class="content">
-                <a href="#">
-                  <p>Empire Mirror</p>
-                  <p><span>$ 15,630</span></p>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- End product item -->
-
-          <div class="swiper-slide col-lg-3">
-            <div class="card">
-              <div class="card-img">
-                <div class="wishlist">
-                  <button>
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill d-none"></i>
-                  </button>
-                </div>
-                <img
-                  src="/assets/img/products/product-4.png"
-                  alt=""
-                  class="img-fluid"
-                />
-              </div>
-              <div class="content">
-                <a href="#">
-                  <p>Empire Mirror</p>
-                  <p><span>$ 15,630</span></p>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- End product item -->
-
-          <div class="swiper-slide col-lg-3">
-            <div class="card">
-              <div class="card-img">
-                <div class="wishlist">
-                  <button>
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill d-none"></i>
-                  </button>
-                </div>
-                <img
-                  src="/assets/img/products/product-4.png"
-                  alt=""
-                  class="img-fluid"
-                />
-              </div>
-              <div class="content">
-                <a href="#">
-                  <p>Empire Mirror</p>
-                  <p><span>$ 15,630</span></p>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- End product item -->
+            @endforeach
+            <!-- End product item -->
         </div>
+        <div class="swiper-pagination"></div>
+    </div>
         <div class="swiper-pagination"></div>
       </div>
     </div>
