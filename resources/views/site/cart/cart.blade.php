@@ -91,8 +91,8 @@
             <button
               class="green"
               type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#checkOut"
+              {{-- data-bs-toggle="modal"
+              data-bs-target="#checkOut" --}}
             >
               CHECKOUT
             </button>
@@ -260,7 +260,7 @@
   <!-- End popuar Section -->
 
   <!-- ======= Checehout Section ======= -->
-  <div
+  {{-- <div
     class="modal fade"
     id="checkOut"
     tabindex="-1"
@@ -408,7 +408,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
   <!-- End checkout Section -->
 <!-- End #main -->
 @endsection
