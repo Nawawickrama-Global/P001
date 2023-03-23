@@ -33,10 +33,12 @@
                                         {{ $item->product->short_description }}
                                         <br />
                                     </p>
-                                    <p><strong  class="amount" data-amount="{{ $price }}">{{ Config::get('app.currency_code') . $price }}</strong></p>
+                                    <p><strong>{{ Config::get('app.currency_code') . $price }}</strong></p>
                                     <p class="buttonChange">
                                         <button><i data-id="{{ $item->cart_id }}" class="bi bi-dash-square"></i></button>
-                                        <span id="cart-qty{{ $item->cart_id }}">{{ $item->qty }}</span>
+                                        <span class="amount" id="cart-qty{{ $item->cart_id }}"
+                                            data-total="{{ $price * $item->qty }}"
+                                            data-amount="{{ $price }}">{{ $item->qty }}</span>
                                         <button><i data-id="{{ $item->cart_id }}" class="bi bi-plus-square"></i></button>
                                     </p>
                                 </div>
@@ -68,6 +70,7 @@
                     <div class="form-section mt-3">
                         <h3 class="mb-3 h4">ORDER SUMMARY</h3>
                         @php
+                          $total = $subTotal;
                             if (session()->has('coupon')) {
                                 $value = session()->get('coupon')['amount'];
                                 if (session()->get('coupon')['type'] == 'fixed') {
@@ -337,6 +340,7 @@
             id = $(this).data('id');
             $this = $(this);
             submitData();
+            calculateTotal();
         });
 
         $('.bi-plus-square').click(function() {
@@ -344,6 +348,7 @@
             id = $(this).data('id');
             $this = $(this);
             submitData();
+            calculateTotal();
         });
 
         $('.bi-dash-square').click(function() {
@@ -351,7 +356,16 @@
             id = $(this).data('id');
             $this = $(this);
             submitData();
+            calculateTotal();
         });
+
+        function calculateTotal() {
+            var sum = 0;
+            $('.amount').each(function() {
+                sum += +$(this).data('total') || 0;
+            });
+            console.log(sum);
+        }
 
         function submitData() {
             $.ajax({
@@ -365,16 +379,12 @@
                 },
                 success: function(data) {
                     if (data.remove) {
-                        $this.parent().parent().parent().parent().hide();
+                        $this.parent().parent().parent().parent().remove();
                     } else if (data.qty > 0) {
                         $('#cart-qty' + id).html(data.qty);
+                        let amount = $('#cart-qty' + id).data('amount');
+                        $('#cart-qty' + id).attr('data-total', data.qty * amount);
                     }
-
-                    // var sum = 0;
-                    // $('.amount').each(function() {
-                    //     sum += +$(this).data('amount') || 0;
-                    // });
-                    // console.log(sum);
                 }
             })
         }
