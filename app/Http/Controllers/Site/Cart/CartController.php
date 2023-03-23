@@ -48,8 +48,35 @@ class CartController extends Controller
         try {
             Cart::where('cart_id', $request->id)->where('user_id', Auth::user()->id)->first()->delete();
         } catch (\Throwable $th) {
-            return response()->json(['status' => false]);
+            return response()->json(['remove' => false]);
         }
-        return response()->json(['status' => true]);
+        return response()->json(['remove' => true]);
+    }
+
+    public function plusQty(Request $request)
+    {
+        try {
+            Cart::where('cart_id', $request->id)->where('user_id', Auth::user()->id)->first()->increment('qty');
+            $item = Cart::where('cart_id', $request->id)->where('user_id', Auth::user()->id)->first();
+        } catch (\Throwable $th) {
+            return response()->json(['qty' => 0]);
+        }
+
+        return response()->json(['qty' => $item->qty]);
+    }
+
+    public function minusQty(Request $request)
+    {
+        try {
+            $item = Cart::where('cart_id', $request->id)->where('user_id', Auth::user()->id)->first();
+            if($item->qty > 1){
+                Cart::where('cart_id', $request->id)->where('user_id', Auth::user()->id)->first()->decrement('qty');
+            }
+            
+        } catch (\Throwable $th) {
+            return response()->json(['qty' => 0]);
+        }
+
+        return response()->json(['qty' => $item->qty - 1]);
     }
 }

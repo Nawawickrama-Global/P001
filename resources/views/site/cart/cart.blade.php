@@ -35,9 +35,9 @@
                                     </p>
                                     <p><strong>{{ Config::get('app.currency_code') . $price }}</strong></p>
                                     <p class="buttonChange">
-                                        <button><i class="bi bi-dash-square"></i></button>
-                                        <span>{{ $item->qty }}</span>
-                                        <button><i class="bi bi-plus-square"></i></button>
+                                        <button><i data-id="{{ $item->cart_id }}" class="bi bi-dash-square"></i></button>
+                                        <span id="cart-qty{{ $item->cart_id }}">{{ $item->qty }}</span>
+                                        <button><i data-id="{{ $item->cart_id }}" class="bi bi-plus-square"></i></button>
                                     </p>
                                 </div>
                             </div>
@@ -310,24 +310,49 @@
 
 @push('scripts')
     <script>
+        let id = null;
+        let $this = null;
+        let url = null;
+
         $('.remove').click(function() {
-            product_id = $(this).data('id');
+            url = "{{ route('remove-cart') }}";
+            id = $(this).data('id');
             $this = $(this);
+            submitData();
+        });
+
+        $('.bi-plus-square').click(function() {
+            url = "{{ route('plus-qty') }}";
+            id = $(this).data('id');
+            $this = $(this);
+            submitData();
+        });
+
+        $('.bi-dash-square').click(function() {
+            url = "{{ route('minus-qty') }}";
+            id = $(this).data('id');
+            $this = $(this);
+            submitData();
+        });
+
+        function submitData() {
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
-                url: "{{ route('remove-cart') }}",
+                url: url,
                 method: "POST",
                 data: {
-                    id: product_id
+                    id: id
                 },
                 success: function(data) {
-                    if (data.status) {
-                      $this.parent().parent().parent().parent().hide();
+                    if (data.remove) {
+                        $this.parent().parent().parent().parent().hide();
+                    }else if(data.qty > 0){
+                        $('#cart-qty'+id).html(data.qty);
                     }
                 }
             })
-        });
+        }
     </script>
 @endpush

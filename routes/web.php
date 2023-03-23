@@ -70,6 +70,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/add-to-cart', [App\Http\Controllers\Site\Cart\CartController::class, 'addToCart'])->name('add-to-cart');
     Route::get('/cart', [App\Http\Controllers\Site\Cart\CartController::class, 'index'])->name('cart');
     Route::post('/remove-cart', [App\Http\Controllers\Site\Cart\CartController::class, 'removeFromCart'])->name('remove-cart');
+    Route::post('/plus-qty', [App\Http\Controllers\Site\Cart\CartController::class, 'plusQty'])->name('plus-qty');
+    Route::post('/minus-qty', [App\Http\Controllers\Site\Cart\CartController::class, 'minusQty'])->name('minus-qty');
 });
 
 
