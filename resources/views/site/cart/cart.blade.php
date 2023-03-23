@@ -12,7 +12,7 @@
                         @php
                             $image = $item->product->product_image;
                             $price = $item->product->variant->min('sales_price');
-                            $subTotal += $price;
+                            $subTotal += $price * $item->qty;
                         @endphp
 
                         <div class="card mt-3">
@@ -33,7 +33,7 @@
                                         {{ $item->product->short_description }}
                                         <br />
                                     </p>
-                                    <p><strong>{{ Config::get('app.currency_code') . $price }}</strong></p>
+                                    <p><strong  class="amount" data-amount="{{ $price }}">{{ Config::get('app.currency_code') . $price }}</strong></p>
                                     <p class="buttonChange">
                                         <button><i data-id="{{ $item->cart_id }}" class="bi bi-dash-square"></i></button>
                                         <span id="cart-qty{{ $item->cart_id }}">{{ $item->qty }}</span>
@@ -48,16 +48,16 @@
                     <div class="form-section mt-3">
                         <p>Do you have a coupon code?</p>
                         <form action="{{ route('apply-coupon') }}" method="POST">
-                          @csrf
+                            @csrf
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-lg-7">
-                                    <input type="text" id="couponCode" class="@error('couponCode') is-invalid @enderror" name="couponCode"
-                                        placeholder="Coupon code" /><br />
-                                        @error('couponCode')
-                                          <div class="invalid-feedback">
+                                    <input type="text" id="couponCode" class="@error('couponCode') is-invalid @enderror"
+                                        name="couponCode" placeholder="Coupon code" /><br />
+                                    @error('couponCode')
+                                        <div class="invalid-feedback">
                                             {{ $message }}
-                                          </div>
-                                        @enderror
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="col-lg-5">
                                     <button class="m-0">APPLY COUPON</button>
@@ -68,22 +68,23 @@
                     <div class="form-section mt-3">
                         <h3 class="mb-3 h4">ORDER SUMMARY</h3>
                         @php
-                          if(session()->has('coupon')){
-                            $value = session()->get('coupon')['amount'];
-                            if(session()->get('coupon')['type'] == 'fixed'){
-                              $total = $subTotal - $value;
-                              $couponAmount = Config::get('app.currency_code').$value;
-                            }else{
-                              $total = $subTotal - $subTotal * $value/100;
+                            if (session()->has('coupon')) {
+                                $value = session()->get('coupon')['amount'];
+                                if (session()->get('coupon')['type'] == 'fixed') {
+                                    $total = $subTotal - $value;
+                                    $couponAmount = Config::get('app.currency_code') . $value;
+                                } else {
+                                    $total = $subTotal - ($subTotal * $value) / 100;
+                                }
                             }
-                          }
                         @endphp
                         <p class="d-flex justify-content-between">
                             <span>Sub total</span> <span
                                 id="subTotal">{{ Config::get('app.currency_code') . $subTotal }}</span>
                         </p>
                         <p class="d-flex justify-content-between">
-                            <span>Coupon</span> <span id="couonCost">{{ session()->has('coupon') ? $couponAmount : '-' }}</span>
+                            <span>Coupon</span> <span
+                                id="couonCost">{{ session()->has('coupon') ? $couponAmount : '-' }}</span>
                         </p>
                         <p class="d-flex justify-content-between">
                             <span>Discount </span> <span id="discuntCost">-</span>
@@ -94,7 +95,7 @@
                         <hr />
                         <p class="d-flex justify-content-between">
                             <span><strong>Total</strong></span>
-                            <span id="deliveryCost"><strong>{{ Config::get('app.currency_code').$total }}</strong></span>
+                            <span id="deliveryCost"><strong>{{ Config::get('app.currency_code') . $total }}</strong></span>
                         </p>
                     </div>
 
@@ -365,9 +366,15 @@
                 success: function(data) {
                     if (data.remove) {
                         $this.parent().parent().parent().parent().hide();
-                    }else if(data.qty > 0){
-                        $('#cart-qty'+id).html(data.qty);
+                    } else if (data.qty > 0) {
+                        $('#cart-qty' + id).html(data.qty);
                     }
+
+                    // var sum = 0;
+                    // $('.amount').each(function() {
+                    //     sum += +$(this).data('amount') || 0;
+                    // });
+                    // console.log(sum);
                 }
             })
         }
