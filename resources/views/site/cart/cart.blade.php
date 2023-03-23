@@ -47,11 +47,17 @@
                 <div class="col-lg-6">
                     <div class="form-section mt-3">
                         <p>Do you have a coupon code?</p>
-                        <form action="/action_page.php">
+                        <form action="{{ route('apply-coupon') }}" method="POST">
+                          @csrf
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-lg-7">
-                                    <input type="text" id="couponCode" name="couponCode"
+                                    <input type="text" id="couponCode" class="@error('couponCode') is-invalid @enderror" name="couponCode"
                                         placeholder="Coupon code" /><br />
+                                        @error('couponCode')
+                                          <div class="invalid-feedback">
+                                            {{ $message }}
+                                          </div>
+                                        @enderror
                                 </div>
                                 <div class="col-lg-5">
                                     <button class="m-0">APPLY COUPON</button>
@@ -61,12 +67,23 @@
                     </div>
                     <div class="form-section mt-3">
                         <h3 class="mb-3 h4">ORDER SUMMARY</h3>
+                        @php
+                          if(session()->has('coupon')){
+                            $value = session()->get('coupon')['amount'];
+                            if(session()->get('coupon')['type'] == 'fixed'){
+                              $total = $subTotal - $value;
+                              $couponAmount = Config::get('app.currency_code').$value;
+                            }else{
+                              $total = $subTotal - $subTotal * $value/100;
+                            }
+                          }
+                        @endphp
                         <p class="d-flex justify-content-between">
                             <span>Sub total</span> <span
                                 id="subTotal">{{ Config::get('app.currency_code') . $subTotal }}</span>
                         </p>
                         <p class="d-flex justify-content-between">
-                            <span>Coupon</span> <span id="couonCost">-</span>
+                            <span>Coupon</span> <span id="couonCost">{{ session()->has('coupon') ? $couponAmount : '-' }}</span>
                         </p>
                         <p class="d-flex justify-content-between">
                             <span>Discount </span> <span id="discuntCost">-</span>
@@ -77,7 +94,7 @@
                         <hr />
                         <p class="d-flex justify-content-between">
                             <span><strong>Total</strong></span>
-                            <span id="deliveryCost"><strong>$5654</strong></span>
+                            <span id="deliveryCost"><strong>{{ Config::get('app.currency_code').$total }}</strong></span>
                         </p>
                     </div>
 

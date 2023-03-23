@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/remove-cart', [App\Http\Controllers\Site\Cart\CartController::class, 'removeFromCart'])->name('remove-cart');
     Route::post('/plus-qty', [App\Http\Controllers\Site\Cart\CartController::class, 'plusQty'])->name('plus-qty');
     Route::post('/minus-qty', [App\Http\Controllers\Site\Cart\CartController::class, 'minusQty'])->name('minus-qty');
+    Route::post('/apply-coupon', [App\Http\Controllers\Site\Cart\CartController::class, 'applyCoupon'])->name('apply-coupon');
 });
 
 
