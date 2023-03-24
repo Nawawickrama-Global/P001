@@ -56,63 +56,68 @@
                             <div class="_p-features">
                                 {{ $product->long_description }}
                             </div>
-                            <div class="color bb pb-3 mt-5">
-                                <p><strong>Size : </strong> <span id="selector"></span></p>
-                                <div class="row">
-                                    <div class="col-lg-2 mt-2">
-                                        <select class="form-control" id="size" style="width: unset !important">
-                                            <option value="" selected disabled>Select Size</option>
-                                            @foreach ($product->variant as $variant)
-                                                <option data-price="{{ $variant->sales_price }}"
-                                                    value="{{ $product->variant_id }}">{{ $variant->size }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="color bb pb-3 mt-5 d-none" id="finishes">
-                                @foreach ($product->productAttr as $productAttr)
-                                    <div>
-                                        <p><strong>{{ $productAttr->attribute->name }} : </strong> <span
-                                                class="variations"></span></p>
-                                        <div class="row">
-                                            <div class="col-lg-12 mt-2">
-                                                @foreach ($productAttr->attribute->variation as $variation)
-                                                    <div class="radio-btn">
-                                                        <input type="radio" class="variation"
-                                                            id="{{ $variation->variation_id }}"
-                                                            data-name="{{ $variation->name }}"
-                                                            data-percentage="{{ $variation->percentage }}"
-                                                            value="{{ $variation->variation_id }}"
-                                                            name="{{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'faux_synthetic' : $productAttr->attribute->name }}">
-                                                        <label for="{{ $variation->variation_id }}"><img
-                                                                src="{{ asset('storage/images/' . $variation->image) }}"
-                                                                alt="Color" /> </label>
-                                                    </div>
+                            <form action="{{ route('checkout') }}" method="get">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                                <div class="color bb pb-3 mt-5">
+                                    <p><strong>Size : </strong> <span id="selector"></span></p>
+                                    <div class="row">
+                                        <div class="col-lg-2 mt-2">
+                                            <select class="form-control" name="size" id="size" style="width: unset !important">
+                                                <option value="" selected disabled>Select Size</option>
+                                                @foreach ($product->variant as $variant)
+                                                    <option data-price="{{ $variant->sales_price }}"
+                                                        value="{{ $variant->variant_id }}">{{ $variant->size }}</option>
                                                 @endforeach
-                                            </div>
+                                            </select>
                                         </div>
                                     </div>
-                                @endforeach
-
-                            </div>
-                            <div class="_p-qty-and-cart mt-4 d-flex">
-                                <div class="_p-add-cart">
-                                    <div class="_p-qty">
-                                        <span>Qty:</span>
-
-                                        <input type="number" class="qty" name="qty" id="number" value="1" />
-                                    </div>
                                 </div>
-                                <button class="btn btn-buy" tabindex="0">
-                                    <i class="fa fa-shopping-cart"></i> Buy Now
-                                </button>
-                                <button class="btn btn-cart" id="add-to-cart" tabindex="0"
-                                    style="border: 2px solid #ba9739">
-                                    <i class="fa fa-shopping-cart"></i> Add to Cart
-                                </button>
-                            </div>
+
+                                <div class="color bb pb-3 mt-5 d-none" id="finishes">
+                                    @foreach ($product->productAttr as $productAttr)
+                                        <div>
+                                            <p><strong>{{ $productAttr->attribute->name }} : </strong> <span
+                                                    class="variations"></span></p>
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-2">
+                                                    @foreach ($productAttr->attribute->variation as $variation)
+                                                        <div class="radio-btn">
+                                                            <input type="radio" required class="variation"
+                                                                id="{{ $variation->variation_id }}"
+                                                                data-name="{{ $variation->name }}"
+                                                                data-percentage="{{ $variation->percentage }}"
+                                                                value="{{ $variation->variation_id }}"
+                                                                name="{{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'variation_id' : $productAttr->attribute->name }}">
+                                                            <label for="{{ $variation->variation_id }}"><img
+                                                                    src="{{ asset('storage/images/' . $variation->image) }}"
+                                                                    alt="Color" /> </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                </div>
+                                <div class="_p-qty-and-cart mt-4 d-flex">
+                                    <div class="_p-add-cart">
+                                        <div class="_p-qty">
+                                            <span>Qty:</span>
+
+                                            <input type="number" class="qty" name="qty" id="number"
+                                                value="1" />
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-buy" tabindex="0">
+                                        <i class="fa fa-shopping-cart"></i> Buy Now
+                                    </button>
+                                    <button class="btn btn-cart" id="add-to-cart" tabindex="0"
+                                        style="border: 2px solid #ba9739">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

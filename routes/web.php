@@ -73,6 +73,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/plus-qty', [App\Http\Controllers\Site\Cart\CartController::class, 'plusQty'])->name('plus-qty');
     Route::post('/minus-qty', [App\Http\Controllers\Site\Cart\CartController::class, 'minusQty'])->name('minus-qty');
     Route::post('/apply-coupon', [App\Http\Controllers\Site\Cart\CartController::class, 'applyCoupon'])->name('apply-coupon');
+    Route::get('/checkout', [App\Http\Controllers\Site\Checkout\CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/place-order', [App\Http\Controllers\Site\Checkout\CheckoutController::class, 'placeOrder'])->name('place-order');
+
 });
 
 
@@ -97,7 +100,7 @@ Route::view('/add-cart', 'site.cart.product-add-cart');
 Route::view('/why-us', 'site.why-us.main');
 Route::view('/about-us', 'site.contact.about');
 Route::view('/partners', 'site.partner.main');
-Route::view('/checkout', 'site.cart.checkout');
+// Route::view('/checkout', 'site.cart.checkout');
 
 //order
 Route::view('/order-history', 'dashboard.order.view');
