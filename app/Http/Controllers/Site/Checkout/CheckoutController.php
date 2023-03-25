@@ -19,6 +19,7 @@ class CheckoutController extends Controller
     public function index(Request $request)
     {
         $product_id = $request->product_id;
+        $total_price = $request->total_price;
         $product = Product::find($product_id);
         $variations = [];
         if ($request->has('variation_id')) {
@@ -36,9 +37,9 @@ class CheckoutController extends Controller
         $size = $request->size;
         $qty = $request->qty;
         $variant_id = $request->variation_id;
-        session()->put('order', ['product_id' => $product_id, 'qty' => $qty, 'size' => $size, 'variant_id' => $variant_id, 'variations' => $variations]);
+        session()->put('order', ['product_id' => $product_id, 'qty' => $qty, 'size' => $size, 'variant_id' => $variant_id, 'variations' => $variations, 'total_price' => $total_price]);
         $shippingMethods = ShippingMethod::get();
-        return view('site.cart.checkout', ['shippingMethods' => $shippingMethods]);
+        return view('site.cart.checkout', ['shippingMethods' => $shippingMethods, 'total_price' => $total_price]);
     }
 
     public function placeOrder(Request $request)
@@ -59,7 +60,8 @@ class CheckoutController extends Controller
             $orderData = session()->get('order');
             $variations = $orderData['variations'];
             $size = ProductVariation::find($orderData['size']);
-            $totalAmount = $size->sales_price;
+            $shippingCost = ShippingMethod::find($request->shipping_method_id)->price;
+            $totalAmount = $size->sales_price + $shippingCost ;
 
             DB::transaction(function () use ($request, $totalAmount, $orderData, $variations) {
                 $order = Order::create(['user_id' => Auth::user()->id, 'total_amount' => $totalAmount] + $request->all());

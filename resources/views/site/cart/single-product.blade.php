@@ -56,7 +56,7 @@
                             <div class="_p-features">
                                 {{ $product->long_description }}
                             </div>
-                            <form action="{{ route('checkout') }}" method="get">
+                            <form action="{{ route('checkout') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                                 <div class="color bb pb-3 mt-5">
@@ -109,6 +109,7 @@
                                                 value="1" />
                                         </div>
                                     </div>
+                                    <input type="hidden" name="total_price" id="total_price">
                                     <button class="btn btn-buy" tabindex="0">
                                         <i class="fa fa-shopping-cart"></i> Buy Now
                                     </button>
@@ -289,6 +290,7 @@
                 price = price + percentage * price / 100;
             });
             $('#price').html('{{ Config::get('app.currency_code') }}' + price.toFixed(2));
+            $('#total_price').val(price);
         }
 
         $('.variation').click(function(e) {

@@ -104,9 +104,9 @@
                             <form action="">
                                 <div class="shiping-btn">
                                     <center>
-                                        @foreach ($shippingMethods as $shippingMethod)
-                                        <input type="radio" value="{{ $shippingMethod->shipping_method_id }}" id="radio1" class="@error('shipping_method_id') is-invalid @enderror" name="shipping_method_id">
-                                        <label for="radio1">
+                                        @foreach ($shippingMethods as $index => $shippingMethod)
+                                        <input type="radio" data-price="{{ $shippingMethod->price }}" value="{{ $shippingMethod->shipping_method_id }}" id="radio{{$index}}" class="shiping @error('shipping_method_id') is-invalid @enderror" name="shipping_method_id">
+                                        <label for="radio{{$index}}">
                                             <span class="shiping-text">{{ $shippingMethod->name }}</span>
                                             <small>{{ $shippingMethod->description }}</small>
                                         </label>
@@ -125,7 +125,7 @@
                         <div class="form-section mt-3">
                             <h3 class="mb-3 h4">ORDER SUMMARY</h3>
                             <p class="d-flex justify-content-between">
-                                <span>Sub total</span> <span id="subTotal">$5654</span>
+                                <span>Sub total</span> <span id="subTotal">{{ Config::get('app.currency_code').$total_price }}</span>
                             </p>
                             <p class="d-flex justify-content-between">
                                 <span>Coupon</span> <span id="couonCost">-</span>
@@ -139,7 +139,7 @@
                             <hr />
                             <p class="d-flex justify-content-between">
                                 <span><strong>Total</strong></span>
-                                <span id="deliveryCost"><strong>$5654</strong></span>
+                                <span><strong id="total">{{ Config::get('app.currency_code').$total_price }}</strong></span>
                             </p>
                         </div>
 
@@ -286,3 +286,18 @@
     <!-- End checkout Section -->
     <!-- End #main -->
 @endsection
+@push('scripts')
+    <script>
+        $('.shiping').click(function(){
+            let shippingPrice = $(this).data('price');
+            let subTotal = {{ $total_price }};
+            let Total = subTotal + shippingPrice;
+            if(shippingPrice == 0){
+                $('#deliveryCost').html('Free');
+            }else{
+                $('#deliveryCost').html("{{Config::get('app.currency_code')}}" + shippingPrice);
+            }
+            $('#total').text("{{Config::get('app.currency_code')}}" + Total);
+        });
+    </script>
+@endpush
