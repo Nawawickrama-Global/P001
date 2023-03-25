@@ -72,7 +72,7 @@ class CheckoutController extends Controller
                     $totalAmount += $totalAmount*$variation->percentage / 100;
                 }
                 $order->update(['total_amount' => $totalAmount]);
-                toast('Order placed'.$totalAmount, 'success');
+                toast('Order placed', 'success');
             });
         } catch (\Throwable $th) {
             toast($th->getMessage(), 'error');

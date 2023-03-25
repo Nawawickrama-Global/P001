@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ShippingMethod extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'shipping_method_id';
+    protected $fillable = [
+        'name',
+        'description',
+        'price'
+    ];
 }

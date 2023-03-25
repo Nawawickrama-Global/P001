@@ -56,7 +56,7 @@
                             <div class="_p-features">
                                 {{ $product->long_description }}
                             </div>
-                            <form action="{{ route('checkout') }}" method="post">
+                            <form action="{{ route('checkout') }}" method="get">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                                 <div class="color bb pb-3 mt-5">
