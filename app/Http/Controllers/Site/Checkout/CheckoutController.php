@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\OrderVariation;
 use App\Models\Product;
 use App\Models\ProductVariation;
+use App\Models\ShippingMethod;
 use App\Models\Variation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,8 @@ class CheckoutController extends Controller
         $qty = $request->qty;
         $variant_id = $request->variation_id;
         session()->put('order', ['product_id' => $product_id, 'qty' => $qty, 'size' => $size, 'variant_id' => $variant_id, 'variations' => $variations]);
-        return view('site.cart.checkout');
+        $shippingMethods = ShippingMethod::get();
+        return view('site.cart.checkout', ['shippingMethods' => $shippingMethods]);
     }
 
     public function placeOrder(Request $request)

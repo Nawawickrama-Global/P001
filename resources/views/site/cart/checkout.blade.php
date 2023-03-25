@@ -104,18 +104,14 @@
                             <form action="">
                                 <div class="shiping-btn">
                                     <center>
-                                        <input type="radio" value="1" id="radio1" class="@error('shipping_method_id') is-invalid @enderror" name="shipping_method_id">
+                                        @foreach ($shippingMethods as $shippingMethod)
+                                        <input type="radio" value="{{ $shippingMethod->shipping_method_id }}" id="radio1" class="@error('shipping_method_id') is-invalid @enderror" name="shipping_method_id">
                                         <label for="radio1">
-                                            <span class="shiping-text">Uber</span>
+                                            <span class="shiping-text">{{ $shippingMethod->name }}</span>
+                                            <small>{{ $shippingMethod->description }}</small>
                                         </label>
-                                        <input type="radio" value="2" id="radio2" name="shipping_method_id">
-                                        <label for="radio2">
-                                            <span class="shiping-text">Uber</span>
-                                        </label>
-                                        <input type="radio" value="3" id="radio3" name="shipping_method_id">
-                                        <label for="radio3">
-                                            <span class="shiping-text">Uber</span>
-                                        </label>
+                                        @endforeach
+ 
                                         @error('shipping_method_id')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
