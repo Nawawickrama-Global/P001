@@ -50,6 +50,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($orders as $order)
+                                    <tr>
+                                        <td>{{ $order->order_id }}</td>
+                                        <td>{{ $order->user->first_name.' '.$order->user->last_name }}</td>
+                                        <td>{{ $order->address }}</td>
+                                        <td>{{ $order->contact_number }}</td>
+                                        <td></td>
+                                        <td>{{ $order->status }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

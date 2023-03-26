@@ -60,6 +60,9 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/customer', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'index'])->name('customer');
     Route::get('/delete-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'delete'])->name('delete-customer');
     Route::get('/edit-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'edit'])->name('edit-customer');
+
+    // Order
+    Route::get('/order-history', [App\Http\Controllers\Dashboard\Order\OrderController::class, 'index'])->name('edit-customer');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -103,4 +106,4 @@ Route::view('/partners', 'site.partner.main');
 // Route::view('/checkout', 'site.cart.checkout');
 
 //order
-Route::view('/order-history', 'dashboard.order.view');
+
