@@ -56,7 +56,7 @@
                             <div class="_p-features">
                                 {{ $product->long_description }}
                             </div>
-                            <form action="{{ route('checkout') }}" method="get">
+                            <form action="{{ route('checkout') }}" method="get" id="product-form">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                                 <div class="color bb pb-3 mt-5">
@@ -113,7 +113,7 @@
                                     <button class="btn btn-buy" tabindex="0">
                                         <i class="fa fa-shopping-cart"></i> Buy Now
                                     </button>
-                                    <button class="btn btn-cart" id="add-to-cart" tabindex="0"
+                                    <button type="button" class="btn btn-cart" id="add-to-cart" tabindex="0"
                                         style="border: 2px solid #ba9739">
                                         <i class="fa fa-shopping-cart"></i> Add to Cart
                                     </button>
@@ -307,17 +307,14 @@
                 message('warning', 'Please select a variant');
             } else {
                 let qty = $('.qty').val();
+                let form=$("#product-form");
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
                     url: "{{ route('add-to-cart') }}",
                     method: "POST",
-                    data: {
-                        productId: productId,
-                        variantId: variantId,
-                        qty: qty
-                    },
+                    data: form.serialize(),
                     success: function(data) {
                         message(data.icon, data.title);
                     },

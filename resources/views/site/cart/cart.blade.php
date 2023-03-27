@@ -11,7 +11,11 @@
                     @foreach ($items as $item)
                         @php
                             $image = $item->product->product_image;
-                            $price = $item->product->variant->min('sales_price');
+                            $price = 0;
+                            $price += $item->variant->sales_price;
+                                foreach ($item->cartVariation as $key => $variation) {
+                                    $price += ($price * $variation->variation->percentage) / 100;
+                                }
                             $subTotal += $price * $item->qty;
                         @endphp
 
@@ -70,7 +74,7 @@
                     <div class="form-section mt-3">
                         <h3 class="mb-3 h4">ORDER SUMMARY</h3>
                         @php
-                          $total = $subTotal;
+                            $total = $subTotal;
                             if (session()->has('coupon')) {
                                 $value = session()->get('coupon')['amount'];
                                 if (session()->get('coupon')['type'] == 'fixed') {
@@ -78,6 +82,7 @@
                                     $couponAmount = Config::get('app.currency_code') . $value;
                                 } else {
                                     $total = $subTotal - ($subTotal * $value) / 100;
+                                    $couponAmount = Config::get('app.currency_code') . ($subTotal * $value) / 100;
                                 }
                             }
                         @endphp
@@ -92,9 +97,6 @@
                         <p class="d-flex justify-content-between">
                             <span>Discount </span> <span id="discuntCost">-</span>
                         </p>
-                        <p class="d-flex justify-content-between">
-                            <span>Delivery</span> <span id="deliveryCost">Free</span>
-                        </p>
                         <hr />
                         <p class="d-flex justify-content-between">
                             <span><strong>Total</strong></span>
@@ -103,7 +105,8 @@
                     </div>
 
                     <div class="btn-section mt-3 text-center">
-                        <button class="green" type="button" {{-- data-bs-toggle="modal"
+                        <button onclick="window.location.href='{{ route('checkout') }}'" class="green" type="button"
+                            {{-- data-bs-toggle="modal"
               data-bs-target="#checkOut" --}}>
                             CHECKOUT
                         </button>

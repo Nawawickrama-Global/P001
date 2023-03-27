@@ -105,13 +105,17 @@
                                 <div class="shiping-btn">
                                     <center>
                                         @foreach ($shippingMethods as $index => $shippingMethod)
-                                        <input type="radio" data-price="{{ $shippingMethod->price }}" value="{{ $shippingMethod->shipping_method_id }}" id="radio{{$index}}" class="shiping @error('shipping_method_id') is-invalid @enderror" name="shipping_method_id">
-                                        <label for="radio{{$index}}">
-                                            <span class="shiping-text">{{ $shippingMethod->name }}</span>
-                                            <small>{{ $shippingMethod->description }}</small>
-                                        </label>
+                                            <input type="radio" data-price="{{ $shippingMethod->price }}"
+                                                value="{{ $shippingMethod->shipping_method_id }}"
+                                                id="radio{{ $index }}"
+                                                class="shiping @error('shipping_method_id') is-invalid @enderror"
+                                                name="shipping_method_id">
+                                            <label for="radio{{ $index }}">
+                                                <span class="shiping-text">{{ $shippingMethod->name }}</span>
+                                                <small>{{ $shippingMethod->description }}</small>
+                                            </label>
                                         @endforeach
- 
+
                                         @error('shipping_method_id')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -122,13 +126,29 @@
                             </form>
 
                         </div>
+                        @php
+                            $total = $total_price;
+                            if (session()->has('coupon')) {
+                                $value = session()->get('coupon')['amount'];
+                                if (session()->get('coupon')['type'] == 'fixed') {
+                                    $total = $total_price - $value;
+                                    $couponAmount = Config::get('app.currency_code') . $value;
+                                    $coupon = $value;
+                                } else {
+                                    $total = $total_price - ($total_price * $value) / 100;
+                                    $couponAmount = Config::get('app.currency_code') . ($total_price * $value) / 100;
+                                    $coupon = ($total_price * $value) / 100;
+                                }
+                            }
+                        @endphp
                         <div class="form-section mt-3">
                             <h3 class="mb-3 h4">ORDER SUMMARY</h3>
                             <p class="d-flex justify-content-between">
-                                <span>Sub total</span> <span id="subTotal">{{ Config::get('app.currency_code').$total_price }}</span>
+                                <span>Sub total</span> <span
+                                    id="subTotal">{{ Config::get('app.currency_code') . $total_price }}</span>
                             </p>
                             <p class="d-flex justify-content-between">
-                                <span>Coupon</span> <span id="couonCost">-</span>
+                                <span>Coupon</span> <span id="couonCost">{{ $couponAmount }}</span>
                             </p>
                             <p class="d-flex justify-content-between">
                                 <span>Discount </span> <span id="discuntCost">-</span>
@@ -139,7 +159,8 @@
                             <hr />
                             <p class="d-flex justify-content-between">
                                 <span><strong>Total</strong></span>
-                                <span><strong id="total">{{ Config::get('app.currency_code').$total_price }}</strong></span>
+                                <span><strong
+                                        id="total">{{ Config::get('app.currency_code') . $total_price - $coupon }}</strong></span>
                             </p>
                         </div>
 
@@ -288,16 +309,17 @@
 @endsection
 @push('scripts')
     <script>
-        $('.shiping').click(function(){
+        $('.shiping').click(function() {
             let shippingPrice = $(this).data('price');
             let subTotal = {{ $total_price }};
-            let Total = subTotal + shippingPrice;
-            if(shippingPrice == 0){
+            let coupon = {{ $coupon}};
+            let Total = subTotal + shippingPrice - coupon;
+            if (shippingPrice == 0) {
                 $('#deliveryCost').html('Free');
-            }else{
-                $('#deliveryCost').html("{{Config::get('app.currency_code')}}" + shippingPrice);
+            } else {
+                $('#deliveryCost').html("{{ Config::get('app.currency_code') }}" + shippingPrice);
             }
-            $('#total').text("{{Config::get('app.currency_code')}}" + Total);
+            $('#total').text("{{ Config::get('app.currency_code') }}" + Total.toFixed(2));
         });
     </script>
 @endpush
