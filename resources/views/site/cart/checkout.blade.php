@@ -128,6 +128,8 @@
                         </div>
                         @php
                             $total = $total_price;
+                            $couponAmount = '-';
+                            $coupon = 0;
                             if (session()->has('coupon')) {
                                 $value = session()->get('coupon')['amount'];
                                 if (session()->get('coupon')['type'] == 'fixed') {

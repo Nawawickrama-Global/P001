@@ -27,7 +27,7 @@ class CheckoutController extends Controller
                 'qty' => 'required',
                 'variation_id' => 'required',
             ]);
-
+            session()->forget('coupon');
             $product_id = $request->product_id;
             $total_price = $request->total_price;
             $product = Product::find($product_id);
@@ -48,7 +48,7 @@ class CheckoutController extends Controller
             $qty = $request->qty;
             $variant_id = $request->variation_id;
             session()->put('order', ['product_id' => $product_id, 'qty' => $qty, 'size' => $size, 'variant_id' => $variant_id, 'variations' => $variations, 'total_price' => $total_price]);
-            
+            session()->put('checkoutType', 'product');
         }else{
             $cart = Cart::where('user_id', Auth::user()->id)->get();
             $total_price = 0;
@@ -60,6 +60,7 @@ class CheckoutController extends Controller
                 }
                 $total_price += $price;
             }
+            session()->put('checkoutType', $cart);
         }
 
         $shippingMethods = ShippingMethod::get();
@@ -81,23 +82,41 @@ class CheckoutController extends Controller
         ]);
 
         try {
-            $orderData = session()->get('order');
-            $variations = $orderData['variations'];
-            $size = ProductVariation::find($orderData['size']);
-            $shippingCost = ShippingMethod::find($request->shipping_method_id)->price;
-            $totalAmount = $size->sales_price + $shippingCost;
-
-            DB::transaction(function () use ($request, $totalAmount, $orderData, $variations) {
-                $order = Order::create(['user_id' => Auth::user()->id, 'total_amount' => $totalAmount] + $request->all());
-                $orderItem = OrderItem::create(['order_id' => $order->order_id, 'product_id' => $orderData['product_id'], 'variant_id' => $orderData['variant_id'], 'qty' => $orderData['qty']]);
-                foreach ($variations as $key => $value) {
-                    $variation = Variation::find($value['variation_id']);
-                    OrderVariation::create(['order_item_id' => $orderItem->order_item_id, 'variation_id' => $value['variation_id']]);
-                    $totalAmount += $totalAmount * $variation->percentage / 100;
+            if(session()->get('checkoutType') != 'product'){
+                $carts = session()->get('checkoutType');
+                $totalAmount = 0;
+                $order = Order::create(['user_id' => Auth::user()->id, 'total_amount' => 0] + $request->all());
+                foreach ($carts as $key => $cart) {
+                    $totalAmount += $cart->variant->sales_price;
+                    $orderItem = OrderItem::create(['order_id' => $order->order_id, 'product_id' => $cart->product_id, 'variant_id' => $cart->variant_id, 'qty' => $cart->qty]);
+                    foreach ($cart->cartVariation as $key => $variations) {
+                        $variation = Variation::find($variations->variation_id);
+                        OrderVariation::create(['order_item_id' => $orderItem->order_item_id, 'variation_id' => $variations->variation_id]);
+                        $totalAmount += $totalAmount * $variation->percentage / 100;
+                    }
                 }
                 $order->update(['total_amount' => $totalAmount]);
                 toast('Order placed', 'success');
-            });
+            }else{
+                $orderData = session()->get('order');
+                $variations = $orderData['variations'];
+                $size = ProductVariation::find($orderData['size']);
+                $shippingCost = ShippingMethod::find($request->shipping_method_id)->price;
+                $totalAmount = $size->sales_price + $shippingCost;
+    
+                DB::transaction(function () use ($request, $totalAmount, $orderData, $variations) {
+                    $order = Order::create(['user_id' => Auth::user()->id, 'total_amount' => $totalAmount] + $request->all());
+                    $orderItem = OrderItem::create(['order_id' => $order->order_id, 'product_id' => $orderData['product_id'], 'variant_id' => $orderData['variant_id'], 'qty' => $orderData['qty']]);
+                    foreach ($variations as $key => $value) {
+                        $variation = Variation::find($value['variation_id']);
+                        OrderVariation::create(['order_item_id' => $orderItem->order_item_id, 'variation_id' => $value['variation_id']]);
+                        $totalAmount += $totalAmount * $variation->percentage / 100;
+                    }
+                    $order->update(['total_amount' => $totalAmount]);
+                    toast('Order placed', 'success');
+                });
+            }
+
         } catch (\Throwable $th) {
             toast($th->getMessage(), 'error');
         }

@@ -62,7 +62,8 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/edit-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'edit'])->name('edit-customer');
 
     // Order
-    Route::get('/order-history', [App\Http\Controllers\Dashboard\Order\OrderController::class, 'index'])->name('edit-customer');
+    Route::get('/order-history', [App\Http\Controllers\Dashboard\Order\OrderController::class, 'index'])->name('order-history');
+    Route::get('/get-order/{id}', [App\Http\Controllers\Dashboard\Order\OrderController::class, 'getOrder'])->name('get-order');
 });
 
 Route::middleware(['auth'])->group(function () {
