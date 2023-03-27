@@ -163,11 +163,17 @@
             <a href="index.html" class="getstarted">AURA OF INT</a>
           </div>
           <div class="icons">
-            <button><i class="bi bi-search"></i></button>
-            <button><i class="bi bi-bag"></i></button>
-            <button><i class="bi bi-heart"></i></button>
-            <button><i class="bi bi-person-circle"></i></button>
-          </div>
+            <button data-toggle="tooltip" class="search" title="Search"><i class="bi bi-search"></i></button>
+            <button data-toggle="tooltip" title="Wishlist"><i class="bi bi-heart"></i></button>
+            <button data-toggle="tooltip" title="Login / Register"
+                onclick="window.location='{{ url('/login') }}';"><i class="bi bi-person-circle"></i></button>
+                @if (Auth::check())
+            <button onclick="window.location.href='{{ route('cart') }}';" data-toggle="tooltip" title="Cart"><i class="bi bi-bag"></i><span
+                    class="count-indicator">
+                        {{ Auth::user()->cart->count() }}
+                </span></button>
+                @endif
+        </div>
           <!-- .navbar -->
         </div>
       </header>
