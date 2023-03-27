@@ -1,4 +1,4 @@
-@extends('site.layout.auth')
+@extends('site.layout.main-2')
 @section('content')
 <!-- ======= product Section ======= -->
 <section class="product-single">

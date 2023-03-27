@@ -35,7 +35,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Title</label>
-                                <input value="{{ old('title') }} " value="{{ old('title') }} " id="phone" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="email" autofocus>
+                                <input value="{{ old('title') }} " value="{{ old('title') }} " id="text" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="email" autofocus>
                                 @error('title')
                                 <div class="invalid-feedback">
                                     {{ $message }}

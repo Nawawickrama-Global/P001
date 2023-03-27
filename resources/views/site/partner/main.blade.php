@@ -1,4 +1,4 @@
-@extends('site.layout.auth')
+@extends('site.layout.main')
 @section('content')
     <!-- ======= Hero Section ======= -->
     <section id="hero">

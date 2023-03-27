@@ -34,7 +34,7 @@
 <body>
     @include('sweetalert::alert')
     <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center">
+    <header id="header-2" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
           <nav id="navbar" class="navbar">
             <ul>
