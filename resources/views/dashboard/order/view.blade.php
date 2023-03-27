@@ -53,11 +53,14 @@
                                 @foreach ($orders as $order)
                                     <tr>
                                         <td>{{ $order->order_id }}</td>
-                                        <td>{{ $order->user->first_name.' '.$order->user->last_name }}</td>
+                                        <td>{{ $order->user->first_name . ' ' . $order->user->last_name }}</td>
                                         <td>{{ $order->address }}</td>
                                         <td>{{ $order->contact_number }}</td>
-                                        <td></td>
+                                        <td>{{ $order->total_amount }}</td>
                                         <td>{{ $order->status }}</td>
+                                        <td>
+                                            <button data-id="{{ $order->order_id }}" class="btn btn-info btn-sm view">View</button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -67,4 +70,47 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Items</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-striped table-bordered datatables">
+                <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Product Title</th>
+                    <th scope="col">Sku</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Variations</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Price</th>
+                </thead>
+                <tbody id="items">
+
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.view').click(function() {
+            $.get("/admin/get-order/" + $(this).data('id'), function(data) {
+                $('#items').html(data.table);
+                $('#modal').modal('show');
+            });
+        });
+    </script>
+@endpush
