@@ -110,11 +110,11 @@
                             <br />
                             <p><span>CONNECT ON SOCIALS</span></p>
                             <div class="social-links mt-3">
-                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                <a href="#" class="google-plus"><i class="bi bi-tiktok"></i></a>
-                                <a href="#" class="linkedin"><i class="bi bi-pinterest"></i></a>
-                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="facebook" title="View on Facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="#" class="instagram" title="View on Instagram"><i class="bx bxl-instagram"></i></a>
+                                <a href="#" class="google-plus" title="View on Tik Tok"><i class="bi bi-tiktok"></i></a>
+                                <a href="#" class="linkedin" title="View on Pinterest"><i class="bi bi-pinterest"></i></a>
+                                <a href="#" class="linkedin" title="View on LinkedIn"><i class="bi bi-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
