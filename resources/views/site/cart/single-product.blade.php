@@ -1,5 +1,8 @@
 @extends('site.layout.main-2')
 @section('content')
+@php
+$images = explode(',', $product->product_image);
+@endphp
     <!-- ======= product Section ======= -->
     <section class="product-single">
         <div class="container">
@@ -11,10 +14,14 @@
                                 <img src="{{ asset('storage/images/' . $product->feature_image) }}" class="d-block w-100"
                                     alt="Image 1" />
                             </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('storage/images/' . $product->product_image) }}" class="d-block w-100"
-                                    alt="variant" />
-                            </div>
+                            @foreach ($images as $image)
+                                @if($image != '')
+                                <div class="carousel-item">
+                                    <img src="{{ asset('storage/images/' .$image) }}" class="d-block w-100"
+                                        alt="variant" />
+                                </div>
+                                @endif
+                            @endforeach
                         </div>
                         <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -27,11 +34,14 @@
                 <div class="col-lg-1">
                     <div id="thumbnailCarousel">
                         <div class="overflow-auto thumbnailClass">
-                            {{-- @foreach ($product->variant as $variant)
+                         
+                            @foreach ($images as $image)
+                                @if($image != '')
                                 <div class="thumbnail" data-target="#productCarousel" data-slide-to="0">
-                                    <img src="{{ asset('storage/images/' . $variant->image) }}" class="d-block w-100" />
+                                    <img src="{{ asset('storage/images/' . $image) }}" class="d-block w-100" />
                                 </div>
-                            @endforeach --}}
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>

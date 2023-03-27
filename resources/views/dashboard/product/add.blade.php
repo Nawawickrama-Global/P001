@@ -67,6 +67,7 @@
                                 </div>
                                 @enderror
                             </div>
+                    
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Specifications</label>
                                 <textarea name="short_description" class="form-control @error('short_description') is-invalid @enderror" id="exampleFormControlTextarea1" rows="5">{{ old('short_description') }}</textarea>
@@ -112,13 +113,14 @@
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
-                                <label for="">Product Image</label>
-                                <input value="{{ old('title') }} " type="file" name="product_img" class="dropify border @error('product_img') is-invalid @enderror" style="height: 300px" />
-                                @error('product_img')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                                <label for="">Product Images (Optional)</label>
+                                <div class="form-group">
+                                    <input type="file" name="image1"/>
+                                    <input type="file" name="image2"/>
+                                    <input type="file" name="image3"/>
+                                    <input type="file" name="image4"/>
+                                    <input type="file" name="image5"/>
                                 </div>
-                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Shipping</label>
