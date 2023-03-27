@@ -45,13 +45,7 @@
                                         Stock
                                     </th>
                                     <th>
-                                        Availale
-                                    </th>
-                                    <th>
-                                        Reguler Price
-                                    </th>
-                                    <th>
-                                        Real Price
+                                        Price
                                     </th>
                                     <th>
                                         Category
@@ -70,10 +64,16 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $product->title }}</td>
                                         <td>{{ $product->sku }}</td>
-                                        <td>{{ $product->product_type == 'single' ? $product->stock : $product->variant->first()->regular_price }}</td>
-                                        <td></td>
-                                        <td>{{ $product->product_type == 'single' ? $product->regular_price : $product->variant->first()->regular_price }}</td>
-                                        <td>{{ $product->product_type == 'single' ? $product->regular_price : $product->variant->first()->regular_price }}</td>
+                                        <td>
+                                            @foreach ($product->variant as $variant)
+                                                <span class="badge badge-danger">{{ $variant->size.': '.$variant->stock }}</span>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach ($product->variant as $variant)
+                                                <span class="badge badge-danger">{{ $variant->size.': '.Config::get('app.currency_code').$variant->sales_price }}</span>
+                                            @endforeach
+                                        </td>
                                         <td>{{ $product->category->name }}</td>
                                         <td>
                                             @if ($product->status == 'active')
