@@ -93,7 +93,7 @@
                                                     </td>
                                                     <td style="padding:0 2px ; border: 0">
                                                         {{-- edit --}}
-                                                        <button type="button" class="btn btn-success btn-sm btn-icon" title="Edit">
+                                                        <button onclick="window.location.href='{{ route('edit-product', $product->product_id) }}'" type="button" class="btn btn-success btn-sm btn-icon" title="Edit">
                                                             <i data-feather="edit"></i>
                                                         </button>
                                                     </td>

@@ -42,8 +42,10 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function () {
     // Add Product
     Route::get('/add-product', [App\Http\Controllers\Dashboard\Product\ProductController::class, 'addProduct'])->name('add-product');
     Route::post('/add-product', [App\Http\Controllers\Dashboard\Product\ProductController::class, 'addNewProduct'])->name('add-new-product');
+    Route::post('/update-product', [App\Http\Controllers\Dashboard\Product\ProductController::class, 'updateProduct'])->name('update-product');
     Route::get('/view-product', [App\Http\Controllers\Dashboard\Product\ProductController::class, 'viewProduct'])->name('view-product');
     Route::get('/delete-product/{id}', [App\Http\Controllers\Dashboard\Product\ProductController::class, 'deleteProduct'])->name('delete-product');
+    Route::get('/edit-product/{id}', [App\Http\Controllers\Dashboard\Product\ProductController::class, 'editProduct'])->name('edit-product');
 
     // Attribute
     Route::get('/attribute', [App\Http\Controllers\Dashboard\Attribute\AttributeController::class, 'index'])->name('attribute');
