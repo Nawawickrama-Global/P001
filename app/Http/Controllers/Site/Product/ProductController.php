@@ -23,13 +23,15 @@ class ProductController extends Controller
         }
 
         $products = $products->paginate(20);
-        return view('site.cart.product-list', ['products' => $products]);
+        $parentCategories = Category::where('deleted_at', '=', null)->get();
+        return view('site.cart.product-list', ['products' => $products, 'parentCategories' => $parentCategories]);
     }
 
     public function viewProduct($id)
     {
         $Product = Product::where('deleted_at', '=', null)->where('product_id', $id)->first();
         $suggestions = Product::where('deleted_at', '=', null)->where('sub_category_id', $Product->sub_category_id)->get();
-        return view('site.cart.single-product', ['product' => $Product, 'suggestions' => $suggestions]);
+        $parentCategories = Category::where('deleted_at', '=', null)->get();
+        return view('site.cart.single-product', ['product' => $Product, 'suggestions' => $suggestions, 'parentCategories' => $parentCategories]);
     }
 }

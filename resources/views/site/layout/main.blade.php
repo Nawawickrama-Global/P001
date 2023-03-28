@@ -45,70 +45,16 @@
                 <ul style="width: 1080px">
                   <div class="container">
                     <div class="row my-4">
+                      @foreach ($parentCategories as $category)
                       <div class="col-md-2">
                         <li>
-                          <p><span>DOOR HARDWARE</span></p>
+                          <p><span>{{ $category->name }}</span></p>
                         </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li>
-                          <a href="about.html" class="green-btn">Shop All</a>
-                        </li>
-                      </div>
-                      <div class="col-md-2">
-                        <li>
-                          <p><span>DOOR HARDWARE</span></p>
-                        </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                      </div>
-                      <div class="col-md-2">
-                        <li>
-                          <p><span>FURNITURE</span></p>
-                        </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                      </div>
-  
-                      <div class="col-md-2">
-                        <li>
-                          <p><span>FURNITURE</span></p>
-                        </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                      </div>
-  
-                      <div class="col-md-2">
-                        <li>
-                          <p><span>LIGHTNING</span></p>
-                        </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                      </div>
-  
-                      <div class="col-md-2">
-                        <li>
-                          <p><span>Mirror</span></p>
-                        </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                      </div>
+                        @foreach ($category->subcategory as $subcategory)
+                        <li><a href="{{ route('products.index') }}?category={{ $subcategory->name }}">{{ $subcategory->name }} </a></li>
+                        @endforeach
+                      </div>  
+                      @endforeach
                     </div>
                   </div>
                 </ul>
