@@ -39,8 +39,7 @@ class CategoryController extends Controller
             if($request->edit_category_id != '') {
                 if($request->type == 'sub'){
                     SubCategory::find($request->edit_category_id)->update($image + $request->all());
-                    // toast('Sub Category Updated', 'success');
-                    toast('Category Updated', 'success');
+                    toast('Sub Category Updated', 'success');
                 }else{
                     Category::find($request->edit_category_id)->update($image + $request->all());
                     toast('Sub Category Updated', 'success');
@@ -52,8 +51,7 @@ class CategoryController extends Controller
                     toast('Category Created', 'success');
                 }else{
                     SubCategory::create($image + $request->all());
-                    // toast('Sub Category Created', 'success');
-                    toast('Category Created', 'success');
+                    toast('Sub Category Created', 'success');
                 }
 
             }

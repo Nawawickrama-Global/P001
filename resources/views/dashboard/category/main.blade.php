@@ -66,11 +66,11 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <div class="form-group d-none">
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Select Parent Category</label>
                                 <select id="parent" name="category_id"
                                     class="form-control @error('category_id') is-invalid @enderror">
-                                    <option value="0" default>None</option>
+                                    <option value="none" default>None</option>
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->category_id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -123,9 +123,9 @@
                                     Description
                                 </th>
 
-                                {{-- <th>
+                                <th>
                                     Parent
-                                </th> --}}
+                                </th>
 
                                 <th>
                                     Status
@@ -142,11 +142,11 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->description }}</td>
 
-                                {{-- <td>
+                                <td>
                                     @if (isset($category->sub_category_id))
                                     {{ $category->parent->name }}
                                     @endif
-                                </td> --}}
+                                </td>
 
                                 <td>
                                     @if ($category->status == 'active')
