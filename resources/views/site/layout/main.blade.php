@@ -259,6 +259,12 @@
                 this.classList.toggle("active");
             });
         });
+        $(document).ready(function() {
+            $('.search').click(function() {
+                $(this).removeClass('search');
+                $(this).parent().html('<form action="{{ route('products.index') }}"><input type="text" class="form-control" name="search">');
+            });
+        });
     </script>
 
     @stack('scripts')
