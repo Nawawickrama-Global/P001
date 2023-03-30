@@ -63,8 +63,9 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function () {
 
     // Customer
     Route::get('/customer', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'index'])->name('customer');
-    Route::get('/delete-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'delete'])->name('delete-customer');
+    Route::delete('/delete-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'delete'])->name('delete-customer');
     Route::get('/edit-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'edit'])->name('edit-customer');
+    Route::post('/update-customer/{id}', [App\Http\Controllers\Dashboard\Customer\CustomerController::class, 'update'])->name('update-customer');
 
     // Order
     Route::get('/order-history', [App\Http\Controllers\Dashboard\Order\OrderController::class, 'index'])->name('order-history');

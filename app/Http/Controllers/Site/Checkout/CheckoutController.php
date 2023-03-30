@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site\Checkout;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderVariation;
@@ -64,7 +65,8 @@ class CheckoutController extends Controller
         }
 
         $shippingMethods = ShippingMethod::get();
-        return view('site.cart.checkout', ['shippingMethods' => $shippingMethods, 'total_price' => $total_price]);
+        $parentCategories = Category::where('deleted_at', '=', null)->get();
+        return view('site.cart.checkout', ['shippingMethods' => $shippingMethods, 'total_price' => $total_price, 'parentCategories' => $parentCategories]);
     }
 
     public function placeOrder(Request $request)

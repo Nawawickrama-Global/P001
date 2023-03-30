@@ -18,7 +18,7 @@
             <h4 class="mb-3 mb-md-0">Customer</h4>
         </div>
     </div>
-   <form action="" method="post">
+   <form action="{{ route('update-customer', $customer->customer_id) }}" method="post">
     @csrf
     <div class="row">
         <div class="col-12 col-xl-12 grid-margin stretch-card">
@@ -29,7 +29,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">First Name</label>
-                                <input name="first_name" type="text" value="{{ $customer->first_name }}"
+                                <input name="first_name" type="text" value="{{ $customer->user->first_name }}"
                                     class="form-control @error('first_name') is-invalid @enderror" autofocus>
                                 @error('first_name')
                                     <div class="invalid-feedback">
@@ -39,9 +39,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Contact</label>
-                                <input id="phone" type="text" value="{{ $customer->contact }}"
-                                    class="form-control @error('contact') is-invalid @enderror" name="contact">
-                                @error('contact')
+                                <input id="phone" type="text" value="{{ $customer->user->contact_number }}"
+                                    class="form-control @error('contact_number') is-invalid @enderror" name="contact_number">
+                                @error('contact_number')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Email</label>
-                                <input id="email" type="text" value="{{ $customer->email }}"
+                                <input id="email" type="text" value="{{ $customer->user->email }}"
                                     class="form-control @error('email') is-invalid @enderror" name="email">
                                 @error('email')
                                     <div class="invalid-feedback">
@@ -61,7 +61,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Last Name</label>
-                                <input id="phone" type="number" value="{{ $customer->last_name }}"
+                                <input id="phone" type="text" value="{{ $customer->user->last_name }}"
                                     class="form-control @error('last_name') is-invalid @enderror" name="last_name">
                                 @error('last_name')
                                     <div class="invalid-feedback">
@@ -81,9 +81,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="ActivityStatus">Status</label>
-                                <select class="form-control">
-                                    <option>Active</option>
-                                    <option>Deactive</option>
+                                <select class="form-control" name="status">
+                                    <option {{ $customer->user->status == 'active' ? 'selected' : ''}} value="active">Active</option>
+                                    <option {{ $customer->user->status != 'active' ? 'selected' : ''}} value="inactive">Deactive</option>
                                 </select>
                             </div>
                             <div class="form-group text-right">
@@ -97,97 +97,5 @@
     </div> <!-- row -->
    </form>
 
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="card-title">Purchased History</h6>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        #
-                                    </th>
-                                    <th>
-                                        Title
-                                    </th>
-                                    <th>
-                                        SKU
-                                    </th>
-                                    <th>
-                                        Quantity
-                                    </th>
-                                    <th>
-                                        Reguler Price
-                                    </th>
-                                    <th>
-                                        Real Price
-                                    </th>
-                                    <th>
-                                        Category
-                                    </th>
-                                    <th>
-                                        Purchased
-                                    </th>
-                                    <th>
-                                        Status
-                                    </th>
-                                    <th>
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        Nokia 3.1
-                                    </td>
-                                    <td>
-                                        20-ABC-12
-                                    </td>
-                                    <td>
-                                        25
-                                    </td>
-                                    <td>
-                                        150,000
-                                    </td>
-                                    <td>
-                                        2023/04/12
-                                    </td>
-                                    <td>
-                                        160,000
-                                    </td>
-                                    <td>
-                                        Mobile, Nokia
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-primary">Delivered</span>
-                                        {{-- <span class="badge badge-danger">deative</span> --}}
-                                    </td>
-                                    <td>
-                                        {{-- view --}}
-                                        <button type="button" class="btn btn-warning btn-sm btn-icon" title="View">
-                                            <i data-feather="eye"></i>
-                                        </button>
-                                        {{-- edit --}}
-                                        <button type="button" class="btn btn-success btn-sm btn-icon" title="Edit">
-                                            <i data-feather="edit"></i>
-                                        </button>
-                                        {{-- Delete --}}
-                                        <button type="button" class="btn btn-danger btn-sm btn-icon" title="Delete">
-                                            <i data-feather="trash-2"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 @endsection

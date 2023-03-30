@@ -58,9 +58,7 @@
                 <td>{{ $customer->user->first_name }}</td>
                 <td>{{ $customer->user->contact_number }}</td>
                 <td>{{ $customer->address }}</td>
-                <td>
-                  50,000LKR
-                </td>
+                <td>{{ Config::get('app.currency_code').$customer->user->order->sum('total_amount') }}</td>
                 <td>
                   @if ( $customer->user->status == 'active' )
                   <span class="badge badge-primary">Active</span>
@@ -73,13 +71,13 @@
                     <tr style="border: 0">
                         <td style="padding:0 2px ; border: 0">
                           {{-- report view --}}
-                          <button type="button" class="btn btn-info btn-sm btn-icon" title="Info" >
+                          {{-- <button type="button" class="btn btn-info btn-sm btn-icon" title="Info" >
                             <i data-feather="file-text"></i>
-                          </button>
+                          </button> --}}
                         </td>
                         <td style="padding:0 2px ; border: 0">
                           {{-- edit --}}
-                          <button type="button" class="btn btn-success btn-sm btn-icon" title="Edit" href="{{ route('edit-customer', $customer->customer_id) }}">
+                          <button type="button" class="btn btn-success btn-sm btn-icon" title="Edit" onclick="window.location.href='{{ route('edit-customer', $customer->customer_id) }}'">
                             <i data-feather="edit"></i>
                           </button>
                         </td>
