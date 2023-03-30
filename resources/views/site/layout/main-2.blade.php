@@ -45,6 +45,17 @@
                 <ul style="width: 1080px">
                   <div class="container">
                     <div class="row my-4">
+                      <div class="col-md-3">
+                        <li>
+                          <p><span>Shop By Brands</span></p>
+                        </li>
+                        <li><a href="">Pullcast </a></li>
+                        <li><a href="">Luxxu Loomiosa </a></li>
+                        <li><a href="">Bocadolobo</a></li>
+                        <li>
+                          <a href="/shop" class="green-btn">Shop All</a>
+                        </li>
+                      </div>
                       @foreach ($parentCategories as $category)
                       <div class="col-md-2">
                         <li>
