@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\CartVariation;
+use App\Models\Category;
 use App\Models\Coupon;
 use App\Models\CouponUser;
 use App\Models\Product;
@@ -20,7 +21,8 @@ class CartController extends Controller
     {
         $items = Cart::where('deleted_at', '=', null)->where('user_id', Auth::user()->id)->get();
         $products = Product::where('deleted_at', null)->orderBy('product_id', 'DESC')->take(50)->get();
-        return view('site.cart.cart', ['items' => $items, 'products' => $products]);
+        $parentCategories = Category::where('deleted_at', '=', null)->get();
+        return view('site.cart.cart', ['items' => $items, 'products' => $products, 'parentCategories' => $parentCategories]);
     }
 
     public function addToCart(Request $request)
