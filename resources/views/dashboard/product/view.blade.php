@@ -18,10 +18,10 @@
             <h4 class="mb-3 mb-md-0">Product</h4>
         </div>
         <div class="d-flex align-items-center flex-wrap text-nowrap">
-            <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+            <a type="button" class="btn btn-primary btn-icon-text text-light mb-2 mb-md-0" href="{{ route('add-product') }}">
                 <i class="btn-icon-prepend" data-feather="plus"></i>
                 Add New Product
-            </button>
+            </a>
         </div>
     </div>
     <div class="row">

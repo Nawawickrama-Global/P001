@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-8 pl-md-0">
         <div class="auth-form-wrapper px-4 py-5">
-            <a href="#" class="noble-ui-logo d-block mb-2">AURA OF<span> INT</span></a>
+            <a href="#" class="noble-ui-logo d-block mb-2" style="color: #004c45">AURA OF<span style="color: #04796d"> INT</span></a>
             <h5 class="text-muted font-weight-normal mb-4">Registration almost done.But, We've sent you a verification code
                 to your mobile. Please enter it to verify your account.</h5>
             @if (session('resent'))
