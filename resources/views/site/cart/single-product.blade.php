@@ -85,10 +85,10 @@ $images = explode(',', $product->product_image);
                                 </div>
 
                                 <div class="color bb pb-3 mt-5 d-none" id="finishes">
-                                    @foreach ($product->productAttr as $productAttr)
+                                    @foreach ($product->productAttr as $index => $productAttr)
                                         <div>
                                             <p><strong>{{ $productAttr->attribute->name }} : </strong> <span
-                                                    class="variations"></span></p>
+                                                    class="variations {{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'fixed-variant' : '' }}"></span></p>
                                             <div class="row">
                                                 <div class="col-lg-12 mt-2">
                                                     @foreach ($productAttr->attribute->variation as $variation)
@@ -289,6 +289,7 @@ $images = explode(',', $product->product_image);
         });
 
         $('.variation').on('change', function() {
+            $('.fixed-variant').html('');
             $(this).parent().parent().parent().parent().find('.variations').html($(this).data('name'));
             updatePrice();
         });
