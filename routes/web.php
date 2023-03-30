@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
 
 // Admin Login Routes
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', function () {
+        return redirect()->route('login');
+    });
     Auth::routes();
 });
 
