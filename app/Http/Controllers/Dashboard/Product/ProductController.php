@@ -12,6 +12,7 @@ use App\Models\ProductVariation;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -31,7 +32,7 @@ class ProductController extends Controller
 
     public function addNewProduct(Request $request)
     {
-        $this->validate($request,[
+        $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'sku' => 'required|max:255',
             'sub_category_id' => 'required',
@@ -43,9 +44,20 @@ class ProductController extends Controller
             'image5' => 'nullable|image|mimes:jpeg,png,jpg',
             'short_description' => 'required',
             'long_description' => 'required',
-            'sales_price1' => 'required',
-            'stock1' => 'required',
+            'sales_price1' => 'required|numeric',
+            'stock1' => 'required|integer',
         ]);
+        if ($validator->fails()) {
+            $all_errors = null;
+
+            foreach ($validator->errors()->messages() as $errors) {
+                foreach ($errors as $error) {
+                    $all_errors .= $error . "<br>";
+                }
+            }
+            toast($all_errors, 'warning');
+            return redirect()->back()->withErrors($validator)->withInput();;
+        }
 
         $product_img = '';
         if($request->hasFile('feature_img')){
@@ -132,12 +144,11 @@ class ProductController extends Controller
     }
     public function updateProduct(Request $request)
     {
-        $this->validate($request,[
-            'id' => 'required',
+        $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'sku' => 'required|max:255',
             'sub_category_id' => 'required',
-            'feature_img' => 'nullable|image|mimes:jpeg,png,jpg',
+            'feature_img' => 'required|image|mimes:jpeg,png,jpg',
             'image1' => 'nullable|image|mimes:jpeg,png,jpg',
             'image2' => 'nullable|image|mimes:jpeg,png,jpg',
             'image3' => 'nullable|image|mimes:jpeg,png,jpg',
@@ -145,10 +156,20 @@ class ProductController extends Controller
             'image5' => 'nullable|image|mimes:jpeg,png,jpg',
             'short_description' => 'required',
             'long_description' => 'required',
-            'sales_price1' => 'required',
-            'stock1' => 'required',
+            'sales_price1' => 'required|numeric',
+            'stock1' => 'required|integer',
         ]);
+        if ($validator->fails()) {
+            $all_errors = null;
 
+            foreach ($validator->errors()->messages() as $errors) {
+                foreach ($errors as $error) {
+                    $all_errors .= $error . "<br>";
+                }
+            }
+            toast($all_errors, 'warning');
+            return redirect()->back()->withErrors($validator)->withInput();;
+        }
         $product = Product::find($request->id);
 
         $product_img = '';
