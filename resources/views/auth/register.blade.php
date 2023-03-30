@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-8 pl-md-0">
         <div class="auth-form-wrapper px-4 py-5">
-            <a href="#" class="noble-ui-logo d-block mb-2">AURA OF<span> INT</span></a>
+            <a href="#" class="noble-ui-logo d-block mb-2" style="color: #004c45">AURA OF<span style="color: #04796d"> INT</span></a>
             <h5 class="text-muted font-weight-normal mb-4">Welcome, and please create your account.</h5>
             <form method="POST" action="#">
                 @csrf

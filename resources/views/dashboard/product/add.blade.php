@@ -46,7 +46,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">SKU</label>
-                                <input value="{{ old('sku') }} " id="phone" type="text" class="form-control @error('sku') is-invalid @enderror" name="sku" autocomplete="email" autofocus>
+                                <input value="{{ old('sku') }} " id="number" type="text" class="form-control @error('sku') is-invalid @enderror" name="sku" autocomplete="email" autofocus>
                                 @error('')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -114,12 +114,43 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="">Product Images (Optional)</label>
+                                <div class="input-group mb-1">
+                                    <div class="custom-file">
+                                      <input type="file" name="image1" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                  </div>
+                                  <div class="input-group mb-1">
+                                    <div class="custom-file">
+                                      <input type="file" name="image2" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
+                                      <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                    </div>
+                                  </div>
+                                  <div class="input-group mb-1">
+                                    <div class="custom-file">
+                                      <input type="file" name="image3" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                                      <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+                                    </div>
+                                  </div>
+                                  <div class="input-group mb-1">
+                                    <div class="custom-file">
+                                      <input type="file" name="image4" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                    </div>
+                                  </div>
+                                  <div class="input-group mb-4">
+                                    <div class="custom-file">
+                                      <input type="file" name="image5" class="custom-file-input" id="inputGroupFile05" aria-describedby="inputGroupFileAddon05">
+                                      <label class="custom-file-label" for="inputGroupFile05">Choose file</label>
+                                    </div>
+                                  </div>
+                                  
                                 <div class="form-group">
-                                    <input type="file" name="image1"/>
-                                    <input type="file" name="image2"/>
+                                    {{-- <input type="file" name="image1"/> --}}
+                                    {{-- <input type="file" name="image2"/>
                                     <input type="file" name="image3"/>
                                     <input type="file" name="image4"/>
-                                    <input type="file" name="image5"/>
+                                    <input type="file" name="image5"/> --}}
                                 </div>
                             </div>
                             <div class="form-group">

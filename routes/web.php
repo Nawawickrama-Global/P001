@@ -114,3 +114,5 @@ Route::view('/partners', 'site.partner.main');
 
 //order
 
+//Inquiry
+Route::view('/inquiry', 'dashboard.inquiry.main');

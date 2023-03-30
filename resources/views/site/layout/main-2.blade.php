@@ -106,7 +106,7 @@
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav>
           <div class="get">
-            <a href="index.html" class="getstarted">AURA OF INT</a>
+            <a href="/" class="getstarted">AURA OF INT</a>
           </div>
           <div class="icons">
             <button data-toggle="tooltip" class="search" title="Search"><i class="bi bi-search"></i></button>

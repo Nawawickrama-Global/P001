@@ -4,7 +4,7 @@
 </head>
 <nav class="sidebar">
     <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
+        <a href="{{ route('home') }}" class="sidebar-brand">
             AURA OF<span> INT</span>
         </a>
         <div class="sidebar-toggler not-active">
@@ -80,6 +80,13 @@
             <li class="nav-item nav-category">Order</li>
             <li class="nav-item">
                 <a href="{{ route('order-history') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">View All</span>
+                </a>
+            </li>
+            <li class="nav-item nav-category">Inquiry</li>
+            <li class="nav-item">
+                <a href="/inquiry" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">View All</span>
                 </a>
