@@ -1,7 +1,7 @@
 @extends('site.layout.main-2')
 @section('content')
     <!-- ======= product Section ======= -->
-    <section class="cart pt-5">
+    <section class="cart mt-5 pt-5">
         <form action="{{ route('place-order') }}" method="POST">
             @csrf
             <div class="container" data-aos="fade-up">
