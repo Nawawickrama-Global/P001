@@ -14,7 +14,7 @@
                                 <div class="col-md-9 text-start">
                                     <h2 class="animate__animated animate__fadeInDown">
                                         Discover all <br />
-                                        products
+                                        products by Brands
                                     </h2>
                                     <p class="animate__animated animate__fadeInUp">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -82,18 +82,12 @@
                 <div class="row">
                     <div class="links">
       
-                        @foreach ($parentCategories as $parentCategory)
-                        @php
-                            $data ='';
-                        @endphp
-                        @foreach ($parentCategory->subcategory as $sub)
-                            @php
-                                $data .= '<div class="swiper-slide">
-                                <a href="'.route('products.index').'?category='.$sub->name.'" class="active">'.$sub->name.'</a>
-                            </div>';
-                            @endphp
-                        @endforeach
-                        <a class="cat" data-sub="{{ $data }}">{{ $parentCategory->name }}</a>
+                        @foreach ($brands as $brand)
+                        @if(app('request')->input('brand') == $brand->name)
+                        <a class="brand active" href="?brand={{ $brand->name }}">{{ $brand->name }}</a>
+                        @else
+                        <a class="brand" href="?brand={{ $brand->name }}">{{ $brand->name }}</a>
+                        @endif
                         @endforeach
                     </div>
 
@@ -198,12 +192,6 @@
                     }
                 }
             })
-        });
-
-        $('.cat').click(function(){
-            $('.cat').removeClass('active');
-            $('.sub-cat').html($(this).data('sub'));
-            $(this).addClass('active');
         });
     </script>
 @endpush

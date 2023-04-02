@@ -106,6 +106,8 @@ Route::get('/product/{id}', [App\Http\Controllers\Site\Product\ProductController
 Route::post('/create-inquiry', [App\Http\Controllers\Site\Product\ProductController::class, 'inquiry'])->name('inquiry');
 Route::get('/inquiry', [App\Http\Controllers\Site\Product\ProductController::class, 'viewInquiry'])->name('inquiry.index');
 
+Route::get('/shop-by-brands', [App\Http\Controllers\Site\Product\ProductController::class, 'shopByBrands'])->name('shop.brands');
+
 
 Route::view('/contact', 'site.contact.main');
 // Route::view('/wishlist', 'site.cart.wishlist');

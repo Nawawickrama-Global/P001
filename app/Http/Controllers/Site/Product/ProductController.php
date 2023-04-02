@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site\Product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Inquiry;
 use App\Models\Product;
@@ -27,6 +28,23 @@ class ProductController extends Controller
         $products = $products->paginate(20);
         $parentCategories = Category::where('deleted_at', '=', null)->get();
         return view('site.cart.product-list', ['products' => $products, 'parentCategories' => $parentCategories]);
+    }
+
+    public function shopByBrands(Request $request)
+    {
+        $products = Product::where('deleted_at', '=', null);
+        if($request->has('brand')){
+            $brand_id = Brand::where('name', '=', $request->brand)->first()->brand_id;
+            $products = $products->where('brand_id', '=', $brand_id );
+        }
+        if($request->has('search')){
+            $products = $products->where('title', 'like', "%{$request->get('search')}%");
+        }
+
+        $products = $products->paginate(20);
+        $parentCategories = Category::where('deleted_at', '=', null)->get();
+        $brands = Brand::where('deleted_at', '=', null)->get();
+        return view('site.cart.product-brand', ['products' => $products, 'brands' => $brands, 'parentCategories' => $parentCategories]);
     }
 
     public function viewProduct($id)
