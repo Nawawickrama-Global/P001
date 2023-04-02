@@ -55,6 +55,9 @@
                         <li>
                           <a href="/shop" class="green-btn">Shop All</a>
                         </li>
+                        <li>
+                          <a href="{{ route('shop.brands') }}" class="green-btn">Shop by brands</a>
+                        </li>
                       </div>
                       @foreach ($parentCategories as $category)
                       <div class="col-md-2">
