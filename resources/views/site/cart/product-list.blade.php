@@ -81,42 +81,26 @@
             <div class="container">
                 <div class="row">
                     <div class="links">
-                        <a href="#">MIRRORS</a>
-                        <a href="#" class="active">DOOR HARDWARE</a>
-                        <a href="#">FURNITURE</a>
-                        <a href="#">LIGHTING</a>
+      
+                        @foreach ($parentCategories as $parentCategory)
+                        @php
+                            $data ='';
+                        @endphp
+                        @foreach ($parentCategory->subcategory as $sub)
+                            @php
+                                $data .= '<div class="swiper-slide">
+                                <a href="'.route('products.index').'?category='.$sub->name.'" class="active">'.$sub->name.'</a>
+                            </div>';
+                            @endphp
+                        @endforeach
+                        <a class="cat" data-sub="{{ $data }}">{{ $parentCategory->name }}</a>
+                        @endforeach
                     </div>
 
                     <!--Category Slider-->
                     <div class="clients-slider swiper mt-5">
-                        <div class="swiper-wrapper align-items-center">
-                            <div class="swiper-slide">
-                                <a href="#" class="active">drawer handles</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">door pulls</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="">door levers</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="">door knobs</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="">cabinet handles</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">cabinet handles</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">cabinet handles</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">cabinet handles</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">cabinet handles</a>
-                            </div>
+                        <div class="swiper-wrapper align-items-center sub-cat">
+                            
                         </div>
                         <div class="swiper-button-prev">
                             <i class="bi bi-caret-left-fill"></i>
@@ -214,6 +198,12 @@
                     }
                 }
             })
+        });
+
+        $('.cat').click(function(){
+            $('.cat').removeClass('active');
+            $('.sub-cat').html($(this).data('sub'));
+            $(this).addClass('active');
         });
     </script>
 @endpush
