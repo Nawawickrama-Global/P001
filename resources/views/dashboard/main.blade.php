@@ -33,11 +33,11 @@
               </div>
               <div class="row">
                 <div class="col-6 col-md-12 col-xl-5">
-                  <h3 class="mb-2">3,897</h3>
+                  <h3 class="mb-2">{{ $totalOrders }}</h3>
                   <div class="d-flex align-items-baseline">
                     <p class="text-success">
-                      <span>+3.3%</span>
-                      <i data-feather="arrow-up" class="icon-sm mb-1"></i>
+                      <span>{{ Config::get('app.currency_code').$totalAmount }}</span>
+                      {{-- <i data-feather="arrow-up" class="icon-sm mb-1"></i> --}}
                     </p>
                   </div>
                 </div>
@@ -68,11 +68,11 @@
               </div>
               <div class="row">
                 <div class="col-6 col-md-12 col-xl-5">
-                  <h3 class="mb-2">35,084</h3>
+                  <h3 class="mb-2">{{ $newOrders }}</h3>
                   <div class="d-flex align-items-baseline">
-                    <p class="text-danger">
-                      <span>-2.8%</span>
-                      <i data-feather="arrow-down" class="icon-sm mb-1"></i>
+                    <p class="text-success">
+                      <span>{{ Config::get('app.currency_code').$newOrderAmount }}</span>
+                      {{-- <i data-feather="arrow-down" class="icon-sm mb-1"></i> --}}
                     </p>
                   </div>
                 </div>
@@ -103,11 +103,11 @@
               </div>
               <div class="row">
                 <div class="col-6 col-md-12 col-xl-5">
-                  <h3 class="mb-2">10,000</h3>
+                  <h3 class="mb-2">{{ $todaySales }}</h3>
                   <div class="d-flex align-items-baseline">
                     <p class="text-success">
-                      <span>+2.8%</span>
-                      <i data-feather="arrow-up" class="icon-sm mb-1"></i>
+                      <span>{{ Config::get('app.currency_code').$todaySalesAmount }}</span>
+                      {{-- <i data-feather="arrow-up" class="icon-sm mb-1"></i> --}}
                     </p>
                   </div>
                 </div>
@@ -145,14 +145,14 @@
             <div class="col-md-7">
               <p class="text-muted tx-13 mb-3 mb-md-0">Revenue is the income that a business has from its normal business activities, usually from the sale of goods and services to customers.</p>
             </div>
-            <div class="col-md-5 d-flex justify-content-md-end">
+            {{-- <div class="col-md-5 d-flex justify-content-md-end">
               <div class="btn-group mb-3 mb-md-0" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-primary">Today</button>
                 <button type="button" class="btn btn-outline-primary d-none d-md-block">Week</button>
                 <button type="button" class="btn btn-primary">Month</button>
                 <button type="button" class="btn btn-outline-primary">Year</button>
               </div>
-            </div>
+            </div> --}}
           </div>
           <div class="flot-wrapper">
             <div id="flotChart1" class="flot-chart"></div>
