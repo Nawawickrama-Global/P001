@@ -1,8 +1,8 @@
 @extends('site.layout.main-2')
 @section('content')
-@php
-$images = explode(',', $product->product_image);
-@endphp
+    @php
+        $images = explode(',', $product->product_image);
+    @endphp
     <!-- ======= product Section ======= -->
     <section class="product-single">
         <div class="container">
@@ -15,11 +15,11 @@ $images = explode(',', $product->product_image);
                                     alt="Image 1" />
                             </div>
                             @foreach ($images as $image)
-                                @if($image != '')
-                                <div class="carousel-item">
-                                    <img src="{{ asset('storage/images/' .$image) }}" class="d-block w-100"
-                                        alt="variant" />
-                                </div>
+                                @if ($image != '')
+                                    <div class="carousel-item">
+                                        <img src="{{ asset('storage/images/' . $image) }}" class="d-block w-100"
+                                            alt="variant" />
+                                    </div>
                                 @endif
                             @endforeach
                         </div>
@@ -34,12 +34,12 @@ $images = explode(',', $product->product_image);
                 <div class="col-lg-1">
                     <div id="thumbnailCarousel">
                         <div class="overflow-auto thumbnailClass">
-                         
+
                             @foreach ($images as $image)
-                                @if($image != '')
-                                <div class="thumbnail" data-target="#productCarousel" data-slide-to="0">
-                                    <img src="{{ asset('storage/images/' . $image) }}" class="d-block w-100" />
-                                </div>
+                                @if ($image != '')
+                                    <div class="thumbnail" data-target="#productCarousel" data-slide-to="0">
+                                        <img src="{{ asset('storage/images/' . $image) }}" class="d-block w-100" />
+                                    </div>
                                 @endif
                             @endforeach
                         </div>
@@ -73,7 +73,8 @@ $images = explode(',', $product->product_image);
                                     <p><strong>Size : </strong> <span id="selector"></span></p>
                                     <div class="row">
                                         <div class="col-lg-2 mt-2">
-                                            <select class="form-control" name="size" id="size" style="width: unset !important">
+                                            <select class="form-control" name="size" id="size"
+                                                style="width: unset !important">
                                                 <option value="" selected disabled>Select Size</option>
                                                 @foreach ($product->variant as $variant)
                                                     <option data-price="{{ $variant->sales_price }}"
@@ -88,7 +89,8 @@ $images = explode(',', $product->product_image);
                                     @foreach ($product->productAttr as $index => $productAttr)
                                         <div>
                                             <p><strong>{{ $productAttr->attribute->name }} : </strong> <span
-                                                    class="variations {{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'fixed-variant' : '' }}"></span></p>
+                                                    class="variations {{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'fixed-variant' : '' }}"></span>
+                                            </p>
                                             <div class="row">
                                                 <div class="col-lg-12 mt-2">
                                                     @foreach ($productAttr->attribute->variation as $variation)
@@ -177,33 +179,61 @@ $images = explode(',', $product->product_image);
                             <!-- End Tab 2 Content -->
 
                             <div class="tab-pane fade show" id="tab3">
-                                <div class="mx-5">
-                                    <div class="form-group mt-2">
-                                        <label for="exampleFormControlInput1">Name</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="name@example.com">
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <label for="exampleFormControlInput1">Phone</label>
-                                        <input type="contact" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="name@example.com">
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <label for="exampleFormControlInput1">Email</label>
-                                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="name@example.com">
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <label for="exampleFormControlInput1">Message</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <button class="btn btn-contact" style="width: unset">
-                                            Contact
-                                        </button>
+                                <form action="{{ route('inquiry') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                                    <div class="mx-5">
+                                        <div class="form-group mt-2">
+                                            <label for="exampleFormControlInput1">Name</label>
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                                name="name" id="exampleFormControlInput1"
+                                                placeholder="name@example.com">
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <label for="exampleFormControlInput1">Phone</label>
+                                            <input type="contact"
+                                                class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                                id="exampleFormControlInput1" placeholder="name@example.com">
+                                            @error('phone')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <label for="exampleFormControlInput1">Email</label>
+                                            <input type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                id="exampleFormControlInput1" placeholder="name@example.com">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <label for="exampleFormControlInput1">Message</label>
+                                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                            @error('message')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <button class="btn btn-contact" style="width: unset">
+                                                Contact
+                                            </button>
 
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div class="tab-pane fade show" id="tab4">
                                 {{ $product->long_description }}
@@ -318,7 +348,7 @@ $images = explode(',', $product->product_image);
                 message('warning', 'Please select a variant');
             } else {
                 let qty = $('.qty').val();
-                let form=$("#product-form");
+                let form = $("#product-form");
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'

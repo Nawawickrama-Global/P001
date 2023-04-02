@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Site\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Inquiry;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -33,5 +35,33 @@ class ProductController extends Controller
         $suggestions = Product::where('deleted_at', '=', null)->where('sub_category_id', $Product->sub_category_id)->get();
         $parentCategories = Category::where('deleted_at', '=', null)->get();
         return view('site.cart.single-product', ['product' => $Product, 'suggestions' => $suggestions, 'parentCategories' => $parentCategories]);
+    }
+
+    public function inquiry(Request $request)
+    {
+        $this->validate($request, [
+            'product_id' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        ]);
+        try {
+            $user_id = 0;
+            if(Auth::check()){
+                $user_id = Auth::user()->id;
+            }
+            Inquiry::create(['user_id' => $user_id] + $request->all());
+            toast("Inquiry created successfully");
+        } catch (\Throwable $th) {
+            toast($th->getMessage(), "error");
+        }
+        return back();
+    }
+
+    public function viewInquiry()
+    {
+        $inquiries = Inquiry::where('deleted_at', null)->get();
+        return view('dashboard.inquiry.main', ['inquiries' => $inquiries]);
     }
 }

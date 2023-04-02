@@ -100,8 +100,11 @@ Route::view('/login', 'site.auth.login')->name('customer-login');
 //home
 Route::view('/product-add-cart', 'site.cart.product-add-cart');
 
+// Shop
 Route::get('/shop', [App\Http\Controllers\Site\Product\ProductController::class, 'index'])->name('products.index');
 Route::get('/product/{id}', [App\Http\Controllers\Site\Product\ProductController::class, 'viewProduct'])->name('view-item');
+Route::post('/create-inquiry', [App\Http\Controllers\Site\Product\ProductController::class, 'inquiry'])->name('inquiry');
+Route::get('/inquiry', [App\Http\Controllers\Site\Product\ProductController::class, 'viewInquiry'])->name('inquiry.index');
 
 
 Route::view('/contact', 'site.contact.main');
@@ -115,4 +118,4 @@ Route::view('/partners', 'site.partner.main');
 //order
 
 //Inquiry
-Route::view('/inquiry', 'dashboard.inquiry.main');
+// Route::view('/inquiry', 'dashboard.inquiry.main');
