@@ -67,6 +67,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Number of variations</th>
                         <th width="15%">Action</th>
                     </tr>
                 </thead>
@@ -76,6 +77,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $attribute->name }}</td>
                         <td>{{ $attribute->description }}</td>
+                        <td>{{ $attribute->variation->count() }}</td>
                         <td>
 
                             <form action="{{ route('delete-attribute', $attribute->attribute_id) }}" method="post">
