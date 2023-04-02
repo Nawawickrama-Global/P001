@@ -86,7 +86,7 @@
             </li>
             <li class="nav-item nav-category">Inquiry</li>
             <li class="nav-item">
-                <a href="/inquiry" class="nav-link">
+                <a href="{{ route('inquiry.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">View All</span>
                 </a>

@@ -36,16 +36,36 @@
                                         Email
                                     </th>
                                     <th>
-                                        Address
-                                    </th>
-                                    <th>
                                         Contact
                                     </th>
                                     <th>
                                         Message
                                     </th>
+                                    <th>
+                                        Product
+                                    </th>
+                                    <th>
+                                        User
+                                    </th>
                                 </tr>
                             </thead>
+                            @foreach ($inquiries as $inquiry)
+                                <tr>
+                                    <td>{{ $inquiry->inquiry_id }}</td>
+                                    <td>{{ $inquiry->name }}</td>
+                                    <td>{{ $inquiry->email }}</td>
+                                    <td>{{ $inquiry->phone }}</td>
+                                    <td>{{ $inquiry->message }}</td>
+                                    <td>{{ $inquiry->product->title }}</td>
+                                    <td>
+                                        @if ($inquiry->user_id != 0)
+                                            {{ $inquiry->user->first_name }}
+                                        @else
+                                            Guest
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
