@@ -80,7 +80,7 @@
                             <!-- NEWLY ADDED -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Product Sheet</label>
-                                <textarea name="product_sheet" class="form-control @error('product_sheet') is-invalid @enderror" id="" rows="5"></textarea>
+                                <textarea name="product_sheet" class="form-control @error('product_sheet') is-invalid @enderror" id="" rows="5">{{ old('product_sheet') }}</textarea>
                                 @error('product_sheet')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -165,7 +165,7 @@
                             <!-- NEWLY ADDED -->
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Clean & Care</label>
-                                <textarea name="clean_and_care" class="form-control @error('clean_and_care') is-invalid @enderror" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                <textarea name="clean_and_care" class="form-control @error('clean_and_care') is-invalid @enderror" id="exampleFormControlTextarea1" rows="5">{{ old('clean_and_care') }}</textarea>
                                 @error('clean_and_care')
                                 <div class="invalid-feedback">
                                     {{ $message }}
