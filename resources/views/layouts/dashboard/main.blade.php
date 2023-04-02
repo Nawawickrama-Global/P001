@@ -154,7 +154,7 @@
                 </a> | All rights reserved | V0.0.1</p>
                 </p>
                 <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Solution By <a
-                        href="#">Its Me</a></p>
+                        href="https://kreative.global">Kreative Global</a></p>
             </footer>
         </div>
     </div>

@@ -16,9 +16,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="{{ url('https://fonts.googleapis.com') }}" />
     <link rel="preconnect" href="{{ url('https://fonts.gstatic.com') }}" crossorigin />
-    <link
-        href="{{ url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap') }}"
-        rel="stylesheet" />
+    <link href="{{ url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap') }}" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
     <link href="{{ url('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet" />
@@ -68,14 +66,12 @@
             <div class="icons">
                 <button data-toggle="tooltip" class="search" title="Search"><i class="bi bi-search"></i></button>
                 <button data-toggle="tooltip" title="Wishlist"><i class="bi bi-heart"></i></button>
-                <button data-toggle="tooltip" title="Login / Register"
-                    onclick="window.location='{{ url('/login') }}';"><i class="bi bi-person-circle"></i></button>
-                    @if (Auth::check())
-                <button onclick="window.location.href='{{ route('cart') }}';" data-toggle="tooltip" title="Cart"><i class="bi bi-bag"></i><span
-                        class="count-indicator">
-                            {{ Auth::user()->cart->count() }}
+                <button data-toggle="tooltip" title="Login / Register" onclick="window.location='{{ url('/login') }}';"><i class="bi bi-person-circle"></i></button>
+                @if (Auth::check())
+                <button onclick="window.location.href='{{ route('cart') }}';" data-toggle="tooltip" title="Cart"><i class="bi bi-bag"></i><span class="count-indicator">
+                        {{ Auth::user()->cart->count() }}
                     </span></button>
-                    @endif
+                @endif
             </div>
             <!-- .navbar -->
         </div>
@@ -189,8 +185,7 @@
                             offers and promotions.
                         </p>
                         <form action="" method="post">
-                            <input id="mail" type="email" name="email"
-                                placeholder="Enter your email" /><input type="submit" value="Subscribe" />
+                            <input id="mail" type="email" name="email" placeholder="Enter your email" /><input type="submit" value="Subscribe" />
                         </form>
                     </div>
                 </div>
@@ -198,13 +193,12 @@
         </div>
 
         <div class="container">
-            <div class="copyright">&copy; 2022, All Rights Reserved</div>
+            <div class="copyright">&copy; 2023 AURA OF INT | All Rights Reserved | Solution By <a href="https://kreative.global">Kreative Global</a></div>
         </div>
     </footer>
     <!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -229,7 +223,8 @@
         $(document).ready(function() {
             $('.search').click(function() {
                 $(this).removeClass('search');
-                $(this).parent().html('<form action="{{ route('products.index') }}"><input type="text" class="form-control" name="search">');
+                $(this).parent().html('<form action="{{ route('
+                    products.index ') }}"><input type="text" class="form-control" name="search">');
             });
         });
     </script>

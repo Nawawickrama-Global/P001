@@ -21,7 +21,7 @@
                                     sed do eiusmod tempor incididunt ut labore et dolore magna
                                     aliqua.
                                 </p>
-                                <a href="#about"
+                                <a href="/shop"
                                     class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
@@ -48,7 +48,7 @@
                                     doloremque accusamus repellendus deleniti vel. Minus et
                                     tempore modi architecto.
                                 </p>
-                                <a href="#about"
+                                <a href="/shop"
                                     class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
@@ -75,7 +75,7 @@
                                     doloremque accusamus repellendus deleniti vel. Minus et
                                     tempore modi architecto.
                                 </p>
-                                <a href="#about"
+                                <a href="/shop"
                                     class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
@@ -169,7 +169,7 @@
                 @endforeach
             </div>
             <div class="btn mt-5">
-                <a href="/">SHOP BY BRANDS</a>
+                <a href="/shop">SHOP BY BRANDS</a>
             </div>
         </div>
     </section>

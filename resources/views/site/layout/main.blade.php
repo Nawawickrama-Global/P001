@@ -47,16 +47,14 @@
                     <div class="row my-4">
                       <div class="col-md-3">
                         <li>
-                          <p><span>Shop By Brands</span></p>
+                          <p><span>SHOP BY BRANDS</span></p>
                         </li>
-                        <li><a href="">Pullcast </a></li>
-                        <li><a href="">Luxxu Loomiosa </a></li>
-                        <li><a href="">Bocadolobo</a></li>
+                        <li><a href="#">PULLCAST</a></li>
+                        <li><a href="#">LUXXU</a></li>
+                        <li><a href="#">LOOMIOSA</a></li>
+                        <li><a href="#">BOCADOLOBO</a></li>
                         <li>
-                          <a href="/shop" class="green-btn">Shop All</a>
-                        </li>
-                        <li>
-                          <a href="{{ route('shop.brands') }}" class="green-btn">Shop by brands</a>
+                          <a href="/shop" class="green-btn">SHOP ALL</a>
                         </li>
                       </div>
                       @foreach ($parentCategories as $category)
@@ -75,41 +73,36 @@
               </li>
               <li class="dropdown">
                 <a href="#"
-                  ><span>Explore</span> <i class="bi bi-chevron-down"></i
+                  ><span>EXPLORE</span> <i class="bi bi-chevron-down"></i
                 ></a>
                 <ul style="width: 800px">
                   <div class="container">
                     <div class="row my-4">
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <li>
-                          <p><span>DOOR HARDWARE</span></p>
+                          <p><span>ABOUT US</span></p>
                         </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li>
-                          <a href="about.html" class="green-btn">Shop All</a>
-                        </li>
+                        <li><a href="#">OUR STORY</a></li>
+                        <li><a href="#">WHY BUY FROM US?</a></li>
+                        <li><a href="#">OUR PARTNER BRANDS</a></li>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <li>
-                          <p><span>DOOR HARDWARE</span></p>
+                          <p><span>INSPIRATIONS</span></p>
                         </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
+                        <li><a href="#">MOODBOARDS</a></li>
+                        <li><a href="#">EBOOKS</a></li>
+                        <li><a href="#">CONNECT</a></li>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <li>
-                          <p><span>FURNITURE</span></p>
+                          <p><span>SUPPORT</span></p>
                         </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
+                        <li><a href="#">EBOOKS</a></li>
+                        <li><a href="#">FACEBOOK</a></li>
+                        <li><a href="#">INSTAGRAM</a></li>
+                        <li><a href="#">LINKEDIN</a></li>
+                        <li><a href="#">TIKTOK</a></li>
                       </div>
                     </div>
                   </div>
@@ -247,7 +240,7 @@
         </div>
 
         <div class="container">
-            <div class="copyright">&copy; 2022, All Rights Reserved</div>
+            <div class="copyright">&copy; 2023 AURA OF INT | All Rights Reserved | Solution By <a href="https://kreative.global">Kreative Global</a></div>
         </div>
     </footer>
     <!-- End Footer -->
