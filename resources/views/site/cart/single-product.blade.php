@@ -174,7 +174,7 @@
                             <!-- End Tab 1 Content -->
 
                             <div class="tab-pane fade show" id="tab2">
-                                {{ $product->product_sheet }}
+                                <p><a href="{{ $product->product_sheet }}"> View </a> Product Sheet</p>
                             </div>
                             <!-- End Tab 2 Content -->
 

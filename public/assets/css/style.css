@@ -1373,6 +1373,7 @@ section {
   border-radius: 5px;
   background: #fff;
   border: var(--primary-color) 1px solid;
+  width: 100%;
 }
 .product .member .member-img {
   position: relative;
