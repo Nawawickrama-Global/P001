@@ -49,12 +49,12 @@
                         <li>
                           <p><span>SHOP BY BRANDS</span></p>
                         </li>
-                        <li><a href="#">PULLCAST</a></li>
-                        <li><a href="#">LUXXU</a></li>
-                        <li><a href="#">LOOMIOSA</a></li>
-                        <li><a href="#">BOCADOLOBO</a></li>
+                        <li><a href="#" style="padding-left: 0">PULLCAST</a></li>
+                        <li><a href="#" style="padding-left: 0">LUXXU</a></li>
+                        <li><a href="#" style="padding-left: 0">LOOMIOSA</a></li>
+                        <li><a href="#" style="padding-left: 0">BOCADOLOBO</a></li>
                         <li>
-                          <a href="/shop" class="green-btn">SHOP ALL</a>
+                          <a href="/shop" class="green-btn" style="margin-left: 0">SHOP ALL</a>
                         </li>
                       </div>
                       @foreach ($parentCategories as $category)
@@ -63,7 +63,7 @@
                           <p><span>{{ $category->name }}</span></p>
                         </li>
                         @foreach ($category->subcategory as $subcategory)
-                        <li><a href="{{ route('products.index') }}?category={{ $subcategory->name }}">{{ $subcategory->name }} </a></li>
+                        <li><a href="{{ route('products.index') }}?category={{ $subcategory->name }}" style="padding-left: 0">{{ $subcategory->name }} </a></li>
                         @endforeach
                       </div>  
                       @endforeach
@@ -82,27 +82,27 @@
                         <li>
                           <p><span>ABOUT US</span></p>
                         </li>
-                        <li><a href="#">OUR STORY</a></li>
-                        <li><a href="#">WHY BUY FROM US?</a></li>
-                        <li><a href="#">OUR PARTNER BRANDS</a></li>
+                        <li><a href="#" style="padding-left: 0">OUR STORY</a></li>
+                        <li><a href="#" style="padding-left: 0">WHY BUY FROM US?</a></li>
+                        <li><a href="#" style="padding-left: 0">OUR PARTNER BRANDS</a></li>
                       </div>
                       <div class="col-md-4">
                         <li>
                           <p><span>INSPIRATIONS</span></p>
                         </li>
-                        <li><a href="#">MOODBOARDS</a></li>
-                        <li><a href="#">EBOOKS</a></li>
-                        <li><a href="#">CONNECT</a></li>
+                        <li><a href="#" style="padding-left: 0">MOODBOARDS</a></li>
+                        <li><a href="#" style="padding-left: 0">EBOOKS</a></li>
+                        <li><a href="#" style="padding-left: 0">CONNECT</a></li>
                       </div>
                       <div class="col-md-4">
                         <li>
                           <p><span>SUPPORT</span></p>
                         </li>
-                        <li><a href="#">EBOOKS</a></li>
-                        <li><a href="#">FACEBOOK</a></li>
-                        <li><a href="#">INSTAGRAM</a></li>
-                        <li><a href="#">LINKEDIN</a></li>
-                        <li><a href="#">TIKTOK</a></li>
+                        <li><a href="#" style="padding-left: 0">EBOOKS</a></li>
+                        <li><a href="#" style="padding-left: 0">FACEBOOK</a></li>
+                        <li><a href="#" style="padding-left: 0">INSTAGRAM</a></li>
+                        <li><a href="#" style="padding-left: 0">LINKEDIN</a></li>
+                        <li><a href="#" style="padding-left: 0">TIKTOK</a></li>
                       </div>
                     </div>
                   </div>
@@ -273,6 +273,18 @@
             });
         });
     </script>
+    <style>
+      .count-indicator {
+            position: relative;
+            background-color: #004c45;
+            color: #ffffff;
+            padding: 0 10px;
+            border-radius: 10px;
+            bottom: 8px;
+            left: -5px;
+            z-index: 99;
+        }
+    </style>
 
     @stack('scripts')
 </body>

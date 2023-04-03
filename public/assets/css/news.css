@@ -108,3 +108,13 @@ textarea.form-control{
 .gold-border-bottom{
     border-bottom: 2px solid var(--primary-color);
 }
+.count-indicator {
+        position: relative;
+        background-color: #004c45;
+        color: #ffffff;
+        padding: 0 10px;
+        border-radius: 10px;
+        bottom: 8px;
+        left: -5px;
+        z-index: 99;
+    }

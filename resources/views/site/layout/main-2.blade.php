@@ -49,11 +49,11 @@
                         <li>
                           <p><span>Shop By Brands</span></p>
                         </li>
-                        <li><a href="">Pullcast </a></li>
-                        <li><a href="">Luxxu Loomiosa </a></li>
-                        <li><a href="">Bocadolobo</a></li>
+                        <li><a href="" style="padding-left: 0">Pullcasts </a></li>
+                        <li><a href="" style="padding-left: 0">Luxxu Loomiosa </a></li>
+                        <li><a href="" style="padding-left: 0">Bocadolobo</a></li>
                         <li>
-                          <a href="/shop" class="green-btn">Shop All</a>
+                          <a href="/shop" class="green-btn" style="margin-left: 0">Shop All</a>
                         </li>
                         
                       </div>
@@ -63,7 +63,7 @@
                           <p><span>{{ $category->name }}</span></p>
                         </li>
                         @foreach ($category->subcategory as $subcategory)
-                        <li><a href="{{ route('products.index') }}?category={{ $subcategory->name }}">{{ $subcategory->name }} </a></li>
+                        <li><a href="{{ route('products.index') }}?category={{ $subcategory->name }}" style="padding-left: 0">{{ $subcategory->name }} </a></li>
                         @endforeach
                       </div>  
                       @endforeach
@@ -82,32 +82,32 @@
                         <li>
                           <p><span>DOOR HARDWARE</span></p>
                         </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
+                        <li><a href="about.html" style="padding-left: 0">Pullcast </a></li>
+                        <li><a href="about.html" style="padding-left: 0">Luxxu Loomiosa </a></li>
+                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
                         <li>
-                          <a href="about.html" class="green-btn">Shop All</a>
+                          <a href="about.html" class="green-btn" style="margin-left: 0">Shop All</a>
                         </li>
                       </div>
                       <div class="col-md-3">
                         <li>
                           <p><span>DOOR HARDWARE</span></p>
                         </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
+                        <li><a href="about.html" style="padding-left: 0">Pullcast </a></li>
+                        <li><a href="about.html" style="padding-left: 0">Luxxu Loomiosa </a></li>
+                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
+                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
+                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
                       </div>
                       <div class="col-md-3">
                         <li>
                           <p><span>FURNITURE</span></p>
                         </li>
-                        <li><a href="about.html">Pullcast </a></li>
-                        <li><a href="about.html">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
-                        <li><a href="about.html">Bocadolobo</a></li>
+                        <li><a href="about.html" style="padding-left: 0">Pullcast </a></li>
+                        <li><a href="about.html" style="padding-left: 0">Luxxu Loomiosa </a></li>
+                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
+                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
+                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
                       </div>
                     </div>
                   </div>
@@ -278,6 +278,18 @@
             });
         });
     </script>
+    <style>
+      .count-indicator {
+            position: relative;
+            background-color: #004c45;
+            color: #ffffff;
+            padding: 0 10px;
+            border-radius: 10px;
+            bottom: 8px;
+            left: -5px;
+            z-index: 99;
+        }
+    </style>
 
     @stack('scripts')
 </body>
