@@ -73,41 +73,36 @@
               </li>
               <li class="dropdown">
                 <a href="#"
-                  ><span>Explore</span> <i class="bi bi-chevron-down"></i
+                  ><span>EXPLORE</span> <i class="bi bi-chevron-down"></i
                 ></a>
                 <ul style="width: 800px">
                   <div class="container">
                     <div class="row my-4">
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <li>
-                          <p><span>DOOR HARDWARE</span></p>
+                          <p><span>ABOUT US</span></p>
                         </li>
-                        <li><a href="about.html" style="padding-left: 0">Pullcast </a></li>
-                        <li><a href="about.html" style="padding-left: 0">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
-                        <li>
-                          <a href="about.html" class="green-btn" style="margin-left: 0">Shop All</a>
-                        </li>
+                        <li><a href="#" style="padding-left: 0">OUR STORY</a></li>
+                        <li><a href="#" style="padding-left: 0">WHY BUY FROM US?</a></li>
+                        <li><a href="#" style="padding-left: 0">OUR PARTNER BRANDS</a></li>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <li>
-                          <p><span>DOOR HARDWARE</span></p>
+                          <p><span>INSPIRATIONS</span></p>
                         </li>
-                        <li><a href="about.html" style="padding-left: 0">Pullcast </a></li>
-                        <li><a href="about.html" style="padding-left: 0">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
-                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
-                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
+                        <li><a href="#" style="padding-left: 0">MOODBOARDS</a></li>
+                        <li><a href="#" style="padding-left: 0">EBOOKS</a></li>
+                        <li><a href="#" style="padding-left: 0">CONNECT</a></li>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <li>
-                          <p><span>FURNITURE</span></p>
+                          <p><span>SUPPORT</span></p>
                         </li>
-                        <li><a href="about.html" style="padding-left: 0">Pullcast </a></li>
-                        <li><a href="about.html" style="padding-left: 0">Luxxu Loomiosa </a></li>
-                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
-                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
-                        <li><a href="about.html" style="padding-left: 0">Bocadolobo</a></li>
+                        <li><a href="#" style="padding-left: 0">EBOOKS</a></li>
+                        <li><a href="#" style="padding-left: 0">FACEBOOK</a></li>
+                        <li><a href="#" style="padding-left: 0">INSTAGRAM</a></li>
+                        <li><a href="#" style="padding-left: 0">LINKEDIN</a></li>
+                        <li><a href="#" style="padding-left: 0">TIKTOK</a></li>
                       </div>
                     </div>
                   </div>

@@ -76,7 +76,7 @@
                                     tempore modi architecto.
                                 </p>
                                 <a href="/shop"
-                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
+                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">SHOP NOW</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
                                     DESIGNER <i class="bi bi-arrow-right"></i></a>
@@ -281,7 +281,7 @@
                         <a href="#" class="mt-0">21 Nov 2022</a>
                     </div>
                 </div>
-                <div class="text-center btn">
+                <div class="text-center btn mt-4">
                     <a href="#">SEE OUR BLOG</a>
                 </div>
             </div>

@@ -761,13 +761,6 @@ section {
 /*--------------------------------------------------------------
 # blog & insta section
 --------------------------------------------------------------*/
-.blog p {
-  font-family: var(--primary-font);
-  text-transform: uppercase;
-  font-size: x;
-  padding: 10px;
-  color: #000;
-}
 
 .blog a {
   color: #000;
