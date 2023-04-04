@@ -163,7 +163,7 @@
                 @foreach ($brands as $brand)
                 <div class="col-lg-3">
                     <a href="">
-                        <img src="{{ asset('storage/images/' . $brand->brand_image) }}" alt="" class="img-fluid" />
+                        <img src="{{ asset('storage/images/' . $brand->brand_image) }}" alt="" class="img-fluid" width="250px;" />
                     </a>
                 </div>
                 @endforeach
