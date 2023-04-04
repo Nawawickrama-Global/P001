@@ -22,7 +22,7 @@
                                     aliqua.
                                 </p>
                                 <a href="/shop"
-                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
+                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">SHOP NOW</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
                                     DESIGNER <i class="bi bi-arrow-right"></i></a>
@@ -49,7 +49,7 @@
                                     tempore modi architecto.
                                 </p>
                                 <a href="/shop"
-                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
+                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">SHOP NOW</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
                                     DESIGNER <i class="bi bi-arrow-right"></i></a>
