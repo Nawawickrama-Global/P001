@@ -21,6 +21,12 @@ class ProductController extends Controller
             $category_id = SubCategory::where('name', '=', $request->category)->first()->sub_category_id;
             $products = $products->where('sub_category_id', '=', $category_id );
         }
+        if($request->has('parent_category')){
+            $subcategory = Category::where('name', $request->parent_category)->first()->subcategory->toArray();
+            $subcategoryIds = array_column($subcategory, 'sub_category_id');
+            $products = $products->whereIn('sub_category_id', $subcategoryIds );
+        }
+
         if($request->has('search')){
             $products = $products->where('title', 'like', "%{$request->get('search')}%");
         }

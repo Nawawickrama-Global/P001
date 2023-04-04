@@ -85,6 +85,7 @@
                         @foreach ($parentCategories as $parentCategory)
                         @php
                             $data ='';
+                            $selected = app('request')->input('parent_category');
                         @endphp
                         @foreach ($parentCategory->subcategory as $sub)
                             @php
@@ -93,7 +94,7 @@
                             </div>';
                             @endphp
                         @endforeach
-                        <a class="cat" data-sub="{{ $data }}">{{ $parentCategory->name }}</a>
+                        <a class="cat {{ $selected ==  $parentCategory->name ? 'active' : '' }}" data-sub="{{ $data }}">{{ $parentCategory->name }}</a>
                         @endforeach
                     </div>
 
