@@ -22,14 +22,14 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                   <form>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <select class="form-control" id="exampleInputSelect1">
                         <option value="option1">Default Sorting</option>
                         <option value="option2">Option 2</option>
                         <option value="option3">Option 3</option>
                       </select>
                       <i class="bi bi-chevron-down"></i>
-                    </div>
+                    </div> --}}
                   </form>
                 </div>
               </div>
