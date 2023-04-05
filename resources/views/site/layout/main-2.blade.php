@@ -26,6 +26,7 @@
     <link href="{{url('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet" />
     <link href="{{url('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet" />
     <link href="{{url('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet" />
@@ -256,7 +257,7 @@
     <script src="{{url('https://code.jquery.com/jquery-3.5.1.min.js')}}"></script>
     <script src="{{url('https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js')}}"></script>
     <script src="{{url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js')}}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <!-- Template Main JS File -->
     <script src="{{url('assets/js/main.js')}}"></script>
     <script>
