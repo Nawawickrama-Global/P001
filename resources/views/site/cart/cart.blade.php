@@ -4,13 +4,13 @@
     @php
         $subTotal = 0;
     @endphp
-    <section class="cart pt-5">
+    <section class="cart pt-5 mt-5">
         <div class="container" data-aos="fade-up">
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
                     @foreach ($items as $item)
                         @php
-                            $image = $item->product->product_image;
+                            $image = $item->product->feature_image;
                             $price = 0;
                             $price += $item->variant->sales_price;
                                 foreach ($item->cartVariation as $key => $variation) {
