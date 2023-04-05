@@ -234,6 +234,66 @@
     </section>
     <!-- End popuar Section -->
 
+        <!-- ======= Experience Section ======= -->
+        <section class="brand section-bg">
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 text-center">
+                        <header>
+                            <h3 class="mb-0">THE AURA EXPERIENCE</h3>
+                            <div class="line"></div>
+                            <p class="mt-3">
+                                Even more reason to choose us.
+                            </p>
+                        </header>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-3">
+                        <div class="text-center content">
+                            <h4 class="mt-5 mb-3">
+                                WORRYFREE SHIPPING
+                            </h4>
+                            <p>
+                                We use reputable international shippers so your purchase is safely packed and carefully transported.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="text-center content">
+                            <h4 class="mt-5 mb-3">
+                                UNIQUE SELECTION
+                            </h4>
+                            <p>
+                                We only choose items that meet our expectations of unique design, bold elegance and supreme quality.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="text-center content">
+                            <h4 class="mt-5 mb-3">
+                                HIGH STANDARDS
+                            </h4>
+                            <p>
+                                We interact directly with designers and manufacturers to ensure quality requirements are met and all items are examined at source.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="text-center content">
+                            <h4 class="mt-5 mb-3" style="visibility: hidden">
+                                WORRYFREE SHIPPING
+                            </h4>
+                            <p>
+                                You receive regular updates from us as your item makes it way through each stage of its journey, with progress accurately tracked online
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Brand Section -->
+
     <!-- ======= Blog Section ======= -->
     <section class="blog pb-4">
         <div class="container">
