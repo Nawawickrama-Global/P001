@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('deleted_at', '=', null)->orderBy('product_id', 'DESC')->paginate(20);
-        $categories = SubCategory::where('deleted_at', '=', null)->get();
+        $categories = Category::where('deleted_at', '=', null)->get();
         $parentCategories = Category::where('deleted_at', '=', null)->get();
         $brands = Brand::where('deleted_at', '=', null)->get();
         return view('site.home.home', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'parentCategories' => $parentCategories]);

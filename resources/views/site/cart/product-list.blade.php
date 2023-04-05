@@ -81,26 +81,48 @@
             <div class="container">
                 <div class="row">
                     <div class="links">
-      
-                        @foreach ($parentCategories as $parentCategory)
                         @php
-                            $data ='';
+                            $subs = '';
                         @endphp
-                        @foreach ($parentCategory->subcategory as $sub)
+                        @foreach ($parentCategories as $parentCategory)
                             @php
-                                $data .= '<div class="swiper-slide">
-                                <a href="'.route('products.index').'?category='.$sub->name.'" class="active">'.$sub->name.'</a>
-                            </div>';
+                                $data = '';
+                                $selected = $parentCategories->first()->name;
+                                if(app('request')->has('parent_category')){
+                                    $selected = app('request')->input('parent_category');
+                                }
+                                
                             @endphp
+                            @foreach ($parentCategory->subcategory as $sub)
+                                @php
+                                    $data .=
+                                        '<div class="swiper-slide">
+                                <a href="' .
+                                        route('products.index') .
+                                        '?category=' .
+                                        $sub->name .
+                                        '" class="active">' .
+                                        $sub->name .
+                                        '</a>
+                            </div>';
+                                   
+                                @endphp
+                            @endforeach
+                            @php
+                                 if($selected == $parentCategory->name){
+                                    $subs = $data;
+                                 }
+                            @endphp
+                            <a class="cat {{ $selected == $parentCategory->name ? 'active' : '' }}"
+                                data-sub="{{ $data }}">{{ $parentCategory->name }}</a>
                         @endforeach
-                        <a class="cat" data-sub="{{ $data }}">{{ $parentCategory->name }}</a>
-                        @endforeach
+              
                     </div>
 
                     <!--Category Slider-->
                     <div class="clients-slider swiper mt-5">
-                        <div class="swiper-wrapper align-items-center sub-cat">
-                            
+                        <div class="swiper-wrapper1 align-items-center sub-cat">
+                            {!! $subs !!}
                         </div>
                         <div class="swiper-button-prev">
                             <i class="bi bi-caret-left-fill"></i>
@@ -146,11 +168,13 @@
                             <div class="member" data-aos="fade-up" data-aos-delay="100">
                                 <div class="member-img">
                                     <a href="{{ route('view-item', $product->product_id) }}">
-                                    <img src="{{ asset('storage/images/' . $product->feature_image) }}"
-                                        class="img-fluid" alt="" />
+                                        <img src="{{ asset('storage/images/' . $product->feature_image) }}"
+                                            class="img-fluid" alt="" />
                                     </a>
                                     <div class="wishlist">
-                                        <button class="wish-list-button {{ Auth::check() && $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? 'active' : '' }}" data-id="{{ $product->product_id }}">
+                                        <button
+                                            class="wish-list-button {{ Auth::check() && $product->wishList->where('user_id', Auth::user()->id)->count() != 0 ? 'active' : '' }}"
+                                            data-id="{{ $product->product_id }}">
                                             <i class="bi bi-heart"></i>
                                             <i class="bi bi-heart-fill"></i>
                                         </button>
@@ -179,7 +203,7 @@
 
 @push('scripts')
     <script>
-        $('.wish-list-button').click(function(){
+        $('.wish-list-button').click(function() {
             let product_id = $(this).data('id');
             $.ajax({
                 headers: {
@@ -191,19 +215,20 @@
                     id: product_id
                 },
                 success: function(data) {
-                    if(data.wishlist){
+                    if (data.wishlist) {
                         $(this).addClass('active');
-                    }else{
+                    } else {
                         $(this).removeClass('active');
                     }
                 }
             })
         });
 
-        $('.cat').click(function(){
+        $('.cat').click(function() {
             $('.cat').removeClass('active');
             $('.sub-cat').html($(this).data('sub'));
             $(this).addClass('active');
         });
+
     </script>
 @endpush

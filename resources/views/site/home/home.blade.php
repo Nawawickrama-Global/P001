@@ -22,7 +22,7 @@
                                     aliqua.
                                 </p>
                                 <a href="/shop"
-                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
+                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">SHOP NOW</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
                                     DESIGNER <i class="bi bi-arrow-right"></i></a>
@@ -49,7 +49,7 @@
                                     tempore modi architecto.
                                 </p>
                                 <a href="/shop"
-                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
+                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">SHOP NOW</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
                                     DESIGNER <i class="bi bi-arrow-right"></i></a>
@@ -76,7 +76,7 @@
                                     tempore modi architecto.
                                 </p>
                                 <a href="/shop"
-                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
+                                    class="btn-get-started animate__animated animate__fadeInUp scrollto">SHOP NOW</a>
                                 <a href="#about"
                                     class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A
                                     DESIGNER <i class="bi bi-arrow-right"></i></a>
@@ -131,7 +131,7 @@
                         style="background-image: url({{ asset('storage/images/' . $category->category_image) }});">
                         <div class="content">
                             <h4>{{ $category->name }}</h4>
-                            <a href="{{ route('products.index') }}?category={{ $category->name }}">discover more</a>
+                            <a href="{{ route('products.index') }}?parent_category={{ $category->name }}">discover more</a>
                         </div>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                 @foreach ($brands as $brand)
                 <div class="col-lg-3">
                     <a href="">
-                        <img src="{{ asset('storage/images/' . $brand->brand_image) }}" alt="" class="img-fluid" />
+                        <img src="{{ asset('storage/images/' . $brand->brand_image) }}" alt="" class="img-fluid" width="250px;" />
                     </a>
                 </div>
                 @endforeach
@@ -341,7 +341,7 @@
                         <a href="#" class="mt-0">21 Nov 2022</a>
                     </div>
                 </div>
-                <div class="text-center btn">
+                <div class="text-center btn mt-4">
                     <a href="#">SEE OUR BLOG</a>
                 </div>
             </div>
