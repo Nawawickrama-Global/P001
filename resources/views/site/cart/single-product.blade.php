@@ -71,7 +71,7 @@
                                 <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                                 <div class="color bb pb-3 mt-5">
                                     @if ($product->variant->count() == 1)
-                                    <p><strong>Size : </strong> <span id="selector" data-price="{{ $product->variant->first()->sales_price }}">{{ $product->variant->first()->size }}</span></p>
+                                    <p><strong></strong> <span id="selector" data-price="{{ $product->variant->first()->sales_price }}">{{ $product->variant->first()->size }}</span></p>
                                     @else
                                     <p><strong>Size : </strong> <span id="selector"></span></p>
                                     <div class="row">
