@@ -7,10 +7,13 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Inquiry;
 use App\Models\Product;
+use App\Models\RecentlyViewed;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
+use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller
 {
@@ -30,7 +33,7 @@ class ProductController extends Controller
         if($request->has('search')){
             $products = $products->where('title', 'like', "%{$request->get('search')}%");
         }
-
+    
         $products = $products->paginate(20);
         $parentCategories = Category::where('deleted_at', '=', null)->get();
         return view('site.cart.product-list', ['products' => $products, 'parentCategories' => $parentCategories]);
@@ -58,7 +61,17 @@ class ProductController extends Controller
         $Product = Product::where('deleted_at', '=', null)->where('product_id', $id)->first();
         $suggestions = Product::where('deleted_at', '=', null)->where('sub_category_id', $Product->sub_category_id)->get();
         $parentCategories = Category::where('deleted_at', '=', null)->get();
-        return view('site.cart.single-product', ['product' => $Product, 'suggestions' => $suggestions, 'parentCategories' => $parentCategories]);
+        $recentlyViewed = RecentlyViewed::limit(10)->orderBy('recently_viewed_id', 'DESC')->get();
+        if(Auth::check()){
+            $old = RecentlyViewed::where('user_id', Auth::user()->id)->where('product_id', $id)->first();
+            if(!empty($old)){
+                $old->delete();
+            }
+            RecentlyViewed::create(['user_id' => Auth::user()->id, 'product_id' => $id]);
+            $recentlyViewed = RecentlyViewed::where('user_id', Auth::user()->id)->limit(10)->orderBy('recently_viewed_id', 'DESC')->get();
+        }
+        
+        return view('site.cart.single-product', ['product' => $Product, 'suggestions' => $suggestions, 'parentCategories' => $parentCategories, 'recentlyViewed' => $recentlyViewed]);
     }
 
     public function inquiry(Request $request)
