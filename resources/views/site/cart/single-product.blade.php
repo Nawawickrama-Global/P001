@@ -70,22 +70,26 @@
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                                 <div class="color bb pb-3 mt-5">
+                                    @if ($product->variant->count() == 1)
+                                    <p><strong>Size : </strong> <span id="selector" data-price="{{ $product->variant->first()->sales_price }}">{{ $product->variant->first()->size }}</span></p>
+                                    @else
                                     <p><strong>Size : </strong> <span id="selector"></span></p>
                                     <div class="row">
                                         <div class="col-lg-2 mt-2">
                                             <select class="form-control" name="size" id="size"
                                                 style="width: unset !important">
                                                 <option value="" selected disabled>Select Size</option>
-                                                @foreach ($product->variant as $variant)
+                                                    @foreach ($product->variant as $variant)
                                                     <option data-price="{{ $variant->sales_price }}"
-                                                        value="{{ $variant->variant_id }}">{{ $variant->size }}</option>
-                                                @endforeach
+                                                    value="{{ $variant->variant_id }}">{{ $variant->size }}</option>
+                                                    @endforeach
                                             </select>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
 
-                                <div class="color bb pb-3 mt-5 d-none" id="finishes">
+                                <div class="color bb pb-3 mt-5 {{ $product->variant->count() == 1 ? '' : 'd-none' }}" id="finishes">
                                     @foreach ($product->productAttr as $index => $productAttr)
                                         <div>
                                             <p><strong>{{ $productAttr->attribute->name }} : </strong> <span
@@ -379,7 +383,11 @@
         });
 
         function updatePrice() {
+            @if($product->variant->count() == 1)
+            price = $('#selector').data('price');
+            @else
             price = $('#size').find(':selected').data('price');
+            @endif
             $("input[type='radio'].variation:checked").each(function() {
                 let percentage = $(this).data("percentage");
                 price = price + percentage * price / 100;
