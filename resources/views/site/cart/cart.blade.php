@@ -13,9 +13,9 @@
                             $image = $item->product->feature_image;
                             $price = 0;
                             $price += $item->variant->sales_price;
-                                foreach ($item->cartVariation as $key => $variation) {
-                                    $price += ($price * $variation->variation->percentage) / 100;
-                                }
+                            foreach ($item->cartVariation as $key => $variation) {
+                                $price += ($price * $variation->variation->percentage) / 100;
+                            }
                             $subTotal += $price * $item->qty;
                         @endphp
 
@@ -100,7 +100,7 @@
                         <hr />
                         <p class="d-flex justify-content-between">
                             <span><strong>Total</strong></span>
-                            <span id="deliveryCost"><strong>{{ Config::get('app.currency_code') . $total }}</strong></span>
+                            <span ><strong id="total">{{ Config::get('app.currency_code') . $total }}</strong></span>
                         </p>
                     </div>
 
@@ -337,6 +337,7 @@
         let id = null;
         let $this = null;
         let url = null;
+        let total = {{ $subTotal }};
 
         $('.remove').click(function() {
             url = "{{ route('remove-cart') }}";
@@ -350,27 +351,17 @@
             url = "{{ route('plus-qty') }}";
             id = $(this).data('id');
             $this = $(this);
-            submitData();
-            calculateTotal();
+            submitData('plus');
         });
 
         $('.bi-dash-square').click(function() {
             url = "{{ route('minus-qty') }}";
             id = $(this).data('id');
             $this = $(this);
-            submitData();
-            calculateTotal();
+            submitData('minus');
         });
 
-        function calculateTotal() {
-            var sum = 0;
-            $('.amount').each(function() {
-                sum += +$(this).data('total') || 0;
-            });
-            console.log(sum);
-        }
-
-        function submitData() {
+        function submitData(method) {
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -387,6 +378,15 @@
                         $('#cart-qty' + id).html(data.qty);
                         let amount = $('#cart-qty' + id).data('amount');
                         $('#cart-qty' + id).attr('data-total', data.qty * amount);
+                        
+                        if(method == 'plus'){
+                          total += amount;
+                        }else{
+                          total -= amount;
+                        }
+                        let coupon = {{ session()->has('coupon') ? $couponAmount : 0 }};
+                        $('#subTotal').text('{{ Config::get('app.currency_code') }}'+total.toFixed(2));
+                        $('#total').text('{{ Config::get('app.currency_code') }}'+(total - coupon).toFixed(2));
                     }
                 }
             })
