@@ -128,7 +128,7 @@
                 @foreach ($categories as $category)
                 <div class="col-lg-4 mt-4">
                     <div class="card"
-                        style="background-image: url({{ asset('storage/images/' . $category->category_image) }});">
+                        style="background-image: url('{{ asset('storage/images/' . $category->category_image) }}');">
                         <div class="content">
                             <h4>{{ $category->name }}</h4>
                             <a href="{{ route('products.index') }}?parent_category={{ $category->name }}">discover more</a>
