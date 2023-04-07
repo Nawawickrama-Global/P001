@@ -10,13 +10,13 @@
                 <div class="col-lg-6">
                     <div id="productCarousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
+                            <div class="carousel-item border-1 active">
                                 <img src="{{ asset('storage/images/' . $product->feature_image) }}" class="d-block w-100"
                                     alt="Image 1" />
                             </div>
                             @foreach ($images as $image)
                                 @if ($image != '')
-                                    <div class="carousel-item">
+                                    <div class="carousel-item border-1">
                                         <img src="{{ asset('storage/images/' . $image) }}" class="d-block w-100"
                                             alt="variant" />
                                     </div>
@@ -31,7 +31,7 @@
                         </a>
                     </div>
                     <div id="thumbnailCarousel">
-                        <div class="overflow-auto thumbnailClass mt-4">
+                        <div class="overflow-auto thumbnailClass mt-2">
 
                             @foreach ($images as $image)
                                 @if ($image != '')

@@ -1069,6 +1069,7 @@ section {
   height: auto;
   margin-right: 10px;
   cursor: pointer;
+  border:1px solid #ba9739;
 }
 
 .thumbnail.active {
@@ -2315,5 +2316,11 @@ input[type="password"] , input[type="email"], input[type="textarea"], input[type
   flex-direction: row;
 }
 .thumbnailClass img {
-  height: 50px;
+  height: 120px;
+  width: 120px;
+}
+
+.border-1{
+  border: 1px solid #ba9739;
+  padding: 5px;
 }
