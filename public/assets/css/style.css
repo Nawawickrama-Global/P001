@@ -2308,3 +2308,12 @@ input[type="password"] , input[type="email"], input[type="textarea"], input[type
 #footer .credits a:hover {
   color: white;
 }
+
+
+.thumbnailClass {
+  display: flex;
+  flex-direction: row;
+}
+.thumbnailClass img {
+  height: 50px;
+}

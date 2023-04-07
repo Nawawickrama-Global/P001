@@ -7,7 +7,7 @@
     <section class="product-single">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-6">
                     <div id="productCarousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -30,10 +30,8 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         </a>
                     </div>
-                </div>
-                <div class="col-lg-1">
                     <div id="thumbnailCarousel">
-                        <div class="overflow-auto thumbnailClass">
+                        <div class="overflow-auto thumbnailClass mt-4">
 
                             @foreach ($images as $image)
                                 @if ($image != '')
