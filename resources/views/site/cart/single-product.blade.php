@@ -124,14 +124,17 @@
                                                 value="1" />
                                         </div>
                                     </div>
-                                    <input type="hidden" name="total_price" id="total_price">
+                                    {{-- <input type="hidden" name="total_price" id="total_price">
                                     <button class="btn btn-buy" @if($product->variant->count() != 1) disabled @endif tabindex="0">
-                                        <i class="fa fa-shopping-cart"></i> Buy Now
+                                        <i class="fa fa-shopping-cart"></i> 
+                                    </button> --}}
+                                    <button type="button" class="btn btn-buy" id="add-to-cart">
+                                        <i class="fa fa-shopping-cart"></i> ADD TO CART
                                     </button>
                                     <button type="button" class="btn btn-cart" id="add-to-cart" tabindex="0"
-                                        style="border: 2px solid #ba9739">
-                                        <i class="fa fa-shopping-cart"></i> Add to Cart
-                                    </button>
+                                    style="border: 2px solid #ba9739">
+                                    <i class="fa fa-shopping-cart"></i> ADD TO QUOTE
+                                </button>
                                 </div>
                             </form>
                         </div>

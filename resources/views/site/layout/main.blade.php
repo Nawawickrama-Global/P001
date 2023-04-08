@@ -82,9 +82,9 @@
                         <li>
                           <p><span>ABOUT US</span></p>
                         </li>
-                        <li><a href="#" style="padding-left: 0">OUR STORY</a></li>
-                        <li><a href="#" style="padding-left: 0">WHY BUY FROM US?</a></li>
-                        <li><a href="#" style="padding-left: 0">OUR PARTNER BRANDS</a></li>
+                        <li><a href="/about-us" style="padding-left: 0">OUR STORY</a></li>
+                        <li><a href="/why-us" style="padding-left: 0">WHY BUY FROM US?</a></li>
+                        <li><a href="/partners" style="padding-left: 0">OUR PARTNER BRANDS</a></li>
                       </div>
                       <div class="col-md-4">
                         <li>
@@ -92,7 +92,7 @@
                         </li>
                         <li><a href="#" style="padding-left: 0">MOODBOARDS</a></li>
                         <li><a href="#" style="padding-left: 0">EBOOKS</a></li>
-                        <li><a href="#" style="padding-left: 0">CONNECT</a></li>
+                        <li><a href="/contact" style="padding-left: 0">CONNECT</a></li>
                       </div>
                       <div class="col-md-4">
                         <li>
