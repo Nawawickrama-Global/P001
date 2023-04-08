@@ -14,7 +14,8 @@ class CustomerRegistrationController extends Controller
 {
     public function index()
     {
-        return view('site.auth.registration');
+        $parentCategories = Category::where('deleted_at', '=', null)->get();
+        return view('site.auth.registration', ['parentCategories' => $parentCategories]);
     }
 
     public function register(Request $request)
