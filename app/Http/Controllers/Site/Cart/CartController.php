@@ -92,8 +92,8 @@ class CartController extends Controller
         } catch (\Throwable $th) {
             return response()->json(['icon' => 'error', 'title' => $th->getMessage()]);
         }
-
-        return response()->json(['icon' => 'success', 'title' => 'Added to the Cart']);
+        $count = Cart::where('user_id', Auth::user()->id)->count();
+        return response()->json(['icon' => 'success', 'title' => 'Added to the Cart', 'count' => $count]);
     }
 
     public function removeFromCart(Request $request)
