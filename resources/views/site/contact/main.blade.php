@@ -1,4 +1,4 @@
-@extends('site.layout.auth')
+@extends('site.layout.main')
 @section('content')
     <!-- ======= Hero Section ======= -->
     <section id="hero">
@@ -14,9 +14,9 @@
             <!-- Slide 1 -->
             <div
               class="carousel-item active"
-              style="background-image: url(assets/img/slide/slide-8.png)"
+              style="background-image: url(assets/img/slide/contact-us.png)"
             >
-              <div class="carousel-container">
+              <div class="carousel-container" style="top:unset !important">
                 <div class="container">
                   <div class="row">
                     <div class="col-md-9 text-start">
@@ -29,76 +29,6 @@
                         aliqua.
                       </p>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Slide 2 -->
-            <div
-              class="carousel-item"
-              style="background-image: url(assets/img/slide/slide-2.png)"
-            >
-              <div class="carousel-container">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-9 text-start">
-                      <h2 class="animate__animated animate__fadeInDown">
-                        Lorem Ipsum Dolor
-                      </h2>
-                      <p class="animate__animated animate__fadeInUp">
-                        Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
-                        ut et est quaerat sequi nihil ut aliquam. Occaecati alias
-                        dolorem mollitia ut. Similique ea voluptatem. Esse
-                        doloremque accusamus repellendus deleniti vel. Minus et
-                        tempore modi architecto.
-                      </p>
-                      <a
-                        href="#about"
-                        class="btn-get-started animate__animated animate__fadeInUp scrollto"
-                        >Shop Now</a
-                      >
-                      <a
-                        href="#about"
-                        class="btn-get-started2 animate__animated animate__fadeInUp scrollto"
-                        >BOOK A DESIGNER <i class="bi bi-arrow-right"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Slide 3 -->
-            <div
-              class="carousel-item"
-              style="background-image: url(assets/img/slide/slide-3.png)"
-            >
-              <div class="carousel-container">
-                <div class="container">
-                  <div class="row">
-                    <dv class="col-md-9 text-start">
-                      <h2 class="animate__animated animate__fadeInDown">
-                        Sequi ea ut et est quaerat
-                      </h2>
-                      <p class="animate__animated animate__fadeInUp">
-                        Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
-                        ut et est quaerat sequi nihil ut aliquam. Occaecati alias
-                        dolorem mollitia ut. Similique ea voluptatem. Esse
-                        doloremque accusamus repellendus deleniti vel. Minus et
-                        tempore modi architecto.
-                      </p>
-                      <a
-                        href="#about"
-                        class="btn-get-started animate__animated animate__fadeInUp scrollto"
-                        >Shop Now</a
-                      >
-                      <a
-                        href="#about"
-                        class="btn-get-started2 animate__animated animate__fadeInUp scrollto"
-                        >BOOK A DESIGNER <i class="bi bi-arrow-right"></i
-                      ></a>
-                    </dv>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,31 @@
 @extends('site.layout.main')
 @section('content')
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+  <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide 1 -->
+      <div class="carousel-item active" style="background-image: url(assets/img/slide/why-buy-from-us.png)">
+        <div class="carousel-container" style="top:unset !important">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 text-start">
+                <h2 class="animate__animated animate__fadeInDown">
+                  WHY BUY FROM US
+                </h2>
+                <p class="animate__animated animate__fadeInUp">
+                  Tell your story with timeless pieces of extraordinary design
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- End Hero -->
 
 <main id="main">

@@ -1,15 +1,15 @@
 @extends('site.layout.main')
 @section('content')
 
-{{-- <!-- ======= Hero Section ======= -->
+<!-- ======= Hero Section ======= -->
 <section id="hero">
   <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
     <div class="carousel-inner" role="listbox">
       <!-- Slide 1 -->
-      <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-5.png)">
-        <div class="carousel-container">
+      <div class="carousel-item active" style="background-image: url(assets/img/slide/about-us.png)">
+        <div class="carousel-container" style="top:unset !important">
           <div class="container">
             <div class="row">
               <div class="col-md-9 text-start">
@@ -22,9 +22,6 @@
                   sed do eiusmod tempor incididunt ut labore et dolore magna
                   aliqua.
                 </p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
-                <a href="#about" class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A DESIGNER
-                  <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -32,8 +29,8 @@
       </div>
 
       <!-- Slide 2 -->
-      <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.png)">
-        <div class="carousel-container">
+      {{-- <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.png)">
+        <div class="carousel-container" style="top:unset !important">
           <div class="container">
             <div class="row">
               <div class="col-md-9 text-start">
@@ -47,18 +44,15 @@
                   doloremque accusamus repellendus deleniti vel. Minus et
                   tempore modi architecto.
                 </p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
-                <a href="#about" class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A DESIGNER
-                  <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <!-- Slide 3 -->
-      <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.png)">
-        <div class="carousel-container">
+      {{-- <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.png)">
+        <div class="carousel-container" style="top:unset !important">
           <div class="container">
             <div class="row">
               <dv class="col-md-9 text-start">
@@ -72,18 +66,15 @@
                   doloremque accusamus repellendus deleniti vel. Minus et
                   tempore modi architecto.
                 </p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Shop Now</a>
-                <a href="#about" class="btn-get-started2 animate__animated animate__fadeInUp scrollto">BOOK A DESIGNER
-                  <i class="bi bi-arrow-right"></i></a>
               </dv>
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 </section>
-<!-- End Hero --> --}}
+<!-- End Hero -->
 
 <main id="main">
   <!-- ======= chose section ======= -->
