@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,5 +48,11 @@ class CustomerRegistrationController extends Controller
         }
 
         return redirect()->route('customer-login');
+    }
+
+    public function login()
+    {
+        $parentCategories = Category::where('deleted_at', '=', null)->get();
+        return view('site.auth.login', ['parentCategories' => $parentCategories]);
     }
 }
