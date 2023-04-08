@@ -1,4 +1,4 @@
-@extends('site.layout.main-2')
+@extends('site.layout.main')
 @section('content')
 
 {{-- <!-- ======= Hero Section ======= -->

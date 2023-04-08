@@ -108,14 +108,10 @@ Route::get('/inquiry', [App\Http\Controllers\Site\Product\ProductController::cla
 
 Route::get('/shop-by-brands', [App\Http\Controllers\Site\Product\ProductController::class, 'shopByBrands'])->name('shop.brands');
 
-
-Route::view('/contact', 'site.contact.main');
-// Route::view('/wishlist', 'site.cart.wishlist');
-Route::view('/add-cart', 'site.cart.product-add-cart');
-Route::view('/why-us', 'site.why-us.main');
-Route::view('/about-us', 'site.contact.about');
-Route::view('/partners', 'site.partner.main');
-// Route::view('/checkout', 'site.cart.checkout');
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('home.contact');
+Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'aboutUs'])->name('home.about');
+Route::get('/why-us', [App\Http\Controllers\HomeController::class, 'whyUs'])->name('home.why-us');
+Route::get('/partners', [App\Http\Controllers\HomeController::class, 'partners'])->name('home.partners');
 
 //order
 

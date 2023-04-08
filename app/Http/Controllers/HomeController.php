@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $parentCategories;
     /**
      * Create a new controller instance.
      *
@@ -17,6 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->parentCategories = Category::where('deleted_at', '=', null)->get();
     }
 
     /**
@@ -28,8 +30,27 @@ class HomeController extends Controller
     {
         $products = Product::where('deleted_at', '=', null)->orderBy('product_id', 'DESC')->paginate(20);
         $categories = Category::where('deleted_at', '=', null)->get();
-        $parentCategories = Category::where('deleted_at', '=', null)->get();
         $brands = Brand::where('deleted_at', '=', null)->get();
-        return view('site.home.home', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'parentCategories' => $parentCategories]);
+        return view('site.home.home', ['products' => $products, 'categories' => $categories, 'brands' => $brands, 'parentCategories' => $this->parentCategories]);
+    }
+
+    public function aboutUs()
+    {
+        return view('site.contact.about',['parentCategories' => $this->parentCategories]);
+    }
+
+    public function whyUs()
+    {
+        return view('site.why-us.main',['parentCategories' => $this->parentCategories]);
+    }
+
+    public function partners()
+    {
+        return view('site.partner.main',['parentCategories' => $this->parentCategories]);
+    }
+
+    public function contact()
+    {
+        return view('site.contact.main',['parentCategories' => $this->parentCategories]);
     }
 }
