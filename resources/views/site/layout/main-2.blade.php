@@ -177,7 +177,7 @@
                         <h4>Products</h4>
                         <ul>
                             <li>
-                                <a href="#">All Products</a>
+                                <a href="/shop">All Products</a>
                             </li>
                             <li>
                                 <a href="#">Door Hardware</a>
