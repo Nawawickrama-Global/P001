@@ -375,6 +375,7 @@
                     let coupon = {{ session()->has('coupon') ? $couponAmount : 0 }};
                     if (data.remove) {
                         $this.parent().parent().parent().parent().remove();
+                        $('.count-indicator').text(data.count);
                     } else if (data.qty > 0) {
                         $('#cart-qty' + id).html(data.qty);
                         let amount = $('#cart-qty' + id).data('amount');

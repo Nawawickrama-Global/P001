@@ -116,7 +116,8 @@ class CartController extends Controller
             }
             $total_price += $price * $item1->qty;
         }
-        return response()->json(['remove' => true, 'total_price' => $total_price]);
+        $count = Cart::where('user_id', Auth::user()->id)->count();
+        return response()->json(['remove' => true, 'total_price' => $total_price, 'count' => $count]);
     }
 
     public function plusQty(Request $request)

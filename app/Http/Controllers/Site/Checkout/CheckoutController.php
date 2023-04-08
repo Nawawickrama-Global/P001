@@ -25,8 +25,7 @@ class CheckoutController extends Controller
                 'product_id' => 'required',
                 'total_price' => 'required',
                 'size' => 'required',
-                'qty' => 'required',
-                'variation_id' => 'required',
+                'qty' => 'required'
             ]);
             session()->forget('coupon');
             $product_id = $request->product_id;
