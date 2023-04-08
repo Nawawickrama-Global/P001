@@ -25,20 +25,20 @@
                                     <img src="{{ asset('storage/images/' . $image) }}" alt="Product img" class="img-fluid" />
                                 </div>
                                 <div class="col-7 text-contet">
-                                    <div class="cross">
-                                        <button class="remove" data-id="{{ $item->cart_id }}">
+                                    <div class="cross" >
+                                        <button class="remove" data-id="{{ $item->cart_id }}" style="border: 1px solid #9D875C">
                                             <i class="bi bi-x"></i>
                                         </button>
                                     </div>
                                     <h4><a
-                                            href="{{ route('view-item', $item->product->product_id) }}">{{ $item->product->title }}</a>
+                                            href="{{ route('view-item', $item->product->product_id) }}"><span style="color: black">{{ $item->product->title }}</span></a>
                                     </h4>
                                     <p>
                                         {{ $item->product->short_description }}
                                         <br />
                                     </p>
-                                    <p><strong>{{ Config::get('app.currency_code') . $price }}</strong></p>
-                                    <p class="buttonChange">
+                                    <p style="font-size: 20px"><strong>{{ Config::get('app.currency_code') . $price }}</strong></p>
+                                    <p class="buttonChange" style="font-size: 18px">
                                         <button><i data-id="{{ $item->cart_id }}" class="bi bi-dash-square"></i></button>
                                         <span class="amount" id="cart-qty{{ $item->cart_id }}"
                                             data-total="{{ $price * $item->qty }}"
