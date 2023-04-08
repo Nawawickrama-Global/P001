@@ -19,7 +19,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::where('deleted_at', '=', null);
+        $products = Product::where('deleted_at', '=', null)->where('status', 'active');
         if($request->has('category')){
             $category_id = SubCategory::where('name', '=', $request->category)->first()->sub_category_id;
             $products = $products->where('sub_category_id', '=', $category_id );
