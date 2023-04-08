@@ -148,7 +148,7 @@ class ProductController extends Controller
             'title' => 'required|max:255',
             'sku' => 'required|max:255',
             'sub_category_id' => 'required',
-            'feature_img' => 'required|image|mimes:jpeg,png,jpg',
+            'feature_img' => 'nullable|image|mimes:jpeg,png,jpg',
             'image1' => 'nullable|image|mimes:jpeg,png,jpg',
             'image2' => 'nullable|image|mimes:jpeg,png,jpg',
             'image3' => 'nullable|image|mimes:jpeg,png,jpg',
@@ -173,11 +173,12 @@ class ProductController extends Controller
         $product = Product::find($request->id);
 
         $product_img = '';
-        $images = [];
+        $feature_image = [];
+
         if($request->hasFile('feature_img')){
             $feature_img = date('Y-m-d-H-i-s') . $request->file('feature_img')->getClientOriginalName();
             $request->file('feature_img')->storeAs('images', $feature_img, 'public');
-            $images[] = ['feature_img' => $feature_img];
+            $feature_image = ['feature_image' => $feature_img ];
         }
 
         if($request->hasFile('image1')){
@@ -206,15 +207,11 @@ class ProductController extends Controller
             $product_img .= ','.$image5;
         }
 
-        if($product_img != ''){
-            $images[] = ['product_img' => $product_img];
-        }
-
         try {
 
-            DB::transaction(function() use ($request, $images, $product) {
+            DB::transaction(function() use ($request, $feature_image  , $product) {
 
-                $product->update($images + $request->all());
+                $product->update($feature_image + $request->all());
                 ProductAttribute::where('product_id', $product->product_id)->delete();
                 ProductVariation::where('product_id', $product->product_id)->delete();
 
