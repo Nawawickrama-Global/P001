@@ -41,7 +41,8 @@ class HomeController extends Controller
 
     public function whyUs()
     {
-        return view('site.why-us.main',['parentCategories' => $this->parentCategories]);
+        $products = Product::where('deleted_at', '=', null)->orderBy('product_id', 'DESC')->paginate(20);
+        return view('site.why-us.main',['parentCategories' => $this->parentCategories, 'products' => $products]);
     }
 
     public function partners()
