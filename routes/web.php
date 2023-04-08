@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/apply-coupon', [App\Http\Controllers\Site\Cart\CartController::class, 'applyCoupon'])->name('apply-coupon');
     Route::get('/checkout', [App\Http\Controllers\Site\Checkout\CheckoutController::class, 'index'])->name('checkout');
     Route::post('/place-order', [App\Http\Controllers\Site\Checkout\CheckoutController::class, 'placeOrder'])->name('place-order');
-
+    Route::get('/order/{id}', [App\Http\Controllers\Site\Checkout\CheckoutController::class, 'viewOrder'])->name('order');
 });
 
 
@@ -95,7 +95,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 //site login
 Route::get('/register', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'index'])->name('customer-registration');
 Route::post('/register-customer', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'register'])->name('register-customer');
-Route::view('/login', 'site.auth.login')->name('customer-login');
+Route::get('/login', [App\Http\Controllers\Auth\CustomerRegistrationController::class, 'login'])->name('customer-login');
 
 //home
 Route::view('/product-add-cart', 'site.cart.product-add-cart');

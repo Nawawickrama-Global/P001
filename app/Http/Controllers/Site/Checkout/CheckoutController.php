@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\ProductVariation;
 use App\Models\ShippingMethod;
 use App\Models\Variation;
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -135,6 +136,11 @@ class CheckoutController extends Controller
             toast($th->getMessage(), 'error');
         }
 
+        // return redirect()->route('order', );
         return back();
+    }
+    public function viewOrder($id)
+    {
+        return view('site.cart.order');
     }
 }
