@@ -418,6 +418,7 @@
                     method: "POST",
                     data: form.serialize(),
                     success: function(data) {
+                        $('.count-indicator').text(data.count);
                         message(data.icon, data.title);
                     },
                     error: function(response) {
