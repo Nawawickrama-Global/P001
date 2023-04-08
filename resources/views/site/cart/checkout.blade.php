@@ -147,7 +147,7 @@
                             <h3 class="mb-3 h4">ORDER SUMMARY</h3>
                             <p class="d-flex justify-content-between">
                                 <span>Sub total</span> <span
-                                    id="subTotal">{{ Config::get('app.currency_code') . $total_price }}</span>
+                                    id="subTotal">{{ Config::get('app.currency_code') . number_format($total_price,2) }}</span>
                             </p>
                             <p class="d-flex justify-content-between">
                                 <span>Coupon</span> <span id="couonCost">{{ $couponAmount }}</span>
@@ -162,7 +162,7 @@
                             <p class="d-flex justify-content-between">
                                 <span><strong>Total</strong></span>
                                 <span><strong
-                                        id="total">{{ Config::get('app.currency_code') . $total_price - $coupon }}</strong></span>
+                                        id="total">{{ Config::get('app.currency_code') . number_format($total_price - $coupon, 2) }}</strong></span>
                             </p>
                         </div>
 

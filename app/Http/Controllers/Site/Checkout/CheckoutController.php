@@ -59,7 +59,7 @@ class CheckoutController extends Controller
                 foreach ($item->cartVariation as $key => $variation) {
                     $price += ($price * $variation->variation->percentage)/100;
                 }
-                $total_price += $price;
+                $total_price += $price * $item->qty;
             }
             session()->put('checkoutType', $cart);
         }
@@ -89,13 +89,14 @@ class CheckoutController extends Controller
                 $totalAmount = 0;
                 $order = Order::create(['user_id' => Auth::user()->id, 'total_amount' => 0] + $request->all());
                 foreach ($carts as $key => $cart) {
-                    $totalAmount += $cart->variant->sales_price;
+                    $itemAmount = $cart->variant->sales_price;
                     $orderItem = OrderItem::create(['order_id' => $order->order_id, 'product_id' => $cart->product_id, 'variant_id' => $cart->variant_id, 'qty' => $cart->qty]);
                     foreach ($cart->cartVariation as $key => $variations) {
                         $variation = Variation::find($variations->variation_id);
                         OrderVariation::create(['order_item_id' => $orderItem->order_item_id, 'variation_id' => $variations->variation_id]);
-                        $totalAmount += $totalAmount * $variation->percentage / 100;
+                        $itemAmount += $itemAmount * $variation->percentage / 100;
                     }
+                    $totalAmount += $itemAmount * $cart->qty;
                 }
                 $order->update(['total_amount' => $totalAmount]);
                 toast('Order placed', 'success');

@@ -106,7 +106,17 @@ class CartController extends Controller
         } catch (\Throwable $th) {
             return response()->json(['remove' => false]);
         }
-        return response()->json(['remove' => true]);
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        $total_price = 0;
+        
+        foreach ($cart as $key => $item1) {
+            $price = $item1->variant->sales_price;
+            foreach ($item1->cartVariation as $key => $variation) {
+                $price += ($price * $variation->variation->percentage)/100;
+            }
+            $total_price += $price * $item1->qty;
+        }
+        return response()->json(['remove' => true, 'total_price' => $total_price]);
     }
 
     public function plusQty(Request $request)
@@ -117,8 +127,17 @@ class CartController extends Controller
         } catch (\Throwable $th) {
             return response()->json(['qty' => 0]);
         }
-
-        return response()->json(['qty' => $item->qty]);
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        $total_price = 0;
+        
+        foreach ($cart as $key => $item1) {
+            $price = $item1->variant->sales_price;
+            foreach ($item1->cartVariation as $key => $variation) {
+                $price += ($price * $variation->variation->percentage)/100;
+            }
+            $total_price += $price * $item1->qty;
+        }
+        return response()->json(['qty' => $item->qty, 'total_price' => $total_price]);
     }
 
     public function minusQty(Request $request)
@@ -131,8 +150,17 @@ class CartController extends Controller
         } catch (\Throwable $th) {
             return response()->json(['qty' => 0]);
         }
-
-        return response()->json(['qty' => $item->qty - 1]);
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        $total_price = 0;
+        
+        foreach ($cart as $key => $item1) {
+            $price = $item1->variant->sales_price;
+            foreach ($item1->cartVariation as $key => $variation) {
+                $price += ($price * $variation->variation->percentage)/100;
+            }
+            $total_price += $price * $item1->qty;
+        }
+        return response()->json(['qty' => $item->qty - 1, 'total_price' => $total_price]);
     }
 
     public function applyCoupon(Request $request)

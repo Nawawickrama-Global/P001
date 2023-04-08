@@ -88,7 +88,7 @@
                         @endphp
                         <p class="d-flex justify-content-between">
                             <span>Sub total</span> <span
-                                id="subTotal">{{ Config::get('app.currency_code') . $subTotal }}</span>
+                                id="subTotal">{{ Config::get('app.currency_code') . number_format($subTotal, 2) }}</span>
                         </p>
                         <p class="d-flex justify-content-between">
                             <span>Coupon</span> <span
@@ -100,7 +100,7 @@
                         <hr />
                         <p class="d-flex justify-content-between">
                             <span><strong>Total</strong></span>
-                            <span ><strong id="total">{{ Config::get('app.currency_code') . $total }}</strong></span>
+                            <span ><strong id="total">{{ Config::get('app.currency_code') . number_format($total, 2) }}</strong></span>
                         </p>
                     </div>
 
@@ -372,6 +372,7 @@
                     id: id
                 },
                 success: function(data) {
+                    let coupon = {{ session()->has('coupon') ? $couponAmount : 0 }};
                     if (data.remove) {
                         $this.parent().parent().parent().parent().remove();
                     } else if (data.qty > 0) {
@@ -384,10 +385,9 @@
                         }else{
                           total -= amount;
                         }
-                        let coupon = {{ session()->has('coupon') ? $couponAmount : 0 }};
-                        $('#subTotal').text('{{ Config::get('app.currency_code') }}'+total.toFixed(2));
-                        $('#total').text('{{ Config::get('app.currency_code') }}'+(total - coupon).toFixed(2));
                     }
+                    $('#subTotal').text('{{ Config::get('app.currency_code') }}' + (data.total_price).toFixed(2));
+                    $('#total').text('{{ Config::get('app.currency_code') }}'+(data.total_price - coupon).toFixed(2));
                 }
             })
         }
