@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="_product-detail-content">
-                        {{-- <span>{{ $product->category->parent->name }} /</span> --}}
+                        <span>{{ $product->category->parent->name }} /</span>
                         <a
                             href="{{ route('products.index') }}?category={{ $product->category->name }}">{{ $product->category->name }}</a>
 
@@ -69,7 +69,7 @@
                                 <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                                 <div class="color bb pb-3 mt-5">
                                     @if ($product->variant->count() == 1)
-                                    <p><strong></strong> <span id="selector" data-price="{{ $product->variant->first()->sales_price }}">{{ $product->variant->first()->size }}</span></p>
+                                    <p><strong></strong> <span id="selector" data-price="{{ $product->variant->first()->sales_price }}"></span></p>
                                     <input type="hidden" name="size" value="{{ $product->variant->first()->variant_id }}">
                                     @else
                                     <p><strong>Size : </strong> <span id="selector"></span></p>
