@@ -112,13 +112,10 @@ Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])-
 Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'aboutUs'])->name('home.about');
 Route::get('/why-us', [App\Http\Controllers\HomeController::class, 'whyUs'])->name('home.why-us');
 Route::get('/partners', [App\Http\Controllers\HomeController::class, 'partners'])->name('home.partners');
+Route::get('/privacy-policy', [App\Http\Controllers\HomeController::class, 'privacy'])->name('home.privacy');
+Route::get('/terms-and-condition', [App\Http\Controllers\HomeController::class, 'terms'])->name('home.terms');
 
 //order
 
 //Inquiry
 // Route::view('/inquiry', 'dashboard.inquiry.main');
-
-//privacy-policy
-Route::view('/privacy-policy', 'site.other.privacy-policy');
-//terms-and-condition
-Route::view('/terms-and-condition', 'site.other.terms-and-condition');

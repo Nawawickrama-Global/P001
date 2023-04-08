@@ -54,4 +54,14 @@ class HomeController extends Controller
     {
         return view('site.contact.main',['parentCategories' => $this->parentCategories]);
     }
+
+    public function privacy()
+    {
+        return view('site.other.privacy-policy',['parentCategories' => $this->parentCategories]);
+    }
+
+    public function terms()
+    {
+        return view('site.other.terms-and-condition',['parentCategories' => $this->parentCategories]);
+    }
 }
