@@ -251,7 +251,7 @@
         </div>
 
         <div class="container">
-            <div class="copyright">&copy; 2022, All Rights Reserved</div>
+          <div class="copyright">&copy; 2023 AURA OF INT | All Rights Reserved | Solution By <a href="https://kreative.global">Kreative Global</a></div>
         </div>
     </footer>
     <!-- End Footer -->

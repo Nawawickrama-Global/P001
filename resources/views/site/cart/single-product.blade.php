@@ -67,7 +67,7 @@
                             <form action="{{ route('checkout') }}" method="get" id="product-form">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-                                <div class="color bb pb-3 mt-5">
+                                <div class="color bb pb-3 mt-2">
                                     @if ($product->variant->count() == 1)
                                     <p><strong></strong> <span id="selector" data-price="{{ $product->variant->first()->sales_price }}"></span></p>
                                     <input type="hidden" name="size" value="{{ $product->variant->first()->variant_id }}">
@@ -88,7 +88,7 @@
                                     @endif
                                 </div>
 
-                                <div class="color bb pb-3 mt-5 {{ $product->variant->count() == 1 ? '' : 'd-none' }}" id="finishes">
+                                <div class="color bb pb-3 mt-2 {{ $product->variant->count() == 1 ? '' : 'd-none' }}" id="finishes">
                                     @foreach ($product->productAttr as $index => $productAttr)
                                         <div>
                                             <p><strong>{{ $productAttr->attribute->name }} : </strong> <span
