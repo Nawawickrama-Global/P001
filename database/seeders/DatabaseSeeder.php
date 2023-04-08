@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Attribute;
 use App\Models\Customer;
+use App\Models\ShippingMethod;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -49,6 +50,12 @@ class DatabaseSeeder extends Seeder
         Attribute::create([
             'name' => 'SYNTHETIC LEATHER',
             'description' => 'SYNTHETIC LEATHER'
+        ]);
+
+        ShippingMethod::create([
+            'name' => 'COD',
+            'description' => 'Cash on delivery',
+            'price' => '40',
         ]);
     }
 }

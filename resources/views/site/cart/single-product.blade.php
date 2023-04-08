@@ -125,7 +125,7 @@
                                         </div>
                                     </div>
                                     <input type="hidden" name="total_price" id="total_price">
-                                    <button class="btn btn-buy" disabled tabindex="0">
+                                    <button class="btn btn-buy" @if($product->variant->count() != 1) disabled @endif tabindex="0">
                                         <i class="fa fa-shopping-cart"></i> Buy Now
                                     </button>
                                     <button type="button" class="btn btn-cart" id="add-to-cart" tabindex="0"
