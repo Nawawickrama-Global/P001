@@ -82,14 +82,15 @@ class CheckoutController extends Controller
             'contact_number' => 'required',
             'shipping_method_id' => 'required',
         ]);
-
+        $order_id = null;
         try {
             $shippingCost = ShippingMethod::find($request->shipping_method_id)->price;
             if(session()->get('checkoutType') != 'product'){
                 $carts = session()->get('checkoutType');
                 $totalAmount = 0;
-                DB::transaction(function () use($totalAmount, $shippingCost, $request, $carts) {
+                DB::transaction(function () use($totalAmount, $shippingCost, $request, $carts, &$order_id) {
                     $order = Order::create(['user_id' => Auth::user()->id, 'total_amount' => 0] + $request->all());
+                    $order_id = $order->order_id;
                     foreach ($carts as $key => $cart) {
                         $itemAmount = $cart->variant->sales_price;
                         $orderItem = OrderItem::create(['order_id' => $order->order_id, 'product_id' => $cart->product_id, 'variant_id' => $cart->variant_id, 'qty' => $cart->qty]);
@@ -106,7 +107,9 @@ class CheckoutController extends Controller
                     $order->update(['total_amount' => $totalAmount]);
                     Cart::where('user_id', Auth::user()->id)->delete();
                     toast('Order placed', 'success');
+                    
                 });
+
 
             }else{
                 $orderData = session()->get('order');
@@ -115,8 +118,9 @@ class CheckoutController extends Controller
                 
                 $totalAmount = $size->sales_price;
     
-                DB::transaction(function () use ($request, $totalAmount, $orderData, $variations, $shippingCost ) {
+                DB::transaction(function () use ($request, $totalAmount, $orderData, $variations, $shippingCost, &$order_id) {
                     $order = Order::create(['user_id' => Auth::user()->id, 'total_amount' => $totalAmount] + $request->all());
+                    $order_id = $order->order_id;
                     $orderItem = OrderItem::create(['order_id' => $order->order_id, 'product_id' => $orderData['product_id'], 'variant_id' => $orderData['variant_id'], 'qty' => $orderData['qty']]);
                     foreach ($variations as $key => $value) {
                         $variation = Variation::find($value['variation_id']);
@@ -129,18 +133,18 @@ class CheckoutController extends Controller
                     $order->update(['total_amount' => $totalAmount]);
                     Cart::where('user_id', Auth::user()->id)->delete();
                     toast('Order placed', 'success');
+                    
                 });
             }
 
         } catch (\Throwable $th) {
             toast($th->getMessage(), 'error');
         }
-
-        // return redirect()->route('order', );
-        return back();
+        return redirect()->route('order', $order_id);
     }
     public function viewOrder($id)
     {
-        return view('site.cart.order');
+        $order = Order::where('user_id', Auth::user()->id)->where('order_id', $id)->first();
+        return view('site.cart.order', ['order' => $order]);
     }
 }
