@@ -103,6 +103,7 @@ class CheckoutController extends Controller
                         $totalAmount =$totalAmount + $shippingCost;
                     }
                     $order->update(['total_amount' => $totalAmount]);
+                    Cart::where('user_id', Auth::user()->id)->delete();
                     toast('Order placed', 'success');
                 });
 
@@ -125,6 +126,7 @@ class CheckoutController extends Controller
                         $totalAmount =$totalAmount + $shippingCost;
                     }
                     $order->update(['total_amount' => $totalAmount]);
+                    Cart::where('user_id', Auth::user()->id)->delete();
                     toast('Order placed', 'success');
                 });
             }
