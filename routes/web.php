@@ -117,3 +117,8 @@ Route::get('/partners', [App\Http\Controllers\HomeController::class, 'partners']
 
 //Inquiry
 // Route::view('/inquiry', 'dashboard.inquiry.main');
+
+//privacy-policy
+Route::view('/privacy-policy', 'site.other.privacy-policy');
+//terms-and-condition
+Route::view('/terms-and-condition', 'site.other.terms-and-condition');
