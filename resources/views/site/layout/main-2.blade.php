@@ -119,7 +119,7 @@
           <div class="icons">
             <button data-toggle="tooltip" class="search" title="Search"><i class="bi bi-search"></i></button>
             <button data-toggle="tooltip" title="Wishlist"><i class="bi bi-heart"></i></button>
-            <button data-toggle="tooltip" title="Wishlist"><i class="bi bi-box-arrow-in-left"></i></button>
+            <button data-toggle="tooltip" title="Logout"><i class="bi bi-box-arrow-in-left"></i></button>
             <button data-toggle="tooltip" title="Login / Register"
                 onclick="window.location='{{ url('/login') }}';"><i class="bi bi-person-circle"></i></button>
                 @if (Auth::check())
