@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('brand_id');
             $table->string('feature_image');
             $table->string('product_image');
-            $table->string('short_description');
+            $table->text('short_description');
             $table->text('long_description');
             $table->text('clean_and_care');
             $table->text('product_sheet');
