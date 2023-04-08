@@ -145,6 +145,7 @@ class CheckoutController extends Controller
     public function viewOrder($id)
     {
         $order = Order::where('user_id', Auth::user()->id)->where('order_id', $id)->first();
-        return view('site.cart.order', ['order' => $order]);
+        $parentCategories = Category::where('deleted_at', '=', null)->get();
+        return view('site.cart.order', ['order' => $order, 'parentCategories' => $parentCategories]);
     }
 }
