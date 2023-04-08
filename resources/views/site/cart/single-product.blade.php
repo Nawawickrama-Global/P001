@@ -95,7 +95,7 @@
                                                     class="variations {{ $productAttr->attribute->attribute_id == 1 || $productAttr->attribute->attribute_id == 2 ? 'fixed-variant' : '' }}"></span>
                                             </p>
                                             <div class="row">
-                                                <div class="col-lg-12 mt-2">
+                                                <div class="col-lg-12 mb-2">
                                                     @foreach ($productAttr->attribute->variation as $variation)
                                                         <div class="radio-btn">
                                                             <input type="radio" required class="variation"
@@ -148,7 +148,7 @@
             <div class="container" data-aos="fade-up">
                 <!-- Feature Tabs -->
                 <div class="row feture-tabs justify-content-center" data-aos="fade-up">
-                    <div class="col-lg-9">
+                    <div class="col-lg-12">
                         <!-- Tabs -->
                         <ul class="nav nav-pills mb-3">
                             <li>
