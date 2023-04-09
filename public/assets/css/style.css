@@ -172,7 +172,7 @@ h6 {
 }
 .icons button i {
   font-size: 20px;
-  color: var(--primary-color);
+  color: #fff;
 }
 .navbar .dropdown ul {
   display: block;
