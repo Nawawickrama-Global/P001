@@ -386,9 +386,9 @@
 
         function updatePrice() {
             @if($product->variant->count() == 1)
-            price = $('#selector').data('price');
+            price = Number($('#selector').data('price'));
             @else
-            price = $('#size').find(':selected').data('price');
+            price = Number($('#size').find(':selected').data('price'));
             @endif
             $("input[type='radio'].variation:checked").each(function() {
                 let percentage = $(this).data("percentage");
