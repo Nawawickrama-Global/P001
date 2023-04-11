@@ -46,7 +46,7 @@
       @foreach ($wishes as $wish)
 
       <!-- nme -->
-      <div class="col-lg-3 col-md-6  align-items-stretch mt-3">
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
         <div class="member" data-aos="fade-up" data-aos-delay="100">
           <div class="member-img">
             <a href="{{ route('view-item', $wish->product->product_id) }}">
