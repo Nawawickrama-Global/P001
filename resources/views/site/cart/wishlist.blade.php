@@ -46,7 +46,7 @@
       @foreach ($wishes as $wish)
 
       <!-- nme -->
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-3">
+      <div class="col-lg-3 col-md-6  align-items-stretch mt-3">
         <div class="member" data-aos="fade-up" data-aos-delay="100">
           <div class="member-img">
             <a href="{{ route('view-item', $wish->product->product_id) }}">
@@ -83,7 +83,7 @@
       <dv class="row justify-content-center">
           <div class="col-md-9">
               <header class="text-center mb-3">
-                  <h3 class="mb-0">YOU MAY ALSO LIKE...</h3>
+                  <h3 class="mb-0">OUR MOST POPULAR PIECES</h3>
                   <div class="line mt-0"></div>
                   <p class="mt-3">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
