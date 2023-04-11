@@ -38,7 +38,9 @@
         </div>
       </div>
       <div class="text-center text-danger mt-5">
+        @if ($wishes->count() == 0)
         <p><b>You haven't saved any items to your wishlist yet. Start shopping and add your favorite items to your wishlist.</b></p>
+        @endif
       </div>
 
       @foreach ($wishes as $wish)
@@ -76,61 +78,55 @@
 <!-- End product Section -->
 
 <!-- ======= Popular Section ======= -->
-{{-- <section class="popular pt-5">
-      <div class="container" data-aos="fade-up">
-        <dv class="row justify-content-center">
+<section class="popular pt-5">
+  <div class="container" data-aos="fade-up">
+      <dv class="row justify-content-center">
           <div class="col-md-9">
-            <header class="text-center mb-3">
-              <h3 class="mb-0">OUR MOST POPULAR PIECES</h3>
-              <div class="line mt-0"></div>
-              <p class="mt-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </header>
+              <header class="text-center mb-3">
+                  <h3 class="mb-0">YOU MAY ALSO LIKE...</h3>
+                  <div class="line mt-0"></div>
+                  <p class="mt-3">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                      do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+              </header>
           </div>
-        </dv>
+      </dv>
 
-        <div
-          class="row product-slider swiper"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
+      <div class="row product-slider swiper" data-aos="fade-up" data-aos-delay="200">
           <div class="swiper-wrapper">
-
-
-            <div class="swiper-slide col-lg-3">
-              <div class="card">
-                <div class="card-img">
-                  <div class="wishlist">
-                    <button>
-                      <i class="bi bi-heart"></i>
-                      <i class="bi bi-heart-fill d-none"></i>
-                    </button>
+              @foreach ($suggestions as $suggestion)
+                  <div class="swiper-slide col-lg-3">
+                      <div class="card">
+                          <div class="card-img">
+                              <div class="wishlist">
+                                  <button>
+                                      <i class="bi bi-heart"></i>
+                                      <i class="bi bi-heart-fill d-none"></i>
+                                  </button>
+                              </div>
+                              <img src="{{ asset('storage/images/' . $suggestion->feature_image) }}"
+                                  alt="" class="img-fluid">
+                          </div>
+                          <div class="content">
+                              <a href="#">
+                                  <p>{{ $suggestion->title }}</p>
+                                  <p><span>{{ $suggestion->variant->count() > 1 ? Config::get('app.currency_code') . $suggestion->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $suggestion->variant->max('sales_price') : Config::get('app.currency_code') . $suggestion->variant->min('sales_price') }}</span>
+                                  </p>
+                              </a>
+                          </div>
+                          <a href="{{ route('view-item', $suggestion->product_id) }}"
+                              class="stretched-link"></a>
+                      </div>
                   </div>
-                  <img
-                    src="/assets/img/products/product-1.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="content">
-                  <a href="#">
-                    <p>Empire Mirror</p>
-                    <p><span>$ 15,630</span></p>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- End product item -->
+              @endforeach
 
-            <!-- End product item -->
+              <!-- End product item -->
           </div>
           <div class="swiper-pagination"></div>
-        </div>
       </div>
-    </section> --}}
-<!-- End popuar Section -->
+  </div>
+</section>
 
 
 @endsection

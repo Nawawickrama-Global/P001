@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site\Wish;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\WishList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,7 @@ class WishListController extends Controller
     {
         $wishes = WishList::where('user_id', Auth::user()->id)->get();
         $parentCategories = Category::where('deleted_at', '=', null)->get();
-        return view('site.cart.wishlist', ['wishes' => $wishes, 'parentCategories' => $parentCategories]);
+        $suggestions = Product::where('deleted_at', '=', null)->where('status', 'active')->limit(20)->get();
+        return view('site.cart.wishlist', ['wishes' => $wishes, 'parentCategories' => $parentCategories, 'suggestions' => $suggestions]);
     }
 }
