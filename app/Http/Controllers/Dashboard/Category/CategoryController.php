@@ -25,7 +25,7 @@ class CategoryController extends Controller
             'description' => 'required',
             'status' => 'required',
             'category_id' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg',
+            'image' => 'required_if:edit_category_id,!=,null|image|mimes:jpeg,png,jpg',
         ]);
 
         $image = [];

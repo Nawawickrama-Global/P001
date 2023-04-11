@@ -84,7 +84,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Select Category Image</label>
-                                <input type="file" name="image" required id="myDropify"
+                                <input type="file" name="image" id="myDropify"
                                     class="border @error('image') is-invalid @enderror" style="height: 300px" />
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
