@@ -257,6 +257,7 @@
         <!-- End Features Section -->
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="row product-slider swiper" data-aos="fade-up" data-aos-delay="200">
                     <div class="swiper-wrapper">
                         @foreach ($suggestions as $suggestion)
@@ -337,6 +338,52 @@
 >>>>>>> parent of 2603bd3 (Merge branch 'main' of https://github.com/Nawawickrama-Global/P001)
                         @endforeach
 
+=======
+        <!-- ======= Recoment products Section ======= -->
+        <section class="popular pt-5">
+            <div class="container" data-aos="fade-up">
+                <dv class="row justify-content-center">
+                    <div class="col-md-9">
+                        <header class="text-center mb-3">
+                            <h3 class="mb-0">YOU MAY ALSO LIKE...</h3>
+                            <div class="line mt-0"></div>
+                            <p class="mt-3">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </header>
+                    </div>
+                </dv>
+
+                <div class="row product-slider swiper" data-aos="fade-up" data-aos-delay="200">
+                    <div class="swiper-wrapper">
+                        @foreach ($suggestions as $suggestion)
+                            <div class="swiper-slide col-lg-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <div class="wishlist">
+                                            <button>
+                                                <i class="bi bi-heart"></i>
+                                                <i class="bi bi-heart-fill d-none"></i>
+                                            </button>
+                                        </div>
+                                        <img src="{{ asset('storage/images/' . $suggestion->feature_image) }}"
+                                            alt="" class="img-fluid">
+                                    </div>
+                                    <div class="content">
+                                        <a href="#">
+                                            <p>{{ $suggestion->title }}</p>
+                                            <p><span>{{ $product->variant->count() > 1 ? Config::get('app.currency_code') . $product->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $product->variant->max('sales_price') : Config::get('app.currency_code') . $product->variant->min('sales_price') }}</span>
+                                            </p>
+                                        </a>
+                                    </div>
+                                    <a href="{{ route('view-item', $suggestion->product_id) }}"
+                                        class="stretched-link"></a>
+                                </div>
+                            </div>
+                        @endforeach
+
+>>>>>>> parent of 2603bd3 (Merge branch 'main' of https://github.com/Nawawickrama-Global/P001)
                         <!-- End product item -->
                     </div>
                     <div class="swiper-pagination"></div>
@@ -347,6 +394,7 @@
         <!-- ======= Popular Section ======= -->
       <section class="popular pt-5">
         <div class="container" data-aos="fade-up">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <dv class="row justify-content-center">
                 <div class="col-md-9">
@@ -431,6 +479,20 @@
         </div>
     </section>
     <!-- End popuar Section -->
+=======
+          <dv class="row justify-content-center">
+            <div class="col-md-9">
+              <header class="text-center mb-3">
+                <h3 class="mb-0">RECENTLY VIEWED</h3>
+                <div class="line mt-0"></div>
+                <p class="mt-3">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </header>
+            </div>
+          </dv>
+>>>>>>> parent of 2603bd3 (Merge branch 'main' of https://github.com/Nawawickrama-Global/P001)
 =======
           <dv class="row justify-content-center">
             <div class="col-md-9">
