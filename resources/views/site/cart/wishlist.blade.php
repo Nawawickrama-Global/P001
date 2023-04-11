@@ -95,31 +95,39 @@
 
       <div class="row product-slider swiper" data-aos="fade-up" data-aos-delay="200">
           <div class="swiper-wrapper">
-              @foreach ($suggestions as $suggestion)
-                  <div class="swiper-slide col-lg-3">
-                      <div class="card">
-                          <div class="card-img">
-                              <div class="wishlist">
-                                  <button>
-                                      <i class="bi bi-heart"></i>
-                                      <i class="bi bi-heart-fill d-none"></i>
-                                  </button>
-                              </div>
-                              <img src="{{ asset('storage/images/' . $suggestion->feature_image) }}"
-                                  alt="" class="img-fluid">
-                          </div>
-                          <div class="content">
-                              <a href="#">
-                                  <p>{{ $suggestion->title }}</p>
-                                  <p><span>{{ $suggestion->variant->count() > 1 ? Config::get('app.currency_code') . $suggestion->variant->min('sales_price') . ' - ' . Config::get('app.currency_code') . $suggestion->variant->max('sales_price') : Config::get('app.currency_code') . $suggestion->variant->min('sales_price') }}</span>
-                                  </p>
-                              </a>
-                          </div>
-                          <a href="{{ route('view-item', $suggestion->product_id) }}"
-                              class="stretched-link"></a>
-                      </div>
-                  </div>
-              @endforeach
+            @foreach ($suggestions as $suggestion)
+            <div class="swiper-slide col-lg-3">
+                <div class="card">
+                    <div class="card-img">
+                        <div class="wishlist">
+                            <button class="wish-list-button" data-id="{{ $suggestion->product_id }}">
+                                {!! Auth::check() && $suggestion->wishList->where('user_id',
+                                Auth::user()->id)->count() != 0 ? '<i class="bi bi-heart-fill"></i>' : '<i
+                                    class="bi bi-heart"></i>' !!}
+                            </button>
+                        </div>
+                        <a href="{{ route('view-item', $suggestion->product_id) }}">
+                            <img src="{{ asset('storage/images/' . $suggestion->feature_image) }}" alt=""
+                                class="img-fluid" />
+                        </a>
+
+                    </div>
+                    <div class="content">
+                        <a href="{{ route('view-item', $suggestion->product_id) }}">
+                            <p>{{ $suggestion->title }}</p>
+                            <p>
+                                <span>{{ $suggestion->variant->count() > 1 ? Config::get('app.currency_code') .
+                                    $suggestion->variant->min('sales_price') . ' - ' .
+                                    Config::get('app.currency_code') . $suggestion->variant->max('sales_price') :
+                                    Config::get('app.currency_code') . $suggestion->variant->min('sales_price')
+                                    }}</span>
+                            </p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            @endforeach
 
               <!-- End product item -->
           </div>
@@ -130,28 +138,3 @@
 
 
 @endsection
-
-@push('scripts')
-<script>
-  $('.wish-list-button').click(function() {
-    let product_id = $(this).data('id');
-    $.ajax({
-      headers: {
-        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-      },
-      url: "{{ route('add-to-wish') }}",
-      method: "POST",
-      data: {
-        id: product_id
-      },
-      success: function(data) {
-        if (data.wishlist) {
-          $(this).html('<i class="bi bi-heart-fill"></i>');
-        } else {
-          $(this).html('<i class="bi bi-heart"></i>');
-        }
-      }
-    })
-  });
-</script>
-@endpush
