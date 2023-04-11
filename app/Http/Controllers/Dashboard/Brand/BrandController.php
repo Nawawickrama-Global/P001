@@ -20,7 +20,8 @@ class BrandController extends Controller
             'name' => 'required|max:50',
             'description' => 'required',
             'status' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg',
+            'image' => 'required_if:brand_id,!=,null|image|mimes:jpeg,png,jpg',
+            'brand_id' => 'nullable',
         ]);
 
         $image = [];

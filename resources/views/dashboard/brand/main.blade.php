@@ -67,10 +67,10 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Select Brand Image</label>
-                                <input type="file" name="image" required id="myDropify"
+                                <input type="file" name="image" id="myDropify"
                                     class="border @error('image') is-invalid @enderror" style="height: 300px" />
                                 @error('image')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback is-invalid" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
