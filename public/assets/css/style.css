@@ -2311,21 +2311,13 @@ input[type="password"] , input[type="email"], input[type="textarea"], input[type
 }
 
 
-/* new changes 4/7/2023 */
 .thumbnailClass {
   display: flex;
   flex-direction: row;
 }
-.thumbnail img {
-  width: 100%;
-}
-.product-slider .swiper-slide {
-  justify-content: center;
-  align-items: flex-start;
-}
-.product-slider {
-  height: auto !important;
-  box-shadow: none !important;
+.thumbnailClass img {
+  height: 120px;
+  width: 120px;
 }
 
 .border-1{
