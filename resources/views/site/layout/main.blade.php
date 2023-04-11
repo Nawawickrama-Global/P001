@@ -117,7 +117,7 @@
           </div>
           <div class="icons">
             <button data-toggle="tooltip" class="search" title="Search"><i class="bi bi-search"></i></button>
-            <button data-toggle="tooltip" title="Wishlist"><i class="bi bi-heart"></i></button>
+            <button data-toggle="tooltip" onclick="window.location='{{ url('/wishlist') }}';" title="Wishlist"><i class="bi bi-heart"></i></button>
             
             @guest
             <button data-toggle="tooltip" title="Login / Register"
